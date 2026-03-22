@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tabula rasa | contrepoint acoustique</title>
+    <meta
+      name="description"
+      content="Tabula Rasa par Contrepoint acoustique. Présentation, galerie, fiche technique et contact."
+    >
+    <link rel="icon" type="image/jpeg" href="Ressource/images/logo.jpg">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body id="top">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <nav class="main-nav" aria-label="Navigation principale">
+          <a href="#accueil" data-nav="accueil">Accueil</a>
+          <a href="#enceinte" data-nav="enceinte">Enceinte</a>
+          <a href="#conception" data-nav="conception">Conception</a>
+          <a href="#galerie" data-nav="galerie">Galerie</a>
+          <a href="#fiche-technique" data-nav="fiche-technique">Fiche technique</a>
+          <a href="#contact" data-nav="contact">Contact</a>
+        </nav>
+
+        <div class="controls">
+          <label class="control-label" for="language-select" id="language-label">Langue</label>
+          <select id="language-select" aria-labelledby="language-label">
+            <option value="fr">FR</option>
+            <option value="en">EN</option>
+            <option value="es">ES</option>
+          </select>
+
+          <div class="debug-controls" id="debug-controls" hidden>
+            <label class="control-label" for="mode-select" id="mode-label">Mode texte</label>
+            <select id="mode-select" aria-labelledby="mode-label">
+              <option value="corrected">Corrigé</option>
+              <option value="marketing">Marketing</option>
+              <option value="raw">Brut</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <p class="debug-message" id="debug-message" aria-live="polite"></p>
+    </header>
+
+    <section id="accueil" class="top-white-zone reveal">
+      <div class="top-white-zone-inner">
+        <img
+          class="top-brand-image"
+          src="Ressource/images/title_and_logo.jpg"
+          width="2947"
+          height="2934"
+          alt="Contrepoint acoustique"
+          loading="lazy"
+        >
+        <div class="top-values" id="intro-values"></div>
+      </div>
+    </section>
+
+    <main>
+      <section id="enceinte" class="section hero reveal">
+        <div class="hero-copy hero-copy-full">
+          <h2 id="speaker-title"></h2>
+          <p class="hero-subtitle" id="speaker-subtitle"></p>
+          <blockquote id="speaker-quote"></blockquote>
+        </div>
+      </section>
+
+      <section id="conception" class="section reveal">
+        <h2 id="design-title"></h2>
+        <div class="copy" id="design-content"></div>
+        <div class="gallery-grid" id="showcase-gallery"></div>
+      </section>
+
+      <section id="galerie" class="section reveal">
+        <h2 id="gallery-title"></h2>
+        <p class="gallery-lead" id="gallery-lead"></p>
+        <div class="gallery-grid" id="details-gallery"></div>
+      </section>
+
+      <section id="fiche-technique" class="section reveal">
+        <h2 id="specs-title"></h2>
+        <p class="specs-lead" id="specs-lead"></p>
+        <div class="specs-wrap">
+          <table class="specs-table" id="specs-table">
+            <tbody id="specs-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="contact" class="section reveal">
+        <h2 id="contact-title"></h2>
+        <p id="contact-lead"></p>
+        <address id="contact-address"></address>
+        <p class="contact-email">
+          <a href="mailto:valereorlic@contrepointacoustique.com">valereorlic@contrepointacoustique.com</a>
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
