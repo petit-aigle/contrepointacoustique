@@ -395,6 +395,19 @@ const refs = {
   speakerTitle: document.getElementById("speaker-title"),
   speakerSubtitle: document.getElementById("speaker-subtitle"),
   speakerQuote: document.getElementById("speaker-quote"),
+  speakerTitle5: document.getElementById("speaker-title-5"),
+  speakerSubtitle5: document.getElementById("speaker-subtitle-5"),
+  speakerQuote5: document.getElementById("speaker-quote-5"),
+  speakerTitle6: document.getElementById("speaker-title-6"),
+  speakerSubtitle6: document.getElementById("speaker-subtitle-6"),
+  speakerQuote6: document.getElementById("speaker-quote-6"),
+  heroMedia: document.getElementById("hero-media"),
+  heroMedia5Right: document.getElementById("hero-media-5-right"),
+  heroMedia6: document.getElementById("hero-media-6"),
+  speakerFollowCopy: document.getElementById("speaker-follow-copy"),
+  heroMediaSecondary: document.getElementById("hero-media-secondary"),
+  heroMediaTertiary: document.getElementById("hero-media-tertiary"),
+  speakerFollowCopy2: document.getElementById("speaker-follow-copy-2"),
   designTitle: document.getElementById("design-title"),
   designContent: document.getElementById("design-content"),
   galleryTitle: document.getElementById("gallery-title"),
@@ -493,6 +506,61 @@ function renderSpeaker(copy) {
   refs.speakerTitle.textContent = copy.title;
   refs.speakerSubtitle.textContent = copy.subtitle;
   refs.speakerQuote.textContent = copy.quote;
+  refs.speakerTitle5.textContent = copy.title;
+  refs.speakerSubtitle5.textContent = copy.subtitle;
+  refs.speakerQuote5.textContent = copy.quote;
+  refs.speakerTitle6.textContent = copy.title;
+  refs.speakerSubtitle6.textContent = copy.subtitle;
+  refs.speakerQuote6.textContent = copy.quote;
+
+  refs.heroMedia.innerHTML = "";
+  const image = document.createElement("img");
+  image.src = "Ressource/images/enceinte_left_plus_ampli_plus_enceinte_right.jpg";
+  image.width = 6720;
+  image.height = 4480;
+  image.alt = "Paire d'enceintes avec amplificateur.";
+  image.loading = "lazy";
+  refs.heroMedia.appendChild(image);
+
+  refs.heroMedia5Right.innerHTML = "";
+  const image5Right = document.createElement("img");
+  image5Right.src = "Ressource/images/enceinte_vue_super_face_close_left.jpg";
+  image5Right.width = 3584;
+  image5Right.height = 4480;
+  image5Right.alt = "Détail frontal gauche.";
+  image5Right.loading = "lazy";
+  refs.heroMedia5Right.appendChild(image5Right);
+
+  refs.heroMedia6.innerHTML = "";
+  const image6 = document.createElement("img");
+  image6.src = "Ressource/images/enceinte_vue_super_face_close_right.jpg";
+  image6.width = 3584;
+  image6.height = 4480;
+  image6.alt = "Détail frontal droit.";
+  image6.loading = "lazy";
+  refs.heroMedia6.appendChild(image6);
+
+  fillParagraphs(refs.speakerFollowCopy, copy.design);
+
+  refs.heroMediaSecondary.innerHTML = "";
+  const secondImage = document.createElement("img");
+  secondImage.src = "Ressource/images/enceinte_vue.jpg";
+  secondImage.width = 5792;
+  secondImage.height = 8688;
+  secondImage.alt = "Vue complete de l'enceinte.";
+  secondImage.loading = "lazy";
+  refs.heroMediaSecondary.appendChild(secondImage);
+
+  refs.heroMediaTertiary.innerHTML = "";
+  const thirdImage = document.createElement("img");
+  thirdImage.src = "Ressource/images/enceinte_vue_back_left_close.jpg";
+  thirdImage.width = 4480;
+  thirdImage.height = 5600;
+  thirdImage.alt = "Detail arriere gauche.";
+  thirdImage.loading = "lazy";
+  refs.heroMediaTertiary.appendChild(thirdImage);
+
+  fillParagraphs(refs.speakerFollowCopy2, copy.design);
 }
 
 function renderGallerySection(targetElement, section) {
