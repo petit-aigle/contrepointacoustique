@@ -1,0 +1,22 @@
+version: '3'
+
+vars:
+  PORT: '{{.PORT | default "8080"}}'
+
+tasks:
+  run:
+    desc: Run the local python http.server on PORT (foreground).
+    cmds:
+      - python3 -m http.server {{.PORT}}
+
+  stop:
+    desc: Stop the background http.server started by run-ngrok.
+    cmds:
+      - |
+        if [ -f /tmp/task-http.pid ]; then
+          kill "$(cat /tmp/task-http.pid)" 2>/dev/null || true
+          rm /tmp/task-http.pid
+          echo "Local http.server stopped."
+        else
+          echo "No pid file found at /tmp/task-http.pid; nothing to stop."
+        fi
