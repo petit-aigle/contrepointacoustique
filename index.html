@@ -6,34 +6,40 @@
     <title>tabula rasa | contrepoint acoustique</title>
     <meta
       name="description"
-      content="Tabula Rasa par Contrepoint acoustique. Présentation, galerie, fiche technique et contact."
+      content="Tabula Rasa par Contrepoint acoustique. Présentation modulaire recentrée sur la navbar et les lignes image + texte."
     >
     <link rel="icon" type="image/jpeg" href="Ressource/images/logo.jpg">
-    <link rel="stylesheet" href="styles.css">
-    <script src="app.js" defer></script>
+    <link rel="stylesheet" href="styles.css?v=20260330o">
+    <script type="module" src="app.js?v=20260330o"></script>
   </head>
   <body id="top">
-    <header class="topbar">
-      <div class="topbar-inner">
-        <nav class="main-nav" aria-label="Navigation principale">
-          <a href="#accueil" data-nav="accueil">Accueil</a>
-          <a href="#enceinte" data-nav="enceinte">Enceinte</a>
-          <a href="#conception" data-nav="conception">Conception</a>
-          <a href="#galerie" data-nav="galerie">Galerie</a>
-          <a href="#fiche-technique" data-nav="fiche-technique">Fiche technique</a>
-          <a href="#contact" data-nav="contact">Contact</a>
-        </nav>
+    <header class="navbar">
+      <div class="navbar__inner">
+        <nav class="navbar__nav" id="navbar-nav" aria-label="Navbar"></nav>
 
-        <div class="controls">
-          <label class="control-label" for="language-select" id="language-label">Langue</label>
-          <select id="language-select" aria-labelledby="language-label">
-            <option value="fr">FR</option>
-            <option value="en">EN</option>
-            <option value="es">ES</option>
-          </select>
+        <div class="navbar__controls">
+          <button
+            class="navbar__debug-flag"
+            id="debug-flag"
+            type="button"
+            hidden
+            aria-expanded="false"
+            aria-controls="debug-panel"
+          >
+            DEBUG
+          </button>
 
-          <div class="debug-controls" id="debug-controls" hidden>
-            <label class="control-label" for="mode-select" id="mode-label">Mode texte</label>
+          <div class="navbar__control">
+            <label class="navbar__label" for="language-select" id="language-label">Langue</label>
+            <select id="language-select" aria-labelledby="language-label">
+              <option value="fr">FR</option>
+              <option value="en">EN</option>
+              <option value="es">ES</option>
+            </select>
+          </div>
+
+          <div class="navbar__control" id="debug-controls" hidden>
+            <label class="navbar__label" for="mode-select" id="mode-label">Mode texte</label>
             <select id="mode-select" aria-labelledby="mode-label">
               <option value="corrected">Corrigé</option>
               <option value="marketing">Marketing</option>
@@ -42,114 +48,93 @@
           </div>
         </div>
       </div>
-      <p class="debug-message" id="debug-message" aria-live="polite"></p>
+
+      <div class="navbar__debug-panel" id="debug-panel" hidden>
+        <p class="navbar__debug-panel-title" id="debug-panel-title">Typo debug</p>
+
+        <label class="navbar__debug-option">
+          <input id="debug-title-font-toggle" type="checkbox">
+          <span id="debug-title-font-label">Special Font</span>
+        </label>
+
+        <div class="navbar__debug-option navbar__debug-option--stack">
+          <label
+            class="navbar__label navbar__label--panel"
+            for="debug-title-case-select"
+            id="debug-title-case-label"
+          >
+            Format des titres
+          </label>
+          <select id="debug-title-case-select" aria-labelledby="debug-title-case-label">
+            <option value="current">Actuel</option>
+            <option value="uppercase">FULL MAJ</option>
+            <option value="sentence">Première lettre</option>
+            <option value="lowercase">minuscules</option>
+          </select>
+        </div>
+
+        <label class="navbar__debug-option">
+          <input id="debug-body-font-toggle" type="checkbox">
+          <span id="debug-body-font-label">Texte normal en Special Font</span>
+        </label>
+      </div>
+
+      <p class="navbar__message" id="debug-message" aria-live="polite" hidden></p>
     </header>
 
-    <section id="accueil" class="top-white-zone reveal">
-      <div class="top-brand-pane">
-        <img
-          class="top-brand-image"
-          src="Ressource/images/title_and_logo.jpg"
-          width="2947"
-          height="2934"
-          alt="Contrepoint acoustique"
-          loading="lazy"
-        >
-      </div>
-      <div class="top-values" id="intro-values"></div>
-    </section>
-
-    <section id="enceinte" class="top-white-zone speaker-row reveal">
-      <div class="speaker-copy-pane">
-        <div class="speaker-copy-box">
-          <h2 id="speaker-title"></h2>
-          <p class="hero-subtitle" id="speaker-subtitle"></p>
-          <blockquote id="speaker-quote"></blockquote>
-        </div>
-      </div>
-      <div class="speaker-media-pane">
-        <figure class="speaker-media" id="hero-media"></figure>
-      </div>
-    </section>
-
-    <section class="top-white-zone speaker-row speaker-row-opposite reveal">
-      <div class="speaker-media-pane">
-        <figure class="speaker-media" id="hero-media-secondary"></figure>
-      </div>
-      <div class="speaker-copy-pane">
-        <div class="speaker-copy-box">
-          <div class="speaker-follow-copy" id="speaker-follow-copy"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="top-white-zone speaker-row speaker-row-opposite speaker-row-tertiary reveal">
-      <div class="speaker-copy-pane">
-        <div class="speaker-copy-box">
-          <div class="speaker-follow-copy" id="speaker-follow-copy-2"></div>
-        </div>
-      </div>
-      <div class="speaker-media-pane">
-        <figure class="speaker-media" id="hero-media-tertiary"></figure>
-      </div>
-    </section>
-
-    <section class="top-white-zone speaker-row speaker-row-half reveal">
-      <div class="speaker-media-pane">
-        <figure class="speaker-media" id="hero-media-5-right"></figure>
-      </div>
-      <div class="speaker-copy-pane">
-        <div class="speaker-copy-box">
-          <h2 id="speaker-title-5"></h2>
-          <p class="hero-subtitle" id="speaker-subtitle-5"></p>
-          <blockquote id="speaker-quote-5"></blockquote>
-        </div>
-      </div>
-    </section>
-
-    <section class="top-white-zone speaker-row speaker-row-two-thirds-right reveal">
-      <div class="speaker-copy-pane">
-        <div class="speaker-copy-box">
-          <h2 id="speaker-title-6"></h2>
-          <p class="hero-subtitle" id="speaker-subtitle-6"></p>
-          <blockquote id="speaker-quote-6"></blockquote>
-        </div>
-      </div>
-      <div class="speaker-media-pane">
-        <figure class="speaker-media" id="hero-media-6"></figure>
-      </div>
-    </section>
-
-    <main>
-      <section id="conception" class="section reveal">
-        <h2 id="design-title"></h2>
-        <div class="copy" id="design-content"></div>
-        <div class="gallery-grid" id="showcase-gallery"></div>
+    <main class="site-main">
+      <section
+        id="line-01"
+        class="site-row site-row--line-01 reveal"
+        data-row="line-01-brand-intro"
+      >
+        <div class="site-row__media" data-row-media></div>
+        <div class="site-row__content" data-row-text></div>
       </section>
 
-      <section id="galerie" class="section reveal">
-        <h2 id="gallery-title"></h2>
-        <p class="gallery-lead" id="gallery-lead"></p>
-        <div class="gallery-grid" id="details-gallery"></div>
+      <section
+        id="line-02"
+        class="site-row site-row--line-02 reveal"
+        data-row="line-02-speaker-hero"
+      >
+        <div class="site-row__content" data-row-text></div>
+        <div class="site-row__media" data-row-media></div>
       </section>
 
-      <section id="fiche-technique" class="section reveal">
-        <h2 id="specs-title"></h2>
-        <p class="specs-lead" id="specs-lead"></p>
-        <div class="specs-wrap">
-          <table class="specs-table" id="specs-table">
-            <tbody id="specs-body"></tbody>
-          </table>
-        </div>
+      <section
+        id="line-03"
+        class="site-row site-row--line-03 reveal"
+        data-row="line-03-speaker-design"
+      >
+        <div class="site-row__media" data-row-media></div>
+        <div class="site-row__content" data-row-text></div>
       </section>
 
-      <section id="contact" class="section reveal">
-        <h2 id="contact-title"></h2>
-        <p id="contact-lead"></p>
-        <address id="contact-address"></address>
-        <p class="contact-email">
-          <a href="mailto:valereorlic@contrepointacoustique.com">valereorlic@contrepointacoustique.com</a>
-        </p>
+      <section
+        id="line-04"
+        class="site-row site-row--line-04 reveal"
+        data-row="line-04-speaker-detail"
+      >
+        <div class="site-row__content" data-row-text></div>
+        <div class="site-row__media" data-row-media></div>
+      </section>
+
+      <section
+        id="line-05"
+        class="site-row site-row--line-05 reveal"
+        data-row="line-05-speaker-closeup-left"
+      >
+        <div class="site-row__media" data-row-media></div>
+        <div class="site-row__content" data-row-text></div>
+      </section>
+
+      <section
+        id="line-06"
+        class="site-row site-row--line-06 reveal"
+        data-row="line-06-speaker-closeup-right-contact"
+      >
+        <div class="site-row__content" data-row-text></div>
+        <div class="site-row__media" data-row-media></div>
       </section>
     </main>
   </body>
