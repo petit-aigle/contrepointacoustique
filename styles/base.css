@@ -1,0 +1,84 @@
+@font-face {
+  font-family: "Blippo Black";
+  src: url("../Ressource/fonts/blippo-black-regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+}
+
+:root {
+  --bg-page: #000000;
+  --surface-light: #ffffff;
+  --text-dark: #111111;
+  --text-dark-soft: #333333;
+  --text-light: #f2f2f2;
+  --text-light-soft: #c8ced7;
+  --accent-warm: #e7d2ac;
+  --font-body: "Avenir Next", "Segoe UI", sans-serif;
+  --font-display: "Blippo Black", "Avenir Next", "Segoe UI", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-page);
+  color: var(--text-light);
+  font-family: var(--font-body);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+select {
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+a {
+  color: inherit;
+}
+
+blockquote,
+p,
+h1,
+h2,
+figure {
+  margin: 0;
+}
+
+h1,
+h2 {
+  font-family: var(--font-display);
+}
+
+.site-main {
+  width: 100%;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 420ms ease, transform 420ms ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
