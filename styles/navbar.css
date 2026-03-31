@@ -4,6 +4,8 @@
   z-index: 30;
   background: transparent;
   backdrop-filter: none;
+  --navbar-gray: #9d9d9d;
+  --navbar-white: #ababab;
 }
 
 .navbar__inner {
@@ -24,7 +26,7 @@
 }
 
 .navbar__link {
-  color: var(--text-light-soft);
+  color: var(--navbar-gray);
   text-decoration: none;
   border: 0;
   padding: 0.3rem 0.58rem;
@@ -36,7 +38,7 @@
 .navbar__link:hover,
 .navbar__link:focus-visible,
 .navbar__link.is-active {
-  color: var(--text-light);
+  color: var(--navbar-white);
   text-decoration: underline;
   text-underline-offset: 0.2rem;
   text-decoration-thickness: 1px;
@@ -68,6 +70,12 @@
   gap: 0.45rem;
 }
 
+.navbar__control[hidden],
+.navbar__debug-flag[hidden],
+.navbar__debug-panel[hidden] {
+  display: none !important;
+}
+
 .navbar__debug-panel {
   width: min(18rem, calc(100% - 2.4rem));
   margin: 0 1.2rem 0.55rem auto;
@@ -83,6 +91,78 @@
   font-size: 0.7rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.navbar__debug-toolbar,
+.navbar__debug-manual {
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(242, 242, 242, 0.12);
+}
+
+.navbar__debug-toolbar-title,
+.navbar__debug-manual-title {
+  margin: 0 0 0.55rem;
+  color: var(--text-light-soft);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.navbar__debug-toolbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.navbar__debug-tool-button {
+  min-width: 2.3rem;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid rgba(242, 242, 242, 0.18);
+  background: transparent;
+  color: var(--text-light);
+  font: inherit;
+  cursor: pointer;
+}
+
+.navbar__debug-tool-button--wide {
+  min-width: 6.2rem;
+}
+
+.navbar__debug-tool-button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.navbar__debug-toolbar-status {
+  margin: 0.55rem 0 0;
+  color: var(--text-light-soft);
+  font-size: 0.74rem;
+}
+
+.navbar__debug-manual-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.navbar__debug-manual-list li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.45rem;
+  align-items: start;
+  color: var(--text-light);
+  font-size: 0.8rem;
+}
+
+.navbar__debug-manual-list kbd {
+  min-width: 5.5rem;
+  padding: 0.1rem 0.28rem;
+  border: 1px solid rgba(242, 242, 242, 0.18);
+  color: var(--accent-warm);
+  font-size: 0.72rem;
 }
 
 .navbar__debug-option {
@@ -112,15 +192,46 @@
   border-bottom: 1px solid rgba(242, 242, 242, 0.18);
 }
 
+.navbar__debug-reset-button {
+  width: 100%;
+  margin-top: 0.8rem;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid rgba(242, 242, 242, 0.18);
+  background: transparent;
+  color: var(--accent-warm);
+  font: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
 .navbar__label {
-  color: var(--text-light-soft);
+  color: var(--navbar-gray);
   font-size: 0.68rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 
 .navbar__label--panel {
-  color: var(--text-light-soft);
+  color: var(--navbar-gray);
+}
+
+.navbar__control select {
+  color: var(--navbar-gray);
+  border-bottom: 1px solid transparent;
+}
+
+.navbar__control select:hover,
+.navbar__control select:focus-visible {
+  color: var(--navbar-white);
+  border-bottom-color: var(--navbar-gray);
+}
+
+.navbar__debug-flag:focus-visible,
+.navbar__debug-tool-button:focus-visible,
+.navbar__debug-reset-button:focus-visible {
+  outline: 1px solid var(--navbar-gray);
+  outline-offset: 2px;
 }
 
 .navbar__message {

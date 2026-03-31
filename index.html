@@ -9,8 +9,8 @@
       content="Tabula Rasa par Contrepoint acoustique. Présentation modulaire recentrée sur la navbar et les lignes image + texte."
     >
     <link rel="icon" type="image/jpeg" href="Ressource/images/logo.jpg">
-    <link rel="stylesheet" href="styles.css?v=20260330o">
-    <script type="module" src="app.js?v=20260330o"></script>
+    <link rel="stylesheet" href="styles.css?v=20260330ab">
+    <script type="module" src="app.js?v=20260330ab"></script>
   </head>
   <body id="top">
     <header class="navbar">
@@ -52,6 +52,68 @@
       <div class="navbar__debug-panel" id="debug-panel" hidden>
         <p class="navbar__debug-panel-title" id="debug-panel-title">Typo debug</p>
 
+        <div class="navbar__debug-toolbar" id="debug-toolbar">
+          <p class="navbar__debug-toolbar-title" id="debug-toolbar-title">Éditeur riche</p>
+
+          <div class="navbar__debug-toolbar-actions">
+            <button
+              class="navbar__debug-tool-button"
+              id="debug-bold-button"
+              type="button"
+              data-debug-action="bold"
+            >
+              <span id="debug-bold-button-text">B</span>
+            </button>
+            <button
+              class="navbar__debug-tool-button"
+              id="debug-italic-button"
+              type="button"
+              data-debug-action="italic"
+            >
+              <span id="debug-italic-button-text">I</span>
+            </button>
+            <button
+              class="navbar__debug-tool-button navbar__debug-tool-button--wide"
+              id="debug-align-button"
+              type="button"
+              data-debug-action="align"
+            >
+              <span id="debug-align-button-text">Alignement</span>
+            </button>
+            <button
+              class="navbar__debug-tool-button"
+              id="debug-font-decrease-button"
+              type="button"
+              data-debug-action="font-down"
+            >
+              <span id="debug-font-decrease-button-text">A-</span>
+            </button>
+            <button
+              class="navbar__debug-tool-button"
+              id="debug-font-increase-button"
+              type="button"
+              data-debug-action="font-up"
+            >
+              <span id="debug-font-increase-button-text">A+</span>
+            </button>
+          </div>
+
+          <p class="navbar__debug-toolbar-status" id="debug-toolbar-status">Aucun champ actif</p>
+        </div>
+
+        <div class="navbar__debug-manual">
+          <p class="navbar__debug-manual-title" id="debug-manual-title">Raccourcis</p>
+
+          <ul class="navbar__debug-manual-list">
+            <li><kbd>Ctrl+B</kbd><span id="debug-manual-bold-text">gras sélectionné</span></li>
+            <li><kbd>Ctrl+I</kbd><span id="debug-manual-italic-text">italique sélectionné</span></li>
+            <li><kbd>Ctrl+E</kbd><span id="debug-manual-align-text">cycle justify → left → right → center</span></li>
+            <li><kbd>Shift + +</kbd><span id="debug-manual-font-up-text">agrandit la taille du bloc actif</span></li>
+            <li><kbd>Shift + -</kbd><span id="debug-manual-font-down-text">réduit la taille du bloc actif</span></li>
+            <li><kbd>Image + Shift</kbd><span id="debug-manual-image-text">sur image survolée: Shift + + / Shift + - change la hauteur</span></li>
+          </ul>
+        </div>
+
         <label class="navbar__debug-option">
           <input id="debug-title-font-toggle" type="checkbox">
           <span id="debug-title-font-label">Special Font</span>
@@ -77,6 +139,15 @@
           <input id="debug-body-font-toggle" type="checkbox">
           <span id="debug-body-font-label">Texte normal en Special Font</span>
         </label>
+
+        <label class="navbar__debug-option">
+          <input id="debug-image-height-toggle" type="checkbox" checked>
+          <span id="debug-image-height-label">Resize image area on hover</span>
+        </label>
+
+        <button class="navbar__debug-reset-button" id="debug-reset-button" type="button">
+          Reset debug
+        </button>
       </div>
 
       <p class="navbar__message" id="debug-message" aria-live="polite" hidden></p>
@@ -131,11 +202,58 @@
       <section
         id="line-06"
         class="site-row site-row--line-06 reveal"
-        data-row="line-06-speaker-closeup-right-contact"
+        data-row="line-06-speaker-closeup-right"
       >
         <div class="site-row__content" data-row-text></div>
         <div class="site-row__media" data-row-media></div>
       </section>
+
+      <section
+        id="line-07"
+        class="site-row site-row--line-07 reveal"
+        data-row="line-07-speaker-closeup-right-copy"
+      >
+        <div class="site-row__media" data-row-media></div>
+        <div class="site-row__content" data-row-text></div>
+      </section>
+
+      <section
+        id="line-08"
+        class="site-row site-row--line-08 reveal"
+        data-row="line-08-speaker-closeup-right-copy-2"
+      >
+        <div class="site-row__media" data-row-media></div>
+        <div class="site-row__content" data-row-text></div>
+      </section>
+
+      <section
+        id="line-09"
+        class="site-row site-row--line-09 reveal"
+        data-row="line-09-specifications"
+      >
+        <div class="site-row__content" data-row-text></div>
+        <div class="site-row__media" data-row-media></div>
+      </section>
+
+      <section
+        id="line-10"
+        class="site-row site-row--line-10 reveal"
+        data-row="line-10-contact"
+      >
+        <div class="site-row__media" data-row-media></div>
+        <div class="site-row__content" data-row-text></div>
+      </section>
+
+      <section
+        id="line-11"
+        class="site-row site-row--line-11 reveal"
+        data-row="line-11-legal"
+      >
+        <div class="site-row__media" data-row-media></div>
+        <div class="site-row__content" data-row-text></div>
+      </section>
     </main>
+
+    <div class="debug-hover-badge" id="debug-hover-badge" hidden aria-hidden="true"></div>
   </body>
 </html>
