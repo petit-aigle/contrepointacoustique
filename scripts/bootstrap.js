@@ -34,7 +34,10 @@ import {
 } from "./state.js?v=20260330aa";
 
 const refs = {
+  navbar: document.querySelector("header.navbar"),
   navbarNav: document.getElementById("navbar-nav"),
+  navbarMenuToggle: document.getElementById("navbar-menu-toggle"),
+  navbarMenuToggleText: document.getElementById("navbar-menu-toggle-text"),
   languageSelect: document.getElementById("language-select"),
   modeSelect: document.getElementById("mode-select"),
   debugControls: document.getElementById("debug-controls"),
@@ -89,11 +92,18 @@ const LIGHTBOX_MIN_ZOOM = 1;
 const LIGHTBOX_MAX_ZOOM = 3;
 const LIGHTBOX_ZOOM_STEP = 0.16;
 const LIGHTBOX_CLICK_ZOOM = 2;
+const MOBILE_NAV_MEDIA_QUERY = "(max-width: 980px)";
+const MOBILE_ROW_SCROLL_MEDIA_QUERY = "(max-width: 860px)";
+const mobileNavMediaQuery = window.matchMedia(MOBILE_NAV_MEDIA_QUERY);
+const mobileRowScrollMediaQuery = window.matchMedia(
+  MOBILE_ROW_SCROLL_MEDIA_QUERY
+);
 
 let wheelStepLocked = false;
 let wheelTickCount = 0;
 let wheelDirection = 0;
 let activeLightbox = null;
+let isMobileNavMenuOpen = false;
 
 function getEditorFromEventTarget(target) {
   return target?.closest?.(".site-row__debug-editor[data-debug-editor-key]") || null;
@@ -134,9 +144,24 @@ function buildFullscreenRectForImage(imageElement) {
       ? imageElement.naturalWidth / imageElement.naturalHeight
       : sourceRect.width / Math.max(1, sourceRect.height);
 
-  const targetHeight = viewportHeight;
-  const targetWidth = targetHeight * sourceRatio;
-  const targetLeft = (viewportWidth - targetWidth) / 2;
+  const isPhoneViewport = mobileRowScrollMediaQuery.matches;
+
+  let targetWidth;
+  let targetHeight;
+  let targetLeft;
+  let targetTop;
+
+  if (isPhoneViewport) {
+    targetWidth = viewportWidth;
+    targetHeight = targetWidth / sourceRatio;
+    targetLeft = 0;
+    targetTop = (viewportHeight - targetHeight) / 2;
+  } else {
+    targetHeight = viewportHeight;
+    targetWidth = targetHeight * sourceRatio;
+    targetLeft = (viewportWidth - targetWidth) / 2;
+    targetTop = 0;
+  }
 
   return {
     source: {
@@ -147,7 +172,7 @@ function buildFullscreenRectForImage(imageElement) {
     },
     target: {
       left: targetLeft,
-      top: 0,
+      top: targetTop,
       width: targetWidth,
       height: targetHeight,
     },
@@ -290,7 +315,7 @@ function toggleLightboxZoom(clientX, clientY) {
 }
 
 function zoomLightboxFromWheel(event) {
-  if (!activeLightbox) {
+  if (!activeLightbox || activeLightbox.disableZoomAndPan) {
     return;
   }
 
@@ -391,8 +416,16 @@ function openImageLightbox(sourceImage) {
   if (sourceRow?.id === "line-01") {
     return;
   }
+  if (sourceRow?.id === "line-09" || sourceRow?.id === "line-10") {
+    return;
+  }
+  const disableClickZoom =
+    sourceRow?.id === "line-09" || sourceRow?.id === "line-10";
 
   const { source, target } = buildFullscreenRectForImage(sourceImage);
+  const isFullyVisibleAtBaseScale =
+    target.width <= window.innerWidth && target.height <= window.innerHeight;
+  const disableZoomAndPan = !isFullyVisibleAtBaseScale;
   const overlayReveal = getLightboxOverlayReveal(source);
   const sourceFigure = sourceImage.closest(".site-row__figure");
   const sourceImageComputedStyle = window.getComputedStyle(sourceImage);
@@ -451,13 +484,22 @@ function openImageLightbox(sourceImage) {
       return;
     }
 
+    if (disableClickZoom || disableZoomAndPan) {
+      return;
+    }
+
     event.preventDefault();
     event.stopPropagation();
     toggleLightboxZoom(event.clientX, event.clientY);
   });
 
   const onImagePointerDown = (event) => {
-    if (event.button !== 0 || !activeLightbox || activeLightbox.zoom <= 1.01) {
+    if (
+      event.button !== 0 ||
+      !activeLightbox ||
+      activeLightbox.disableZoomAndPan ||
+      activeLightbox.zoom <= 1.01
+    ) {
       return;
     }
 
@@ -544,6 +586,7 @@ function openImageLightbox(sourceImage) {
     onImagePointerDown,
     onWindowPointerMove,
     onWindowPointerUp,
+    disableZoomAndPan,
   };
 
   const openImageAnimationPromise = waitMs(LIGHTBOX_OPEN_IMAGE_DELAY_MS).then(() =>
@@ -643,6 +686,47 @@ function syncActiveNavLink(targetId) {
   window.setTimeout(() => setActiveNavLink(targetId), 120);
 }
 
+function isMobileNavbarViewport() {
+  return mobileNavMediaQuery.matches;
+}
+
+function isMobileRowScrollViewport() {
+  return mobileRowScrollMediaQuery.matches;
+}
+
+function syncMobileNavbarMenuState() {
+  if (!refs.navbar || !refs.navbarMenuToggle) {
+    return;
+  }
+
+  const isOpen = isMobileNavbarViewport() && isMobileNavMenuOpen;
+  refs.navbar.classList.toggle("is-menu-open", isOpen);
+  refs.navbarMenuToggle.setAttribute("aria-expanded", String(isOpen));
+}
+
+function openMobileNavbarMenu() {
+  if (!isMobileNavbarViewport()) {
+    return;
+  }
+
+  isMobileNavMenuOpen = true;
+  syncMobileNavbarMenuState();
+}
+
+function closeMobileNavbarMenu() {
+  isMobileNavMenuOpen = false;
+  syncMobileNavbarMenuState();
+}
+
+function toggleMobileNavbarMenu() {
+  if (isMobileNavMenuOpen) {
+    closeMobileNavbarMenu();
+    return;
+  }
+
+  openMobileNavbarMenu();
+}
+
 function getRowCenterTarget(targetId) {
   const row = document.getElementById(targetId);
   if (!row) {
@@ -672,8 +756,11 @@ function scrollElementToViewportCenter(element, behavior = "auto") {
   }
 
   const rect = element.getBoundingClientRect();
-  const absoluteCenterY = window.scrollY + rect.top + rect.height / 2;
-  const nextTop = Math.max(0, absoluteCenterY - window.innerHeight / 2);
+  const absoluteTopY = window.scrollY + rect.top;
+  const absoluteCenterY = absoluteTopY + rect.height / 2;
+  const nextTop = isMobileRowScrollViewport()
+    ? Math.max(0, absoluteTopY)
+    : Math.max(0, absoluteCenterY - window.innerHeight / 2);
 
   window.scrollTo({
     top: nextTop,
@@ -764,6 +851,7 @@ function renderAll(showFallback = false) {
   document.documentElement.lang = state.lang;
 
   renderNavbar(refs, state, siteContent, showFallback);
+  syncMobileNavbarMenuState();
   renderRows(refs.rowSections, siteContent.rows, state);
   syncDebugToolbarState(refs, siteContent);
 
@@ -784,6 +872,11 @@ function commitDebugState(showFallback = false) {
 }
 
 function bindEvents() {
+  refs.navbarMenuToggle.addEventListener("click", (event) => {
+    event.preventDefault();
+    toggleMobileNavbarMenu();
+  });
+
   refs.navbarNav.addEventListener("click", (event) => {
     const link = event.target.closest?.(".navbar__link[data-nav-target]");
     if (!link) {
@@ -800,9 +893,60 @@ function bindEvents() {
     const targetHash = getHashForRowId(targetId);
     const nextUrl = `${window.location.pathname}${window.location.search}#${targetHash}`;
     window.history.pushState({}, "", nextUrl);
-    centerRowAfterLayout(targetId, "smooth");
+    closeMobileNavbarMenu();
+    window.requestAnimationFrame(() => {
+      centerRowAfterLayout(targetId, "smooth");
+    });
     syncActiveNavLink(targetId);
   });
+
+  document.addEventListener("click", (event) => {
+    if (!isMobileNavbarViewport() || !isMobileNavMenuOpen) {
+      return;
+    }
+
+    if (event.target.closest?.(".navbar")) {
+      return;
+    }
+
+    closeMobileNavbarMenu();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") {
+      return;
+    }
+
+    closeMobileNavbarMenu();
+  });
+
+  window.addEventListener("resize", () => {
+    if (!isMobileNavbarViewport()) {
+      closeMobileNavbarMenu();
+    } else {
+      syncMobileNavbarMenuState();
+    }
+  });
+
+  if (mobileNavMediaQuery.addEventListener) {
+    mobileNavMediaQuery.addEventListener("change", () => {
+      if (!isMobileNavbarViewport()) {
+        closeMobileNavbarMenu();
+        return;
+      }
+
+      syncMobileNavbarMenuState();
+    });
+  } else if (mobileNavMediaQuery.addListener) {
+    mobileNavMediaQuery.addListener(() => {
+      if (!isMobileNavbarViewport()) {
+        closeMobileNavbarMenu();
+        return;
+      }
+
+      syncMobileNavbarMenuState();
+    });
+  }
 
   refs.languageSelect.addEventListener("change", (event) => {
     state.lang = event.target.value;
@@ -924,7 +1068,13 @@ function bindEvents() {
     (event) => {
       if (activeLightbox) {
         event.preventDefault();
-        zoomLightboxFromWheel(event);
+        if (!activeLightbox.disableZoomAndPan) {
+          zoomLightboxFromWheel(event);
+        }
+        return;
+      }
+
+      if (document.body.classList.contains("is-legal-modal-open")) {
         return;
       }
 
@@ -1003,9 +1153,12 @@ function bindEvents() {
   document.addEventListener("click", (event) => {
     const imageTarget = event.target.closest?.(".site-row__figure img");
     const toggleTarget = event.target.closest?.("[data-debug-toggle-image]");
+    const clickedRowId = imageTarget?.closest?.(".site-row[data-row]")?.id;
 
     if (
       imageTarget &&
+      clickedRowId !== "line-09" &&
+      clickedRowId !== "line-10" &&
       !(state.debug && toggleTarget && event.ctrlKey)
     ) {
       event.preventDefault();

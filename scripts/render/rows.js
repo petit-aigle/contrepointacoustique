@@ -690,12 +690,6 @@ function createLegalContent(currentState, rowId, content) {
   const modalActions = document.createElement("div");
   modalActions.className = "site-row__legal-modal-actions";
 
-  const backButton = document.createElement("button");
-  backButton.type = "button";
-  backButton.className = "site-row__legal-modal-back";
-  backButton.textContent = content.legal?.modalBackLabel || "Retour";
-  modalActions.appendChild(backButton);
-
   const closeButton = document.createElement("button");
   closeButton.type = "button";
   closeButton.className = "site-row__legal-modal-back";
@@ -729,7 +723,6 @@ function createLegalContent(currentState, rowId, content) {
   openButton.addEventListener("click", openModal);
   modalCloseTop.addEventListener("click", closeModal);
   closeButton.addEventListener("click", closeModal);
-  backButton.addEventListener("click", closeModal);
   modal.addEventListener("click", (event) => {
     if (event.target === modal) {
       closeModal();
