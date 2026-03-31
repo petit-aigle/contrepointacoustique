@@ -30,9 +30,19 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg-page);
+  background: linear-gradient(
+    to bottom,
+    var(--bg-page) 0,
+    var(--bg-page) 7rem,
+    #ffffff 7rem,
+    #ffffff 100%
+  );
   color: var(--text-light);
   font-family: var(--font-body);
+}
+
+body.is-lightbox-open {
+  overflow: hidden;
 }
 
 img {
@@ -81,4 +91,79 @@ h2 {
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.debug-hover-badge {
+  position: fixed;
+  left: -9999px;
+  top: -9999px;
+  z-index: 80;
+  padding: 0.3rem 0.58rem;
+  border-radius: 999px;
+  background: rgba(231, 210, 172, 0.96);
+  color: #111111;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  background: rgba(0, 0, 0, 0);
+  cursor: default;
+}
+
+.image-lightbox__reveal {
+  position: fixed;
+  border-radius: 50%;
+  background: #000000;
+  transform-origin: 50% 50%;
+  pointer-events: none;
+}
+
+.image-lightbox__image {
+  position: fixed;
+  z-index: 121;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  pointer-events: auto;
+  cursor: zoom-in;
+  touch-action: none;
+  user-select: none;
+  transition: transform 180ms ease-out;
+  will-change: left, top, width, height, transform;
+}
+
+.image-lightbox.is-zoomed .image-lightbox__image {
+  cursor: grab;
+}
+
+.image-lightbox.is-panning .image-lightbox__image {
+  cursor: grabbing;
+  transition: none;
+}
+
+.image-lightbox__close {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 122;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  font-size: 1.65rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.image-lightbox__close:hover {
+  background: rgba(255, 255, 255, 0.24);
 }
