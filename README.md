@@ -21,9 +21,10 @@ Site statique pour la page `tabula rasa`, recentré sur une structure canonique 
 
 ## URL
 - `lang=fr|en|es`
-- `debug=0` pour désactiver le mode debug activé par défaut
+- `debug=1` pour activer le mode debug (désactivé par défaut)
 - `mode=corrected|marketing|raw`
 
+Si `lang` est absent, la langue est détectée automatiquement depuis le navigateur (avec fallback sur `fr`).
 `raw` reste limité au français; toute autre langue retombe sur `corrected`.
 
 En mode debug, l'image de `line-01` est cliquable pour comparer `title_and_logo.jpg` et `title_and_logo_left.jpg`.

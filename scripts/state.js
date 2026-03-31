@@ -1,5 +1,6 @@
 export const SUPPORTED_LANGUAGES = ["fr", "en", "es"];
 export const SUPPORTED_MODES = ["corrected", "marketing", "raw"];
+const DEFAULT_LANGUAGE = "fr";
 
 const DEFAULT_DEBUG_STATE = {
   debugImageVariants: {
@@ -23,9 +24,9 @@ const DEFAULT_DEBUG_STATE = {
 };
 
 export const state = {
-  lang: "fr",
+  lang: DEFAULT_LANGUAGE,
   mode: "corrected",
-  debug: true,
+  debug: false,
   debugImageVariants: { ...DEFAULT_DEBUG_STATE.debugImageVariants },
   debugTextOverrides: { ...DEFAULT_DEBUG_STATE.debugTextOverrides },
   debugEditorRecords: { ...DEFAULT_DEBUG_STATE.debugEditorRecords },
@@ -64,6 +65,52 @@ function sanitizeDebugImageTools(value) {
   };
 }
 
+function normalizeLanguageTag(value) {
+  if (typeof value !== "string") {
+    return "";
+  }
+
+  return value.trim().toLowerCase().replace(/_/g, "-");
+}
+
+function resolveSupportedLanguage(value) {
+  const normalizedTag = normalizeLanguageTag(value);
+  if (!normalizedTag) {
+    return null;
+  }
+
+  if (SUPPORTED_LANGUAGES.includes(normalizedTag)) {
+    return normalizedTag;
+  }
+
+  const primaryLanguage = normalizedTag.split("-")[0];
+  return SUPPORTED_LANGUAGES.includes(primaryLanguage)
+    ? primaryLanguage
+    : null;
+}
+
+function resolveBrowserLanguage() {
+  if (typeof navigator === "undefined") {
+    return DEFAULT_LANGUAGE;
+  }
+
+  const candidates = [];
+  if (Array.isArray(navigator.languages)) {
+    candidates.push(...navigator.languages);
+  }
+
+  candidates.push(navigator.language, navigator.userLanguage);
+
+  for (const candidate of candidates) {
+    const supportedLanguage = resolveSupportedLanguage(candidate);
+    if (supportedLanguage) {
+      return supportedLanguage;
+    }
+  }
+
+  return DEFAULT_LANGUAGE;
+}
+
 export function parseInitialState(persistedDebugState = null) {
   const params = new URLSearchParams(window.location.search);
   const lang = params.get("lang");
@@ -99,11 +146,9 @@ export function parseInitialState(persistedDebugState = null) {
 
   }
 
-  state.debug = debugParam === null ? true : debugParam === "1";
+  state.debug = debugParam === "1";
 
-  if (SUPPORTED_LANGUAGES.includes(lang)) {
-    state.lang = lang;
-  }
+  state.lang = resolveSupportedLanguage(lang) || resolveBrowserLanguage();
 
   if (state.debug && SUPPORTED_MODES.includes(mode)) {
     state.mode = mode;
@@ -122,7 +167,11 @@ export function applyModeFallback() {
 export function syncUrl() {
   const params = new URLSearchParams(window.location.search);
   params.set("lang", state.lang);
-  params.set("debug", state.debug ? "1" : "0");
+  if (state.debug) {
+    params.set("debug", "1");
+  } else {
+    params.delete("debug");
+  }
 
   if (state.debug) {
     if (state.mode !== "corrected") {

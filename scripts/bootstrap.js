@@ -31,7 +31,7 @@ import {
   state,
   syncUrl,
   toggleDebugImageVariant,
-} from "./state.js?v=20260330aa";
+} from "./state.js?v=20260331aa";
 
 const refs = {
   navbar: document.querySelector("header.navbar"),
@@ -201,6 +201,55 @@ function clamp(value, min, max) {
   return Math.min(max, Math.max(min, value));
 }
 
+function isLightboxInStableFullscreen(lightbox = activeLightbox) {
+  if (!lightbox) {
+    return false;
+  }
+
+  return !lightbox.isOpening && !lightbox.isClosing;
+}
+
+function canUseLightboxZoomAndPan(lightbox = activeLightbox) {
+  if (!lightbox) {
+    return false;
+  }
+
+  return !lightbox.disableZoomAndPan && isLightboxInStableFullscreen(lightbox);
+}
+
+function stopLightboxPanInteraction(lightbox = activeLightbox) {
+  if (!lightbox) {
+    return;
+  }
+
+  lightbox.isPanning = false;
+  lightbox.didPanDuringDrag = false;
+
+  if (lightbox.dragPointerId !== null) {
+    try {
+      lightbox.image.releasePointerCapture(lightbox.dragPointerId);
+    } catch (error) {
+      // Ignore capture mismatches while transitioning between states.
+    }
+    lightbox.dragPointerId = null;
+  }
+
+  lightbox.overlay.classList.remove("is-panning");
+}
+
+function syncLightboxInteractionState(lightbox = activeLightbox) {
+  if (!lightbox) {
+    return;
+  }
+
+  const canZoomAndPan = canUseLightboxZoomAndPan(lightbox);
+  lightbox.overlay.classList.toggle("is-zoom-disabled", !canZoomAndPan);
+
+  if (!canZoomAndPan) {
+    stopLightboxPanInteraction(lightbox);
+  }
+}
+
 function waitForAnimationOrTimeout(animation, timeoutMs) {
   return Promise.race([
     animation?.finished?.catch?.(() => undefined) || Promise.resolve(),
@@ -315,7 +364,7 @@ function toggleLightboxZoom(clientX, clientY) {
 }
 
 function zoomLightboxFromWheel(event) {
-  if (!activeLightbox || activeLightbox.disableZoomAndPan) {
+  if (!canUseLightboxZoomAndPan()) {
     return;
   }
 
@@ -351,6 +400,7 @@ function closeImageLightbox() {
     onWindowPointerUp,
   } = activeLightbox;
   activeLightbox.isClosing = true;
+  syncLightboxInteractionState(activeLightbox);
   let didFinalize = false;
 
   const finalizeClose = () => {
@@ -484,7 +534,7 @@ function openImageLightbox(sourceImage) {
       return;
     }
 
-    if (disableClickZoom || disableZoomAndPan) {
+    if (disableClickZoom || !canUseLightboxZoomAndPan(activeLightbox)) {
       return;
     }
 
@@ -497,7 +547,7 @@ function openImageLightbox(sourceImage) {
     if (
       event.button !== 0 ||
       !activeLightbox ||
-      activeLightbox.disableZoomAndPan ||
+      !canUseLightboxZoomAndPan(activeLightbox) ||
       activeLightbox.zoom <= 1.01
     ) {
       return;
@@ -537,15 +587,10 @@ function openImageLightbox(sourceImage) {
       return;
     }
 
-    activeLightbox.isPanning = false;
     if (activeLightbox.didPanDuringDrag) {
       activeLightbox.suppressNextImageClick = true;
     }
-    if (activeLightbox.dragPointerId !== null) {
-      image.releasePointerCapture(activeLightbox.dragPointerId);
-      activeLightbox.dragPointerId = null;
-    }
-    activeLightbox.overlay.classList.remove("is-panning");
+    stopLightboxPanInteraction(activeLightbox);
   };
 
   image.addEventListener("pointerdown", onImagePointerDown);
@@ -588,6 +633,7 @@ function openImageLightbox(sourceImage) {
     onWindowPointerUp,
     disableZoomAndPan,
   };
+  syncLightboxInteractionState(activeLightbox);
 
   const openImageAnimationPromise = waitMs(LIGHTBOX_OPEN_IMAGE_DELAY_MS).then(() =>
     image.animate(
@@ -648,6 +694,7 @@ function openImageLightbox(sourceImage) {
     }
 
     overlay.style.background = "#000000";
+    syncLightboxInteractionState(activeLightbox);
   });
 }
 
@@ -1068,9 +1115,7 @@ function bindEvents() {
     (event) => {
       if (activeLightbox) {
         event.preventDefault();
-        if (!activeLightbox.disableZoomAndPan) {
-          zoomLightboxFromWheel(event);
-        }
+        zoomLightboxFromWheel(event);
         return;
       }
 
