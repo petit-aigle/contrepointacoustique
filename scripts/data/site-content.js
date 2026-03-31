@@ -78,16 +78,6 @@ const ROW_ID_BY_HASH = Object.fromEntries(
   Object.entries(ROW_HASH_BY_ID).map(([rowId, hash]) => [hash, rowId])
 );
 
-const HASH_REDIRECTS = {
-  accueil: "line-01",
-  enceinte: "line-02",
-  conception: "line-01",
-  galerie: "line-01",
-  "fiche-technique": "line-01",
-  contact: "line-10",
-  "mentions-legales": "line-11",
-};
-
 const UI_TEXT = {
   fr: {
     rowPrefix: "Ligne",
@@ -107,6 +97,7 @@ const UI_TEXT = {
     labels: {
       language: "Langue",
       mode: "Mode texte",
+      menuToggle: "Menu",
       debugHint: "Mode debug actif.",
       rawFallback: "Le mode Brut est disponible en français uniquement.",
       debugImageToggle: "Basculer l'image de cette ligne",
@@ -169,6 +160,7 @@ const UI_TEXT = {
     labels: {
       language: "Language",
       mode: "Text mode",
+      menuToggle: "Menu",
       debugHint: "Debug mode enabled.",
       rawFallback: "Raw mode is available in French only.",
       debugImageToggle: "Toggle this line image",
@@ -231,6 +223,7 @@ const UI_TEXT = {
     labels: {
       language: "Idioma",
       mode: "Modo de texto",
+      menuToggle: "Menú",
       debugHint: "Modo debug activo.",
       rawFallback: "El modo bruto está disponible solo en francés.",
       debugImageToggle: "Cambiar la imagen de esta línea",
@@ -279,6 +272,8 @@ const UI_TEXT = {
 
 const INTRO_TITLE = "« L’art industialisable »";
 const LINE03_TITLE_FR = "ne rien ajouter ne rien retrancher";
+const LINE03_TITLE_EN = "add nothing, subtract nothing";
+const LINE03_TITLE_ES = "no añadir nada, no quitar nada";
 const LINE03_BODY_FR =
   "L’essence de nos baffles invite à la foi en une intégtité sonor et une pureté formelle où la fonction fait la forme. Une conception qui prililégie la clarté et le relief à la puissance brut, une vision minimaliste au profit d’une fidélité rigoureuse.";
 const LINE04_PROVERB = "Proverbe Shaker";
@@ -495,6 +490,7 @@ const COPY = {
           "A minimalist loudspeaker focused on precision, speed and midrange emotion.",
         quote: '"Add nothing, subtract nothing."',
       },
+      line03Title: LINE03_TITLE_EN,
       line04Title: LINE04_TITLE_EN,
       line04Proverb: LINE04_PROVERB,
       line05Title: LINE05_TITLE_EN,
@@ -517,6 +513,7 @@ const COPY = {
           "A refined acoustic object built for clarity and musical immediacy.",
         quote: '"Honesty, utility, simplicity."',
       },
+      line03Title: LINE03_TITLE_EN,
       line04Title: LINE04_TITLE_EN,
       line04Proverb: LINE04_PROVERB,
       line05Title: LINE05_TITLE_EN,
@@ -541,6 +538,7 @@ const COPY = {
           "Un altavoz minimalista centrado en precisión, velocidad y emoción del rango medio.",
         quote: '"No añadir nada, no quitar nada."',
       },
+      line03Title: LINE03_TITLE_ES,
       line04Title: LINE04_TITLE_ES,
       line04Proverb: LINE04_PROVERB,
       line05Title: LINE05_TITLE_ES,
@@ -563,6 +561,7 @@ const COPY = {
           "Un objeto acústico sobrio y expresivo, pensado para escuchar música de forma directa.",
         quote: '"Honesty, utility, simplicity."',
       },
+      line03Title: LINE03_TITLE_ES,
       line04Title: LINE04_TITLE_ES,
       line04Proverb: LINE04_PROVERB,
       line05Title: LINE05_TITLE_ES,
@@ -1248,7 +1247,7 @@ function buildContent(rowId, copy, lang) {
     case "line-03":
       return {
         kind: "paragraphs",
-        title: copy.line03Title,
+        title: copy.line03Title || LINE03_TITLE_FR,
         paragraphs: copy.line03Paragraphs,
       };
     case "line-04":
@@ -1345,7 +1344,7 @@ export function getCanonicalHashTarget(hash) {
     return ROW_ID_BY_HASH[cleanHash];
   }
 
-  return HASH_REDIRECTS[cleanHash] || "line-01";
+  return null;
 }
 
 export function getHashForRowId(rowId) {

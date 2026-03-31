@@ -15,6 +15,12 @@ export function renderNavbar(refs, state, siteContent, showFallback = false) {
 
   refs.languageLabel.textContent = siteContent.uiText.labels.language;
   refs.modeLabel.textContent = siteContent.uiText.labels.mode;
+  refs.navbarMenuToggleText.textContent =
+    siteContent.uiText.labels.menuToggle || "Menu";
+  refs.navbarMenuToggle.setAttribute(
+    "aria-label",
+    siteContent.uiText.labels.menuToggle || "Menu"
+  );
   refs.languageSelect.value = state.lang;
   refs.modeSelect.value = state.mode;
 
