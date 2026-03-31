@@ -137,6 +137,10 @@ h2 {
   will-change: left, top, width, height, transform;
 }
 
+.image-lightbox.is-zoom-disabled .image-lightbox__image {
+  cursor: default;
+}
+
 .image-lightbox.is-zoomed .image-lightbox__image {
   cursor: grab;
 }

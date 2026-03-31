@@ -686,7 +686,7 @@ body.is-legal-modal-open {
 .site-row__legal-modal-body {
   margin: 0;
   color: #ffffff;
-  white-space: pre-line;
+  white-space: pre-wrap;
   text-align: left;
 }
 
