@@ -83,12 +83,12 @@ const UI_TEXT = {
     rowPrefix: "Ligne",
     navShortLabels: {
       "line-01": "Intro",
-      "line-02": "Tabula",
+      "line-02": "tabula rasa",
       "line-03": "Essence",
-      "line-04": "Shaker",
-      "line-05": "Musique",
+      "line-04": "Minimalisme",
+      "line-05": "Musicalité",
       "line-06": "Transparence",
-      "line-07": "Voix",
+      "line-07": "La voix",
       "line-08": "Finesse",
       "line-09": "Specs",
       "line-10": "Contact",
@@ -146,9 +146,9 @@ const UI_TEXT = {
     rowPrefix: "Line",
     navShortLabels: {
       "line-01": "Intro",
-      "line-02": "Tabula",
+      "line-02": "tabula rasa",
       "line-03": "Essence",
-      "line-04": "Shaker",
+      "line-04": "Minimalism",
       "line-05": "Music",
       "line-06": "Transparency",
       "line-07": "Voice",
@@ -209,9 +209,9 @@ const UI_TEXT = {
     rowPrefix: "Línea",
     navShortLabels: {
       "line-01": "Intro",
-      "line-02": "Tabula",
+      "line-02": "tabula rasa",
       "line-03": "Esencia",
-      "line-04": "Shaker",
+      "line-04": "Minimalismo",
       "line-05": "Música",
       "line-06": "Transparencia",
       "line-07": "Voz",
@@ -284,7 +284,7 @@ const LINE04_TITLE_FR = "“ Honesty , utility , simplicity “";
 const LINE04_TITLE_EN = '"Honesty, utility, simplicity."';
 const LINE04_TITLE_ES = '"Honesty, utility, simplicity."';
 const LINE05_PARAGRAPHS = [
-  "Un haut parleur unique pour les graves , medium et aigus . Donc une source ponctuelle , d’ou une precision de l’image et une homogénéité des timbres exemplaires.\n\nDe meme l’économie du filtre répartiteur de fréquences et des problèmes qui vont avec . Le haut parleur utilisé est à haut rendement il suffit de quelque watts pour une écoute domestique.\n\nCette technologie concours à une rapidité sur les trensitoires et une micro-dynamique qui se traduisent par une vivacité et une vitalité hors pair .",
+  "Un haut parleur unique pour les graves , medium et aigus . Donc une source ponctuelle , d’ou une precision de l’image et une homogénéité des timbres exemplaires.\n\nDe meme l’économie du filtre répartiteur de fréquences et des problèmes qui vont avec . Le haut parleur utilisé est à haut rendement il suffit de quelque watts pour une écoute domestique.\n\nCette technologie concours à une rapidité sur les transitoires et une micro-dynamique qui se traduisent par une vivacité et une vitalité hors pair .",
 ];
 const LINE05_TITLE_FR = "la musique est libérée";
 const LINE05_TITLE_EN = "the music is set free";
@@ -297,7 +297,7 @@ const LINE06_PARAGRAPHS = [
 ];
 const LINE07_TITLE_FR = "La voix est sublime";
 const LINE07_PARAGRAPHS_FR = [
-  "Tabula rasa offre un haut degré de résolution mais sans fatigue auditive , l’ecoute est au contraire douce et nuancé .\n\nL’honnêteté oblige à indiquer que leur bande passante est moins large que sur la plupart des enceintes acoustique classiques de prix équivalent . Mais nous savons que le médium offre 80% de l’émotion , et la dessus elle ne craint personne .",
+  "Tabula rasa offre un haut degré de résolution mais sans fatigue auditive , l’ecoute est au contraire douce et nuancé .\n\nL’honnêteté oblige à indiquer que leur bande passante est moins large que sur certaine des enceintes acoustique classiques de prix équivalent . Mais nous savons que le médium offre 80 % de l'émotion, et sur ce point elle ne craint personne.",
 ];
 const LINE08_TITLE_FR = "Le choix de la finesse";
 const LINE08_PARAGRAPHS_FR = [
@@ -315,6 +315,7 @@ const LINE09_SPEC_TABLE_ROWS_FR = [
   { label: "Puissance max", value: "50 W" },
   { label: "Rodage", value: "50 h" },
   { label: "Diamètre haut-parleur", value: "22,5 cm" },
+  { label: "Nombre d'enceintes", value: "2" },
   { label: "Largeur enceinte", value: "À préciser" },
   { label: "Hauteur enceinte", value: "À préciser" },
   { label: "Profondeur enceinte", value: "À préciser" },
@@ -322,7 +323,7 @@ const LINE09_SPEC_TABLE_ROWS_FR = [
   { label: "Poids du colis", value: "À préciser" },
 ];
 const LINE09_PRODUCTION_FR = "Production limité à 40 paires par an";
-const LINE09_PRICE_FR = "2125 Euro";
+const LINE09_PRICE_FR = "2 125 € (la paire)";
 const LINE09_TAX_NOTE_FR = "* TVA non appliquable art.293 b du CGI";
 const LINE09_SUSTAINABLE_TITLE_FR = "Conception durable";
 const LINE09_SUSTAINABLE_BODY_FR =
@@ -337,10 +338,10 @@ const LINE10_LEFT_BODY_FR =
   "Nom : Contrepoint acoustique\n\nAdresse :\n54 route de Mur de Sologne\n41230 Veilleins\nLoir-et-Cher\nFrance\n\nTéléphone : 06 62 59 14 98\n\nMail : valereorlic@contrepointacoustique.com";
 const LINE10_RIGHT_TITLE_FR = "Mentions légales";
 const LINE10_RIGHT_BODY_FR =
-  "Éditeur : Valere Orlic, entrepreneur individuel (EI).\nMarque : Contrepoint acoustique.\nImmatriculation : RM 751 135 732 RM 41, SIRET 75113573200012, SIREN [à compléter], Code APE/NAF [à compléter].\nTVA non applicable (art. 293 B du CGI).\nMédiation de la consommation : [à compléter] si vente B2C.\nCookies : aucun cookie/traceur soumis au consentement, aucun bandeau cookies.\nLe détail complet est disponible via le lien ci-dessous.";
+  "Éditeur : Valere Orlic, entrepreneur individuel (EI).\nMarque : Contrepoint acoustique.\nImmatriculation : RM 751 135 732 RM 41, SIRET 75113573200012, SIREN [à compléter], Code APE/NAF [à compléter].\nTVA non applicable (art. 293 B du CGI).\nHébergeur : GitHub, Inc.\nMédiation de la consommation : [à compléter] si vente B2C.\nCookies : aucun cookie/traceur soumis au consentement, aucun bandeau cookies.\nLe détail complet est disponible via le lien ci-dessous.";
 const LINE10_LEGAL_MODAL_TITLE_FR = "Mentions légales";
 const LINE10_LEGAL_MODAL_BODY_FR =
-  "Éditeur du site :\n    Nom / Prénom : Valere Orlic\n    Statut : Entrepreneur individuel (EI)\n    Marque : Contrepoint acoustique (marque déposée)\n    Adresse : 54 route de Mur de Sologne, 41230 Veilleins, Loir-et-Cher, France\n    Téléphone : 06 62 59 14 98\n    Email : valereorlic@contrepointacoustique.com\n\nImmatriculation :\n    RM : 751 135 732 RM 41\n    SIREN : [à compléter]\n    SIRET : 75113573200012\n    Code APE/NAF : [à compléter]\n\nTVA :\n    TVA non applicable, art. 293 B du CGI\n    N° TVA intracommunautaire : non applicable en franchise de TVA [à confirmer]\n\nHébergeur :\n    Nom / Raison sociale : WordPress.com / Automattic Inc. [à confirmer]\n    Adresse : 60 29th Street #343, San Francisco, CA 94110, USA [à confirmer]\n    Téléphone : non communiqué publiquement\n    Site web : https://wordpress.com\n\nDirecteur de la publication :\n    Valere Orlic\n\nPropriété intellectuelle :\n    L'ensemble des contenus (textes, images, logo, marque) est protégé.\n    Toute reproduction non autorisée est interdite.\n\nMédiation de la consommation (si vente B2C) :\n    Nom du médiateur : [à compléter]\n    Lien : [à compléter]\n    Non applicable si activité exclusivement B2B.\n\nDonnées personnelles (RGPD) :\n    Responsable de traitement : Valere Orlic\n    Finalités : gestion des demandes de contact et relation commerciale\n    Base légale : intérêt légitime et/ou consentement selon le formulaire\n    Durée de conservation : [à compléter]\n    Droits (accès, rectification, suppression, opposition) :\n    demande par email à valereorlic@contrepointacoustique.com\n    Contact RGPD : valereorlic@contrepointacoustique.com\n    Réclamation CNIL : https://www.cnil.fr\n\nCookies / traceurs :\n    Politique cookies : aucun cookie ou traceur soumis au consentement n'est utilisé.\n    Gestion du consentement : aucun bandeau cookies.";
+  "Éditeur du site :\n    Nom / Prénom : Valere Orlic\n    Statut : Entrepreneur individuel (EI)\n    Marque : Contrepoint acoustique (marque déposée)\n    Adresse : 54 route de Mur de Sologne, 41230 Veilleins, Loir-et-Cher, France\n    Téléphone : 06 62 59 14 98\n    Email : valereorlic@contrepointacoustique.com\n\nImmatriculation :\n    RM : 751 135 732 RM 41\n    SIREN : [à compléter]\n    SIRET : 75113573200012\n    Code APE/NAF : [à compléter]\n\nTVA :\n    TVA non applicable, art. 293 B du CGI\n    N° TVA intracommunautaire : non applicable en franchise de TVA [à confirmer]\n\nHébergeur :\n    Nom / Raison sociale : GitHub, Inc.\n    Adresse : 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA\n    Téléphone : non communiqué publiquement\n    Site web : https://github.com\n\nDirecteur de la publication :\n    Valere Orlic\n\nPropriété intellectuelle :\n    L'ensemble des contenus (textes, images, logo, marque) est protégé.\n    Toute reproduction non autorisée est interdite.\n\nMédiation de la consommation (si vente B2C) :\n    Nom du médiateur : [à compléter]\n    Lien : [à compléter]\n    Non applicable si activité exclusivement B2B.\n\nDonnées personnelles (RGPD) :\n    Responsable de traitement : Valere Orlic\n    Finalités : gestion des demandes de contact et relation commerciale\n    Base légale : intérêt légitime et/ou consentement selon le formulaire\n    Durée de conservation : [à compléter]\n    Droits (accès, rectification, suppression, opposition) :\n    demande par email à valereorlic@contrepointacoustique.com\n    Contact RGPD : valereorlic@contrepointacoustique.com\n    Réclamation CNIL : https://www.cnil.fr\n\nCookies / traceurs :\n    Politique cookies : aucun cookie ou traceur soumis au consentement n'est utilisé.\n    Gestion du consentement : aucun bandeau cookies.";
 const LINE10_LEGAL_MODAL_OPEN_LABEL_FR = "Voir toutes les mentions légales";
 const LINE10_LEGAL_MODAL_BACK_LABEL_FR = "Retour";
 const LINE10_LEGAL_MODAL_CLOSE_LABEL_FR = "Fermer";
@@ -629,17 +630,27 @@ const MEDIA = {
     ],
   },
   "line-02": {
-    src: "Ressource/images/enceinte_face.jpg",
-    width: 5600,
+    src: "Ressource/images/enceinte_double.jpg",
+    width: 6720,
     height: 4480,
     alt: {
-      fr: "Vue frontale d'une enceinte.",
-      en: "Front view of a speaker.",
-      es: "Vista frontal de un altavoz.",
+      fr: "Paire d'enceintes.",
+      en: "Pair of speakers.",
+      es: "Pareja de altavoces.",
     },
     shape: "pill-left",
     loading: "eager",
     debugVariants: [
+      {
+        src: "Ressource/images/enceinte_face.jpg",
+        width: 5600,
+        height: 4480,
+        alt: {
+          fr: "Vue frontale d'une enceinte.",
+          en: "Front view of a speaker.",
+          es: "Vista frontal de un altavoz.",
+        },
+      },
       {
         src: "Ressource/images/enceinte_left_plus_ampli_plus_enceinte_right.jpg",
         width: 6720,
@@ -668,6 +679,96 @@ const MEDIA = {
           fr: "Vue arrière gauche et enceinte droite.",
           en: "Rear left view and right speaker.",
           es: "Vista trasera izquierda y altavoz derecho.",
+        },
+      },
+      {
+        src: "Ressource/images/enceinte_left_plus_chaise.jpg",
+        width: 9632,
+        height: 7706,
+        alt: {
+          fr: "Enceinte à côté d'une chaise.",
+          en: "Speaker next to a chair.",
+          es: "Altavoz junto a una silla.",
+        },
+      },
+      {
+        src: "Ressource/images/enceinte_vue_face_left.jpg",
+        width: 4299,
+        height: 5373,
+        alt: {
+          fr: "Vue frontale gauche de l'enceinte.",
+          en: "Front left view of the speaker.",
+          es: "Vista frontal izquierda del altavoz.",
+        },
+      },
+      {
+        src: "Ressource/images/enceinte_back_little_left.jpg",
+        width: 6286,
+        height: 5028,
+        alt: {
+          fr: "Détail arrière gauche rapproché.",
+          en: "Close rear left detail.",
+          es: "Detalle trasero izquierdo cercano.",
+        },
+      },
+      {
+        src: "Ressource/images/enceinte_vue_back_left_close.jpg",
+        width: 4480,
+        height: 5600,
+        alt: {
+          fr: "Détail arrière gauche.",
+          en: "Rear left detail.",
+          es: "Detalle trasero izquierdo.",
+        },
+      },
+      {
+        src: "Ressource/images/enceinte_vue_back_left.jpg",
+        width: 4480,
+        height: 5600,
+        alt: {
+          fr: "Vue arrière gauche.",
+          en: "Rear left view.",
+          es: "Vista trasera izquierda.",
+        },
+      },
+      {
+        src: "Ressource/images/enceinte_vue_super_face_close_left.jpg",
+        width: 3584,
+        height: 4480,
+        alt: {
+          fr: "Détail frontal gauche.",
+          en: "Left front detail.",
+          es: "Detalle frontal izquierdo.",
+        },
+      },
+      {
+        src: "Ressource/images/enceinte_vue_super_face_close_right.jpg",
+        width: 3584,
+        height: 4480,
+        alt: {
+          fr: "Détail frontal droit.",
+          en: "Right front detail.",
+          es: "Detalle frontal derecho.",
+        },
+      },
+      {
+        src: "Ressource/images/enceinte_vue_super_face_corner_close_left.jpg",
+        width: 3584,
+        height: 4480,
+        alt: {
+          fr: "Détail d'angle du haut-parleur.",
+          en: "Speaker corner detail.",
+          es: "Detalle de esquina del altavoz.",
+        },
+      },
+      {
+        src: "Ressource/images/enceinte_vue_super_face_corner_close_left_zoom.jpg",
+        width: 2865,
+        height: 2653,
+        alt: {
+          fr: "Détail d'angle du haut-parleur (zoom).",
+          en: "Speaker corner detail (zoom).",
+          es: "Detalle de esquina del altavoz (zoom).",
         },
       },
     ],
