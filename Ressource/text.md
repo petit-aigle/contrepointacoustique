@@ -52,7 +52,7 @@ le haut parleur utilisé est à haut rendement il suffit
 de quelque watts pour une écoute domestique.
 
 cette technologie concours à une rapidité
-sur les trensitoires et une micro-dynamique
+sur les transitoires et une micro-dynamique
 qui se traduisent par une vivacité et une vitalité
 hors pair , la musique est libérée
 
@@ -110,7 +110,7 @@ Le haut parleur utilisé est à haut rendement il
 suffit de quelque watts pour une écoute
 domestique.
 Cette technologie concours à une rapidité
-sur les trensitoires et une micro-dynamique
+sur les transitoires et une micro-dynamique
 qui se raduisent par une vivacité et une
 vitalité hors pair, la musique est libérée .
 Un haut parleur unique pour les graves,
