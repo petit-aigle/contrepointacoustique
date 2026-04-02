@@ -103,9 +103,7 @@ const MOBILE_ROW_SCROLL_MEDIA_QUERY = "(max-width: 860px)";
 const TOUCH_START_THRESHOLD_PX = 8;
 const WHEEL_STEP_THRESHOLD_PX = 100;
 const WHEEL_LINE_HEIGHT_PX = 16;
-const PHONE_ROW_ASSIST_IDLE_MS = 170;
-const PHONE_ROW_ASSIST_DURATION_MS = 260;
-const PHONE_ROW_ASSIST_EPSILON_PX = 6;
+const PHONE_ROW_NAVIGATION_DURATION_MS = 260;
 const mobileNavMediaQuery = window.matchMedia(MOBILE_NAV_MEDIA_QUERY);
 const mobileRowScrollMediaQuery = window.matchMedia(
   MOBILE_ROW_SCROLL_MEDIA_QUERY
@@ -115,9 +113,6 @@ let activeLightbox = null;
 let isMobileNavMenuOpen = false;
 let pendingTouchScroll = null;
 let pendingWheelStepDelta = 0;
-let phoneRowAssistTimer = 0;
-let phoneRowAssistIgnoreUntil = 0;
-let phoneTouchActive = false;
 
 function getEditorFromEventTarget(target) {
   return target?.closest?.(".site-row__debug-editor[data-debug-editor-key]") || null;
@@ -787,71 +782,8 @@ function isPhoneRowScrollViewport() {
   return mobileRowScrollMediaQuery.matches;
 }
 
-function getPhoneRowAssistOffsetY() {
+function getPhoneRowOffsetY() {
   return refs.navbar?.getBoundingClientRect?.().height || 0;
-}
-
-function clearPhoneRowAssistTimer() {
-  if (!phoneRowAssistTimer) {
-    return;
-  }
-
-  window.clearTimeout(phoneRowAssistTimer);
-  phoneRowAssistTimer = 0;
-}
-
-function ignorePhoneRowAssist(durationMs) {
-  phoneRowAssistIgnoreUntil = performance.now() + durationMs;
-}
-
-function runPhoneRowAssist() {
-  clearPhoneRowAssistTimer();
-
-  if (
-    !isPhoneRowScrollViewport() ||
-    phoneTouchActive ||
-    activeLightbox ||
-    document.body.classList.contains("is-legal-modal-open") ||
-    isMobileNavMenuOpen ||
-    performance.now() < phoneRowAssistIgnoreUntil
-  ) {
-    return;
-  }
-
-  const currentRowSection = getRowAtViewportCenter(refs.rowSections);
-  if (!currentRowSection) {
-    return;
-  }
-
-  const targetScrollY = getRowScrollYForTopAlign(
-    currentRowSection,
-    getPhoneRowAssistOffsetY()
-  );
-  if (Math.abs(targetScrollY - window.scrollY) < PHONE_ROW_ASSIST_EPSILON_PX) {
-    return;
-  }
-
-  scrollStepController.scrollToY(targetScrollY, PHONE_ROW_ASSIST_DURATION_MS);
-  ignorePhoneRowAssist(PHONE_ROW_ASSIST_DURATION_MS + PHONE_ROW_ASSIST_IDLE_MS);
-}
-
-function schedulePhoneRowAssist() {
-  if (
-    !isPhoneRowScrollViewport() ||
-    phoneTouchActive ||
-    activeLightbox ||
-    document.body.classList.contains("is-legal-modal-open") ||
-    isMobileNavMenuOpen ||
-    performance.now() < phoneRowAssistIgnoreUntil
-  ) {
-    return;
-  }
-
-  clearPhoneRowAssistTimer();
-  phoneRowAssistTimer = window.setTimeout(
-    runPhoneRowAssist,
-    PHONE_ROW_ASSIST_IDLE_MS
-  );
 }
 
 function syncMobileNavbarMenuState() {
@@ -1001,11 +933,9 @@ function scrollToRow(targetId) {
 
   setCurrentActiveRow(targetId);
   if (isPhoneRowScrollViewport()) {
-    clearPhoneRowAssistTimer();
-    ignorePhoneRowAssist(PHONE_ROW_ASSIST_DURATION_MS + PHONE_ROW_ASSIST_IDLE_MS);
     scrollStepController.scrollToY(
-      getRowScrollYForTopAlign(rowSection, getPhoneRowAssistOffsetY()),
-      PHONE_ROW_ASSIST_DURATION_MS
+      getRowScrollYForTopAlign(rowSection, getPhoneRowOffsetY()),
+      PHONE_ROW_NAVIGATION_DURATION_MS
     );
     return;
   }
@@ -1185,9 +1115,6 @@ function bindEvents() {
     scrollStepController.cancel();
     resetPendingTouchScroll();
     resetPendingWheelSteps();
-    clearPhoneRowAssistTimer();
-    phoneTouchActive = false;
-    phoneRowAssistIgnoreUntil = 0;
 
     if (!isMobileNavbarViewport()) {
       closeMobileNavbarMenu();
@@ -1328,13 +1255,11 @@ function bindEvents() {
 
   window.addEventListener("hashchange", () => {
     resetPendingWheelSteps();
-    clearPhoneRowAssistTimer();
     navigateToHashTarget();
   });
   window.addEventListener("scroll", () => {
     hideDebugHoverBadge(refs.debugHoverBadge);
     scrollStepController.syncFromNativeScroll(false);
-    schedulePhoneRowAssist();
   });
 
   window.addEventListener(
@@ -1378,25 +1303,13 @@ function bindEvents() {
         scrollStepController.cancel();
         resetPendingTouchScroll();
         resetPendingWheelSteps();
-        clearPhoneRowAssistTimer();
-        phoneTouchActive = false;
         return;
       }
 
       if (isPhoneRowScrollViewport()) {
-        const touch = event.touches[0];
         scrollStepController.cancel();
-        clearPhoneRowAssistTimer();
+        resetPendingTouchScroll();
         resetPendingWheelSteps();
-        phoneRowAssistIgnoreUntil = 0;
-        phoneTouchActive = true;
-        pendingTouchScroll = {
-          identifier: touch.identifier,
-          nativePhone: true,
-          allowAssist:
-            !isCustomScrollBlocked(event.target) &&
-            !isInteractiveTouchTarget(event.target),
-        };
         return;
       }
 
@@ -1442,10 +1355,6 @@ function bindEvents() {
         return;
       }
 
-      if (pendingTouchScroll.nativePhone) {
-        return;
-      }
-
       if (!pendingTouchScroll.engaged) {
         if (
           Math.abs(touch.clientY - pendingTouchScroll.startClientY) <
@@ -1480,17 +1389,6 @@ function bindEvents() {
         return;
       }
 
-      if (pendingTouchScroll.nativePhone) {
-        phoneTouchActive = event.touches.length > 0;
-        const shouldAssist =
-          pendingTouchScroll.allowAssist && !phoneTouchActive;
-        resetPendingTouchScroll();
-        if (shouldAssist) {
-          schedulePhoneRowAssist();
-        }
-        return;
-      }
-
       if (pendingTouchScroll.engaged) {
         scrollStepController.snapTouchEnd();
       }
@@ -1506,8 +1404,6 @@ function bindEvents() {
       scrollStepController.cancel();
       resetPendingTouchScroll();
       resetPendingWheelSteps();
-      clearPhoneRowAssistTimer();
-      phoneTouchActive = false;
     },
     { passive: true }
   );
