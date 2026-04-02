@@ -2,7 +2,7 @@ import {
   getCanonicalHashTarget,
   getHashForRowId,
   getSiteContent,
-} from "./data/site-content.js?v=20260330aa";
+} from "./data/site-content.js?v=20260402c";
 import {
   adjustActiveDebugEditorFontSize,
   applyInlineCommand,
@@ -21,9 +21,16 @@ import {
   persistDebugState,
 } from "./debug/persistence.js?v=20260330aa";
 import { clearActiveDebugEditorKey, setActiveDebugEditorKey, updateDebugEditorHTML } from "./debug/editor-state.js?v=20260330aa";
-import { createRevealObserver, createSectionObserver, observeRevealItems } from "./observers.js";
+import { createRowMediaLoader } from "./media/row-media-loader.js?v=20260402b";
 import { renderNavbar } from "./render/navbar.js?v=20260330aa";
-import { renderRows } from "./render/rows.js?v=20260330aa";
+import { renderRows } from "./render/rows.js?v=20260402a";
+import {
+  getRowAtViewportCenter,
+  getScrollStepPositions,
+  getRowSectionById,
+} from "./scroll/geometry.js?v=20260403a";
+import { createScrollStepController } from "./scroll/engine.js?v=20260403b";
+import { createScrollHashSync } from "./scroll/hash-sync.js?v=20260402c";
 import {
   applyModeFallback,
   parseInitialState,
@@ -80,10 +87,8 @@ const refs = {
   rowSections: Array.from(document.querySelectorAll(".site-row[data-row]")),
 };
 
-const revealObserver = createRevealObserver();
-const sectionObserver = createSectionObserver();
-const WHEEL_STEP_LOCK_MS = 700;
-const WHEEL_TICKS_PER_STEP = 3;
+const rowMediaLoader = createRowMediaLoader();
+let activeRowId = getCanonicalHashTarget(window.location.hash) || null;
 const LIGHTBOX_BG_PHASE_MS = 1200;
 const LIGHTBOX_IMAGE_PHASE_MS = 840;
 const LIGHTBOX_OPEN_IMAGE_DELAY_MS = 100;
@@ -94,16 +99,18 @@ const LIGHTBOX_ZOOM_STEP = 0.16;
 const LIGHTBOX_CLICK_ZOOM = 2;
 const MOBILE_NAV_MEDIA_QUERY = "(max-width: 980px)";
 const MOBILE_ROW_SCROLL_MEDIA_QUERY = "(max-width: 860px)";
+const TOUCH_START_THRESHOLD_PX = 8;
+const WHEEL_STEP_THRESHOLD_PX = 100;
+const WHEEL_LINE_HEIGHT_PX = 16;
 const mobileNavMediaQuery = window.matchMedia(MOBILE_NAV_MEDIA_QUERY);
 const mobileRowScrollMediaQuery = window.matchMedia(
   MOBILE_ROW_SCROLL_MEDIA_QUERY
 );
 
-let wheelStepLocked = false;
-let wheelTickCount = 0;
-let wheelDirection = 0;
 let activeLightbox = null;
 let isMobileNavMenuOpen = false;
+let pendingTouchScroll = null;
+let pendingWheelStepDelta = 0;
 
 function getEditorFromEventTarget(target) {
   return target?.closest?.(".site-row__debug-editor[data-debug-editor-key]") || null;
@@ -733,12 +740,40 @@ function syncActiveNavLink(targetId) {
   window.setTimeout(() => setActiveNavLink(targetId), 120);
 }
 
-function isMobileNavbarViewport() {
-  return mobileNavMediaQuery.matches;
+const hashSync = createScrollHashSync({
+  getHashForRowId,
+  setActiveNavLink: syncActiveNavLink,
+});
+
+function getPreferredActiveRowId() {
+  return (
+    activeRowId ||
+    getCanonicalHashTarget(window.location.hash) ||
+    refs.rowSections[0]?.id ||
+    "line-01"
+  );
 }
 
-function isMobileRowScrollViewport() {
-  return mobileRowScrollMediaQuery.matches;
+function setCurrentActiveRow(targetId) {
+  if (!targetId) {
+    return;
+  }
+
+  activeRowId = targetId;
+  rowMediaLoader.setActiveRow(targetId);
+}
+
+function handleCenteredRowChange(targetId) {
+  if (!targetId) {
+    return;
+  }
+
+  setCurrentActiveRow(targetId);
+  hashSync.sync(targetId);
+}
+
+function isMobileNavbarViewport() {
+  return mobileNavMediaQuery.matches;
 }
 
 function syncMobileNavbarMenuState() {
@@ -774,132 +809,166 @@ function toggleMobileNavbarMenu() {
   openMobileNavbarMenu();
 }
 
-function getRowCenterTarget(targetId) {
-  const row = document.getElementById(targetId);
-  if (!row) {
+function getScrollBounds() {
+  return {
+    minY: 0,
+    maxY: Math.max(0, document.documentElement.scrollHeight - window.innerHeight),
+  };
+}
+
+function setWindowScrollY(scrollY) {
+  window.scrollTo({
+    top: scrollY,
+    behavior: "auto",
+  });
+}
+
+function getCenteredRowId() {
+  return getRowAtViewportCenter(refs.rowSections)?.id || null;
+}
+
+function getScrollStepGrid() {
+  return getScrollStepPositions(refs.rowSections);
+}
+
+function isScrollInputTarget(target) {
+  return Boolean(
+    target?.closest?.(
+      "input, textarea, select, [contenteditable='true'], #debug-panel"
+    )
+  );
+}
+
+function isInteractiveTouchTarget(target) {
+  return Boolean(
+    target?.closest?.(
+      "a, button, label, input, textarea, select, summary, [role='button']"
+    )
+  );
+}
+
+function isCustomScrollBlocked(target) {
+  if (activeLightbox) {
+    return true;
+  }
+
+  if (document.body.classList.contains("is-legal-modal-open")) {
+    return true;
+  }
+
+  return isScrollInputTarget(target);
+}
+
+function getCanonicalHashTargetId() {
+  const targetId = getCanonicalHashTarget(window.location.hash);
+  if (!targetId) {
     return null;
   }
 
-  const figure = row.querySelector("[data-row-media] .site-row__figure");
-  if (figure) {
-    return figure;
-  }
-
-  const mediaContainer = row.querySelector("[data-row-media]");
-  if (
-    mediaContainer &&
-    !mediaContainer.hidden &&
-    mediaContainer.getBoundingClientRect().height > 2
-  ) {
-    return mediaContainer;
-  }
-
-  return row.querySelector("[data-row-text]") || row;
-}
-
-function scrollElementToViewportCenter(element, behavior = "auto") {
-  if (!element) {
-    return;
-  }
-
-  const rect = element.getBoundingClientRect();
-  const absoluteTopY = window.scrollY + rect.top;
-  const absoluteCenterY = absoluteTopY + rect.height / 2;
-  const nextTop = isMobileRowScrollViewport()
-    ? Math.max(0, absoluteTopY)
-    : Math.max(0, absoluteCenterY - window.innerHeight / 2);
-
-  window.scrollTo({
-    top: nextTop,
-    behavior,
-  });
-}
-
-function scrollRowToCenter(targetId, behavior = "auto") {
-  const centerTarget = getRowCenterTarget(targetId);
-  scrollElementToViewportCenter(centerTarget, behavior);
-}
-
-function centerRowAfterLayout(targetId, behavior = "auto") {
-  scrollRowToCenter(targetId, behavior);
-  window.requestAnimationFrame(() => scrollRowToCenter(targetId, "auto"));
-}
-
-function getNearestRowIdToViewportCenter() {
-  const viewportCenter = window.innerHeight / 2;
-  let nearestId = refs.rowSections[0]?.id || "line-01";
-  let nearestDistance = Number.POSITIVE_INFINITY;
-
-  refs.rowSections.forEach((row) => {
-    const figure = row.querySelector("[data-row-media] .site-row__figure");
-    const mediaContainer = row.querySelector("[data-row-media]");
-    const centerTarget =
-      figure ||
-      (mediaContainer &&
-      !mediaContainer.hidden &&
-      mediaContainer.getBoundingClientRect().height > 2
-        ? mediaContainer
-        : row.querySelector("[data-row-text]")) ||
-      row;
-    const rect = centerTarget.getBoundingClientRect();
-    const distance = Math.abs(rect.top + rect.height / 2 - viewportCenter);
-
-    if (distance < nearestDistance) {
-      nearestDistance = distance;
-      nearestId = row.id;
-    }
-  });
-
-  return nearestId;
-}
-
-function getActiveRowIndexForWheelStep() {
-  const hashTarget = getCanonicalHashTarget(window.location.hash);
-  const targetId = hashTarget || getNearestRowIdToViewportCenter();
-  const index = refs.rowSections.findIndex((row) => row.id === targetId);
-  return index >= 0 ? index : 0;
-}
-
-function goToRowByIndex(index, behavior = "smooth") {
-  const clampedIndex = Math.max(0, Math.min(refs.rowSections.length - 1, index));
-  const targetId = refs.rowSections[clampedIndex]?.id;
-  if (!targetId) {
-    return;
-  }
-
-  const targetHash = getHashForRowId(targetId);
-  const nextUrl = `${window.location.pathname}${window.location.search}#${targetHash}`;
-  window.history.replaceState({}, "", nextUrl);
-  scrollRowToCenter(targetId, behavior);
-  syncActiveNavLink(targetId);
-}
-
-function remapLegacyHash() {
-  const targetId = getCanonicalHashTarget(window.location.hash);
-  if (!targetId) {
-    syncActiveNavLink("line-01");
-    return;
-  }
-
-  const currentId = window.location.hash.replace(/^#/, "");
-  const targetHash = getHashForRowId(targetId);
-  if (currentId !== targetHash) {
-    const nextUrl = `${window.location.pathname}${window.location.search}#${targetHash}`;
+  const currentHash = window.location.hash.replace(/^#/, "");
+  const canonicalHash = getHashForRowId(targetId);
+  if (currentHash !== canonicalHash) {
+    const nextUrl = `${window.location.pathname}${window.location.search}#${canonicalHash}`;
     window.history.replaceState({}, "", nextUrl);
   }
 
-  centerRowAfterLayout(targetId, "auto");
-  syncActiveNavLink(targetId);
+  return targetId;
 }
 
+function normalizeWheelDelta(event) {
+  if (event.deltaMode === WheelEvent.DOM_DELTA_LINE) {
+    return event.deltaY * WHEEL_LINE_HEIGHT_PX;
+  }
+
+  if (event.deltaMode === WheelEvent.DOM_DELTA_PAGE) {
+    return event.deltaY * window.innerHeight;
+  }
+
+  return event.deltaY;
+}
+
+function resetPendingWheelSteps() {
+  pendingWheelStepDelta = 0;
+}
+
+function consumeWheelSteps(normalizedDelta) {
+  if (Math.abs(normalizedDelta) < 0.5) {
+    return 0;
+  }
+
+  if (
+    pendingWheelStepDelta &&
+    Math.sign(normalizedDelta) !== Math.sign(pendingWheelStepDelta)
+  ) {
+    pendingWheelStepDelta = 0;
+  }
+
+  pendingWheelStepDelta += normalizedDelta;
+  let deltaSteps = 0;
+
+  while (Math.abs(pendingWheelStepDelta) >= WHEEL_STEP_THRESHOLD_PX) {
+    const direction = Math.sign(pendingWheelStepDelta);
+    deltaSteps += direction;
+    pendingWheelStepDelta -= direction * WHEEL_STEP_THRESHOLD_PX;
+  }
+
+  return deltaSteps;
+}
+
+function scrollToRow(targetId) {
+  if (!getRowSectionById(refs.rowSections, targetId)) {
+    return;
+  }
+
+  setCurrentActiveRow(targetId);
+  scrollStepController.scrollToRowCenter(targetId);
+}
+
+function navigateToHashTarget() {
+  const targetId = getCanonicalHashTargetId();
+  if (!targetId) {
+    scrollStepController.syncFromNativeScroll(true);
+    return;
+  }
+
+  scrollToRow(targetId);
+}
+
+function resetPendingTouchScroll() {
+  pendingTouchScroll = null;
+}
+
+function handleGridStateChange(gridState) {
+  const targetId = gridState?.activeRowId;
+  if (!targetId) {
+    return;
+  }
+
+  setCurrentActiveRow(targetId);
+  hashSync.sync(targetId);
+}
+
+const scrollStepController = createScrollStepController({
+  getBounds: getScrollBounds,
+  getScrollY: () => window.scrollY,
+  setScrollY: setWindowScrollY,
+  getStepPositions: getScrollStepGrid,
+  getCenteredRowId,
+  onGridStateChange: handleGridStateChange,
+  onCenteredRowChange: handleCenteredRowChange,
+});
+
 function renderAll(showFallback = false) {
+  const preservedHashTargetId = getCanonicalHashTarget(window.location.hash);
   const siteContent = getSiteContent(state);
+  const preferredRowId = preservedHashTargetId || getPreferredActiveRowId();
 
   document.documentElement.lang = state.lang;
 
   renderNavbar(refs, state, siteContent, showFallback);
   syncMobileNavbarMenuState();
   renderRows(refs.rowSections, siteContent.rows, state);
+  rowMediaLoader.sync(refs.rowSections, siteContent.rows, preferredRowId);
   syncDebugToolbarState(refs, siteContent);
 
   if (!state.debug) {
@@ -907,10 +976,20 @@ function renderAll(showFallback = false) {
     clearDebugHoveredImageRowId();
   }
 
-  sectionObserver.refresh();
-  observeRevealItems(revealObserver);
-  syncActiveNavLink(getCanonicalHashTarget(window.location.hash) || "line-01");
+  const centeredRowId = getCenteredRowId();
+  if (centeredRowId) {
+    setActiveNavLink(centeredRowId);
+  }
+
+  hashSync.reset();
   syncUrl();
+
+  if (preservedHashTargetId) {
+    scrollToRow(preservedHashTargetId);
+    return;
+  }
+
+  scrollStepController.syncFromNativeScroll(true);
 }
 
 function commitDebugState(showFallback = false) {
@@ -937,14 +1016,9 @@ function bindEvents() {
       return;
     }
 
-    const targetHash = getHashForRowId(targetId);
-    const nextUrl = `${window.location.pathname}${window.location.search}#${targetHash}`;
-    window.history.pushState({}, "", nextUrl);
     closeMobileNavbarMenu();
-    window.requestAnimationFrame(() => {
-      centerRowAfterLayout(targetId, "smooth");
-    });
-    syncActiveNavLink(targetId);
+    resetPendingWheelSteps();
+    scrollToRow(targetId);
   });
 
   document.addEventListener("click", (event) => {
@@ -964,15 +1038,72 @@ function bindEvents() {
       return;
     }
 
+    scrollStepController.cancel();
+    resetPendingTouchScroll();
+    resetPendingWheelSteps();
     closeMobileNavbarMenu();
   });
 
+  document.addEventListener("keydown", (event) => {
+    if (isCustomScrollBlocked(event.target)) {
+      return;
+    }
+
+    if (event.target !== document.body && isInteractiveTouchTarget(event.target)) {
+      return;
+    }
+
+    if (
+      event.key !== "ArrowDown" &&
+      event.key !== "ArrowUp" &&
+      event.key !== "PageDown" &&
+      event.key !== "PageUp" &&
+      event.key !== "Home" &&
+      event.key !== "End" &&
+      event.key !== " " &&
+      event.key !== "Spacebar"
+    ) {
+      return;
+    }
+
+    event.preventDefault();
+    resetPendingTouchScroll();
+    resetPendingWheelSteps();
+
+    if (event.key === "Home") {
+      scrollToRow(refs.rowSections[0]?.id || "line-01");
+      return;
+    }
+
+    if (event.key === "End") {
+      scrollToRow(refs.rowSections[refs.rowSections.length - 1]?.id || "line-11");
+      return;
+    }
+
+    if (
+      event.key === "ArrowDown" ||
+      event.key === "PageDown" ||
+      ((event.key === " " || event.key === "Spacebar") && !event.shiftKey)
+    ) {
+      scrollStepController.stepBy(1);
+      return;
+    }
+
+    scrollStepController.stepBy(-1);
+  });
+
   window.addEventListener("resize", () => {
+    scrollStepController.cancel();
+    resetPendingTouchScroll();
+    resetPendingWheelSteps();
+
     if (!isMobileNavbarViewport()) {
       closeMobileNavbarMenu();
     } else {
       syncMobileNavbarMenuState();
     }
+
+    scrollStepController.syncFromNativeScroll(true);
   });
 
   if (mobileNavMediaQuery.addEventListener) {
@@ -999,7 +1130,6 @@ function bindEvents() {
     state.lang = event.target.value;
     const showFallback = applyModeFallback();
     commitDebugState(showFallback);
-    remapLegacyHash();
   });
 
   refs.modeSelect.addEventListener("change", (event) => {
@@ -1010,7 +1140,6 @@ function bindEvents() {
     state.mode = event.target.value;
     const showFallback = applyModeFallback();
     commitDebugState(showFallback);
-    remapLegacyHash();
   });
 
   refs.debugFlag.addEventListener("click", () => {
@@ -1105,9 +1234,13 @@ function bindEvents() {
     }
   });
 
-  window.addEventListener("hashchange", remapLegacyHash);
+  window.addEventListener("hashchange", () => {
+    resetPendingWheelSteps();
+    navigateToHashTarget();
+  });
   window.addEventListener("scroll", () => {
     hideDebugHoverBadge(refs.debugHoverBadge);
+    scrollStepController.syncFromNativeScroll(false);
   });
 
   window.addEventListener(
@@ -1123,48 +1256,130 @@ function bindEvents() {
         return;
       }
 
-      if (wheelStepLocked) {
-        event.preventDefault();
+      if (isCustomScrollBlocked(event.target)) {
         return;
       }
 
-      if (Math.abs(event.deltaY) < 4) {
-        return;
-      }
-
-      if (
-        event.target.closest?.(
-          "input, textarea, select, [contenteditable='true'], #debug-panel"
-        )
-      ) {
+      const normalizedDelta = normalizeWheelDelta(event);
+      if (Math.abs(normalizedDelta) < 0.5) {
         return;
       }
 
       event.preventDefault();
-      const nextDirection = event.deltaY > 0 ? 1 : -1;
-
-      if (nextDirection !== wheelDirection) {
-        wheelDirection = nextDirection;
-        wheelTickCount = 0;
-      }
-
-      wheelTickCount += 1;
-      if (wheelTickCount < WHEEL_TICKS_PER_STEP) {
+      resetPendingTouchScroll();
+      const deltaSteps = consumeWheelSteps(normalizedDelta);
+      if (!deltaSteps) {
         return;
       }
 
-      wheelTickCount = 0;
-      wheelStepLocked = true;
-
-      const currentIndex = getActiveRowIndexForWheelStep();
-      const nextIndex = nextDirection > 0 ? currentIndex + 1 : currentIndex - 1;
-      goToRowByIndex(nextIndex, "smooth");
-
-      window.setTimeout(() => {
-        wheelStepLocked = false;
-      }, WHEEL_STEP_LOCK_MS);
+      scrollStepController.stepBy(deltaSteps);
     },
     { passive: false }
+  );
+
+  document.addEventListener(
+    "touchstart",
+    (event) => {
+      if (event.touches.length !== 1) {
+        scrollStepController.cancel();
+        resetPendingTouchScroll();
+        resetPendingWheelSteps();
+        return;
+      }
+
+      if (isCustomScrollBlocked(event.target)) {
+        resetPendingTouchScroll();
+        return;
+      }
+
+      if (isInteractiveTouchTarget(event.target)) {
+        resetPendingTouchScroll();
+        return;
+      }
+
+      const touch = event.touches[0];
+      resetPendingWheelSteps();
+      pendingTouchScroll = {
+        identifier: touch.identifier,
+        startClientY: touch.clientY,
+        lastClientY: touch.clientY,
+        engaged: false,
+      };
+    },
+    { passive: true }
+  );
+
+  document.addEventListener(
+    "touchmove",
+    (event) => {
+      if (!pendingTouchScroll) {
+        return;
+      }
+
+      if (event.touches.length !== 1) {
+        scrollStepController.cancel();
+        resetPendingTouchScroll();
+        return;
+      }
+
+      const touch = Array.from(event.touches).find(
+        (item) => item.identifier === pendingTouchScroll.identifier
+      );
+      if (!touch) {
+        return;
+      }
+
+      if (!pendingTouchScroll.engaged) {
+        if (
+          Math.abs(touch.clientY - pendingTouchScroll.startClientY) <
+          TOUCH_START_THRESHOLD_PX
+        ) {
+          pendingTouchScroll.lastClientY = touch.clientY;
+          return;
+        }
+
+        pendingTouchScroll.engaged = true;
+        scrollStepController.beginTouch(pendingTouchScroll.lastClientY);
+      }
+
+      event.preventDefault();
+      pendingTouchScroll.lastClientY = touch.clientY;
+      scrollStepController.moveTouch(touch.clientY);
+    },
+    { passive: false }
+  );
+
+  document.addEventListener(
+    "touchend",
+    (event) => {
+      if (!pendingTouchScroll) {
+        return;
+      }
+
+      const changedTouch = Array.from(event.changedTouches).find(
+        (item) => item.identifier === pendingTouchScroll.identifier
+      );
+      if (!changedTouch) {
+        return;
+      }
+
+      if (pendingTouchScroll.engaged) {
+        scrollStepController.snapTouchEnd();
+      }
+
+      resetPendingTouchScroll();
+    },
+    { passive: true }
+  );
+
+  document.addEventListener(
+    "touchcancel",
+    () => {
+      scrollStepController.cancel();
+      resetPendingTouchScroll();
+      resetPendingWheelSteps();
+    },
+    { passive: true }
   );
 
   document.addEventListener("pointermove", (event) => {
@@ -1376,5 +1591,4 @@ const persistedDebugState = loadPersistedDebugState();
 parseInitialState(persistedDebugState);
 const showFallback = applyModeFallback();
 renderAll(showFallback);
-remapLegacyHash();
 bindEvents();

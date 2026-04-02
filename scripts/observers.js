@@ -1,3 +1,8 @@
+/**
+ * Create the reveal observer used to animate lignes once.
+ *
+ * @returns {IntersectionObserver}
+ */
 export function createRevealObserver() {
   return new IntersectionObserver(
     (entries, observer) => {
@@ -14,6 +19,12 @@ export function createRevealObserver() {
   );
 }
 
+/**
+ * Attach the reveal observer to each revealable element once.
+ *
+ * @param {IntersectionObserver} revealObserver
+ * @returns {void}
+ */
 export function observeRevealItems(revealObserver) {
   document.querySelectorAll(".reveal").forEach((element) => {
     if (element.dataset.revealObserved) {
@@ -25,26 +36,47 @@ export function observeRevealItems(revealObserver) {
   });
 }
 
-export function createSectionObserver() {
+/**
+ * Observe visible lignes and report the current active row.
+ *
+ * @param {{onActiveRowChange?: (rowId: string) => void}=} options
+ * @returns {{refresh: () => void}}
+ */
+export function createSectionObserver(options = {}) {
+  const { onActiveRowChange } = options;
+  let lastActiveRowId = null;
+
   const observer = new IntersectionObserver(
     (entries) => {
-      const navLinks = Array.from(
-        document.querySelectorAll(".navbar__link[data-nav-target]")
-      );
-      const navByTarget = new Map(
-        navLinks.map((link) => [link.dataset.navTarget, link])
-      );
+      const intersectingEntries = entries.filter((entry) => entry.isIntersecting);
+      if (!intersectingEntries.length) {
+        return;
+      }
 
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          return;
+      const viewportCenter = window.innerHeight / 2;
+      const nextActiveEntry = intersectingEntries.reduce((bestMatch, entry) => {
+        const rect = entry.target.getBoundingClientRect();
+        const distanceToCenter = Math.abs(
+          rect.top + rect.height / 2 - viewportCenter
+        );
+
+        if (!bestMatch || distanceToCenter < bestMatch.distanceToCenter) {
+          return {
+            entry,
+            distanceToCenter,
+          };
         }
 
-        navLinks.forEach((link) => link.classList.remove("is-active"));
+        return bestMatch;
+      }, null);
 
-        const activeLink = navByTarget.get(entry.target.id);
-        activeLink?.classList.add("is-active");
-      });
+      const nextActiveRowId = nextActiveEntry?.entry?.target?.id;
+      if (!nextActiveRowId || nextActiveRowId === lastActiveRowId) {
+        return;
+      }
+
+      lastActiveRowId = nextActiveRowId;
+      onActiveRowChange?.(nextActiveRowId);
     },
     {
       threshold: 0,
