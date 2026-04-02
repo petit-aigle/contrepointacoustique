@@ -121,6 +121,7 @@ function mergeDuplicateStep(previousStep, nextStep) {
  * @returns {{
  *   stepBy: (deltaSteps: number) => void,
  *   scrollToRowCenter: (rowId: string) => void,
+ *   scrollToY: (scrollY: number, durationMs?: number) => void,
  *   beginTouch: (clientY: number) => void,
  *   moveTouch: (clientY: number) => void,
  *   snapTouchEnd: () => void,
@@ -151,6 +152,7 @@ export function createScrollStepController(options) {
     animationDurationMs: 0,
     animationFromY: 0,
     animationToY: 0,
+    animationCompletionMode: "grid",
     lastInternalScrollAt: 0,
     touchActive: false,
     touchLastClientY: 0,
@@ -251,6 +253,19 @@ export function createScrollStepController(options) {
     emitGridState(stepPositions, stepIndex);
   }
 
+  function finishCenteredIdle(stepPositions) {
+    state.mode = "idle";
+    state.targetStepIndex = null;
+    state.animationStartTime = 0;
+    state.animationDurationMs = 0;
+    state.animationFromY = state.scrollY;
+    state.animationToY = state.scrollY;
+    state.currentStepIndex = stepPositions.length
+      ? findNearestStepIndex(stepPositions, state.scrollY)
+      : 0;
+    emitCenteredRow(getCenteredRowId?.() || null);
+  }
+
   function getAnimationDuration(stepDistance, currentY, targetY) {
     const distancePx = Math.abs(targetY - currentY);
     const nextDuration =
@@ -265,27 +280,42 @@ export function createScrollStepController(options) {
     );
   }
 
-  function startAnimationToStepIndex(stepPositions, targetStepIndex, durationMs) {
-    const stepPosition = stepPositions[targetStepIndex];
-    if (!stepPosition) {
+  function startAnimation(targetY, durationMs, completionMode, targetStepIndex) {
+    if (!Number.isFinite(targetY)) {
       return;
     }
 
     stopAnimation();
     state.mode = "animating";
     state.targetStepIndex = targetStepIndex;
+    state.animationCompletionMode = completionMode;
     state.animationStartTime = performance.now();
     state.animationFromY = clamp(getScrollY(), getBounds().minY, getBounds().maxY);
     state.scrollY = state.animationFromY;
-    state.animationToY = stepPosition.scrollY;
-    state.animationDurationMs =
-      durationMs ||
-      getAnimationDuration(
-        Math.abs(targetStepIndex - state.currentStepIndex),
-        state.animationFromY,
-        stepPosition.scrollY
-      );
+    state.animationToY = clamp(targetY, getBounds().minY, getBounds().maxY);
+    state.animationDurationMs = durationMs || STEP_DURATION_MS;
     state.frameId = window.requestAnimationFrame(runAnimationFrame);
+  }
+
+  function startAnimationToStepIndex(stepPositions, targetStepIndex, durationMs) {
+    const stepPosition = stepPositions[targetStepIndex];
+    if (!stepPosition) {
+      return;
+    }
+
+    const currentScrollY = clamp(getScrollY(), getBounds().minY, getBounds().maxY);
+
+    startAnimation(
+      stepPosition.scrollY,
+      durationMs ||
+        getAnimationDuration(
+          Math.abs(targetStepIndex - state.currentStepIndex),
+          currentScrollY,
+          stepPosition.scrollY
+        ),
+      "grid",
+      targetStepIndex
+    );
   }
 
   function runAnimationFrame(timestamp) {
@@ -311,10 +341,19 @@ export function createScrollStepController(options) {
       return;
     }
 
-    applyScrollY(stepPositions[state.targetStepIndex].scrollY, timestamp);
-    state.currentStepIndex = state.targetStepIndex;
-    emitGridState(stepPositions, state.currentStepIndex);
-    finishIdle(stepPositions, state.currentStepIndex);
+    applyScrollY(state.animationToY, timestamp);
+
+    if (
+      state.animationCompletionMode === "grid" &&
+      state.targetStepIndex !== null
+    ) {
+      state.currentStepIndex = state.targetStepIndex;
+      emitGridState(stepPositions, state.currentStepIndex);
+      finishIdle(stepPositions, state.currentStepIndex);
+      return;
+    }
+
+    finishCenteredIdle(stepPositions);
   }
 
   function resetQueue() {
@@ -425,6 +464,22 @@ export function createScrollStepController(options) {
     startAnimationToStepIndex(stepPositions, targetStepIndex);
   }
 
+  function scrollToY(scrollY, durationMs = STEP_DURATION_MS) {
+    if (!Number.isFinite(scrollY)) {
+      return;
+    }
+
+    state.scrollY = clamp(getScrollY(), getBounds().minY, getBounds().maxY);
+    if (Math.abs(scrollY - state.scrollY) < STEP_EPSILON_PX) {
+      finishCenteredIdle(getNormalizedStepPositions());
+      return;
+    }
+
+    resetQueue();
+    state.lastEmittedGridKey = "";
+    startAnimation(scrollY, durationMs, "centered", null);
+  }
+
   function beginTouch(clientY) {
     interruptAnimation();
     state.lastEmittedGridKey = "";
@@ -508,6 +563,7 @@ export function createScrollStepController(options) {
   return {
     stepBy,
     scrollToRowCenter,
+    scrollToY,
     beginTouch,
     moveTouch,
     snapTouchEnd,

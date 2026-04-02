@@ -13,6 +13,10 @@ function getRowFallbackTarget(rowSection) {
   return rowSection.querySelector("[data-row-text]") || rowSection;
 }
 
+function getRowTopFallbackTarget(rowSection) {
+  return rowSection.querySelector("[data-row-media]") || rowSection;
+}
+
 /**
  * Return the section element that matches the row id.
  *
@@ -51,6 +55,23 @@ export function getRowAnchorTarget(rowSection) {
 }
 
 /**
+ * Resolve the preferred top-aligned target for a ligne.
+ *
+ * @param {HTMLElement|null} rowSection
+ * @returns {HTMLElement|null}
+ */
+export function getRowTopAnchorTarget(rowSection) {
+  if (!rowSection) {
+    return null;
+  }
+
+  return (
+    rowSection.querySelector("[data-row-media] .site-row__figure") ||
+    getRowTopFallbackTarget(rowSection)
+  );
+}
+
+/**
  * Return the absolute center Y of an element.
  *
  * @param {HTMLElement|null} element
@@ -80,6 +101,22 @@ export function getRowScrollYForAnchor(rowSection) {
 }
 
 /**
+ * Return the scrollY needed to align a ligne target with the viewport top.
+ *
+ * @param {HTMLElement|null} rowSection
+ * @param {number} [offsetY=0]
+ * @returns {number}
+ */
+export function getRowScrollYForTopAlign(rowSection, offsetY = 0) {
+  const targetElement = getRowTopAnchorTarget(rowSection);
+  if (!targetElement) {
+    return window.scrollY;
+  }
+
+  return getElementAbsoluteRect(targetElement).top - offsetY;
+}
+
+/**
  * Return the complete center targets for every ligne.
  *
  * @param {HTMLElement[]} rowSections
@@ -101,6 +138,51 @@ export function getRowCenterTargets(rowSections) {
       };
     })
     .filter(Boolean);
+}
+
+/**
+ * Return the top-aligned targets for every ligne.
+ *
+ * @param {HTMLElement[]} rowSections
+ * @param {number} [offsetY=0]
+ * @returns {Array<{rowId: string, scrollY: number}>}
+ */
+export function getRowTopTargets(rowSections, offsetY = 0) {
+  return rowSections
+    .map((rowSection) => ({
+      rowId: rowSection.id,
+      scrollY: getRowScrollYForTopAlign(rowSection, offsetY),
+    }))
+    .filter((target) => Number.isFinite(target.scrollY));
+}
+
+/**
+ * Return the nearest top-aligned target for the current scroll position.
+ *
+ * @param {HTMLElement[]} rowSections
+ * @param {number} scrollY
+ * @param {number} [offsetY=0]
+ * @returns {{rowId: string, scrollY: number}|null}
+ */
+export function getNearestRowTopTarget(rowSections, scrollY, offsetY = 0) {
+  const rowTopTargets = getRowTopTargets(rowSections, offsetY);
+  if (!rowTopTargets.length) {
+    return null;
+  }
+
+  return rowTopTargets.reduce((nearestTarget, rowTopTarget) => {
+    if (!nearestTarget) {
+      return rowTopTarget;
+    }
+
+    const currentDistance = Math.abs(rowTopTarget.scrollY - scrollY);
+    const nearestDistance = Math.abs(nearestTarget.scrollY - scrollY);
+    if (currentDistance >= nearestDistance) {
+      return nearestTarget;
+    }
+
+    return rowTopTarget;
+  }, null);
 }
 
 /**
