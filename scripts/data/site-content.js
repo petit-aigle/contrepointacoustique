@@ -13,8 +13,7 @@
  * @property {number} height
  * @property {string} alt
  * @property {"brand"|"pill-left"|"pill-right"|"circle"} shape
- * @property {"eager"|"lazy"} loading
- * @property {Array<{src: string, width?: number, height?: number, alt?: Record<string, string>, shape?: "brand"|"pill-left"|"pill-right"|"circle", loading?: "eager"|"lazy"}>=} debugVariants
+ * @property {Array<{src: string, width?: number, height?: number, alt?: Record<string, string>, shape?: "brand"|"pill-left"|"pill-right"|"circle"}>=} debugVariants
  * @property {string=} debugToggle
  * @property {number=} debugVariantCount
  * @property {boolean=} isAlternate
@@ -284,7 +283,7 @@ const LINE04_TITLE_FR = "“ Honesty , utility , simplicity “";
 const LINE04_TITLE_EN = '"Honesty, utility, simplicity."';
 const LINE04_TITLE_ES = '"Honesty, utility, simplicity."';
 const LINE05_PARAGRAPHS = [
-  "Un haut parleur unique pour les graves , medium et aigus . Donc une source ponctuelle , d’ou une precision de l’image et une homogénéité des timbres exemplaires.\n\nDe meme l’économie du filtre répartiteur de fréquences et des problèmes qui vont avec . Le haut parleur utilisé est à haut rendement il suffit de quelque watts pour une écoute domestique.\n\nCette technologie concours à une rapidité sur les transitoires et une micro-dynamique qui se traduisent par une vivacité et une vitalité hors pair .",
+  "Un haut parleur unique pour les graves , medium et aigus . Donc une source ponctuelle , d’où une précision de l’image et une homogénéité des timbres exemplaires.\n\nDe même l’économie du filtre répartiteur de fréquences et des problèmes qui vont avec . Le haut parleur utilisé demande peu de puissance pour une écoute domestique.\n\nCette technologie concourt à une rapidité sur les transitoires et une micro-dynamique qui se traduisent par une vivacité et une vitalité hors pair .",
 ];
 const LINE05_TITLE_FR = "la musique est libérée";
 const LINE05_TITLE_EN = "the music is set free";
@@ -297,7 +296,7 @@ const LINE06_PARAGRAPHS = [
 ];
 const LINE07_TITLE_FR = "La voix est sublime";
 const LINE07_PARAGRAPHS_FR = [
-  "Tabula rasa offre un haut degré de résolution mais sans fatigue auditive , l’ecoute est au contraire douce et nuancé .\n\nL’honnêteté oblige à indiquer que leur bande passante est moins large que sur certaine des enceintes acoustique classiques de prix équivalent . Mais nous savons que le médium offre 80 % de l'émotion, et sur ce point elle ne craint personne.",
+  "Tabula rasa offre un haut degré de résolution mais sans fatigue auditive , l’écoute est au contraire douce et nuancée .\n\nL’honnêteté oblige à indiquer qu’elles privilégient le médium à l’effet spectaculaire . Mais nous savons que le médium offre 80 % de l'émotion, et sur ce point elles ne craignent personne.",
 ];
 const LINE08_TITLE_FR = "Le choix de la finesse";
 const LINE08_PARAGRAPHS_FR = [
@@ -309,18 +308,16 @@ const LINE09_SPEC_TABLE_HEADERS_FR = {
   value: "Valeur",
 };
 const LINE09_SPEC_TABLE_ROWS_FR = [
-  { label: "Sensibilité", value: "96 dB (1W/1m)" },
-  { label: "Bande passante", value: "70-20000 Hz" },
   { label: "Impédance", value: "8 ohms" },
   { label: "Puissance max", value: "50 W" },
   { label: "Rodage", value: "50 h" },
   { label: "Diamètre haut-parleur", value: "22,5 cm" },
   { label: "Nombre d'enceintes", value: "2" },
-  { label: "Largeur enceinte", value: "À préciser" },
-  { label: "Hauteur enceinte", value: "À préciser" },
-  { label: "Profondeur enceinte", value: "À préciser" },
-  { label: "Poids enceinte", value: "À préciser" },
-  { label: "Poids du colis", value: "À préciser" },
+  { label: "Largeur enceinte", value: "40 cm" },
+  { label: "Hauteur enceinte", value: "40 cm" },
+  { label: "Profondeur enceinte", value: "20 cm" },
+  { label: "Poids enceinte", value: "5 kg / pièce" },
+  { label: "Poids du colis", value: "11 kg" },
 ];
 const LINE09_PRODUCTION_FR = "Production limité à 40 paires par an";
 const LINE09_PRICE_FR = "2 125 € (la paire)";
@@ -330,18 +327,18 @@ const LINE09_SUSTAINABLE_BODY_FR =
   "Pas d'obsolescence programmée , avec la durabilité au cœur des préoccupations. Verre acrylique recyclé et recyclable, associé à une membrane de haut-parleur en papier. Conçu et fabriquée en France avec soin et minutie.";
 const LINE09_TECHNICAL_TITLE_FR = "excellence technique";
 const LINE09_TECHNICAL_BODY_FR =
-  "Haut-parleur large bande à haut rendement et source ponctuelle de 22,5 cm. Sensibilité : 96db . Bande passante : 70-20000 Hz. Impédance : 8 ohms . Durée de rodage : 50 heures. Fonctionne avec des amplificateurs à tubes de seulement 2 ou 3 watts et jusqu'à 50 watts .";
+  "Haut-parleur large bande à source ponctuelle de 22,5 cm. Impédance : 8 ohms. Durée de rodage : 50 heures. Fonctionne avec des amplificateurs à tubes de seulement 2 ou 3 watts et jusqu'à 50 watts.";
 const LINE09_USAGE_NOTE_FR =
-  "Il ne s'agit pas d'un sound system. L'écoute est destinée à un usage domestique, offrant une expérience sonore purement intime.";
+  "Il ne s'agit pas d'un sound system. L'écoute est destinée à un usage domestique, offrant une expérience sonore pur et intime.";
 const LINE10_LEFT_TITLE_FR = "Contacter nous";
 const LINE10_LEFT_BODY_FR =
   "Nom : Contrepoint acoustique\n\nAdresse :\n54 route de Mur de Sologne\n41230 Veilleins\nLoir-et-Cher\nFrance\n\nTéléphone : 06 62 59 14 98\n\nMail : valereorlic@contrepointacoustique.com";
 const LINE10_RIGHT_TITLE_FR = "Mentions légales";
 const LINE10_RIGHT_BODY_FR =
-  "Éditeur : Valere Orlic, entrepreneur individuel (EI).\nMarque : Contrepoint acoustique.\nImmatriculation : RM 751 135 732 RM 41, SIRET 75113573200012, SIREN [à compléter], Code APE/NAF [à compléter].\nTVA non applicable (art. 293 B du CGI).\nHébergeur : GitHub, Inc.\nMédiation de la consommation : [à compléter] si vente B2C.\nCookies : aucun cookie/traceur soumis au consentement, aucun bandeau cookies.\nLe détail complet est disponible via le lien ci-dessous.";
+  "Éditeur : Valere Orlic, entrepreneur individuel (EI).\nMarque : Contrepoint acoustique.\nImmatriculation : RM 751 135 732 RM 41, SIRET 75113573200012, SIREN 751135732, Code APE/NAF 2640Z.\nTVA non applicable (art. 293 B du CGI).\nHébergeur : GitHub, Inc. (+1 415 735 4488).\nMédiation de la consommation : [à compléter] si vente B2C.\nCookies : aucun cookie/traceur soumis au consentement, aucun bandeau cookies.\nLe détail complet est disponible via le lien ci-dessous.";
 const LINE10_LEGAL_MODAL_TITLE_FR = "Mentions légales";
 const LINE10_LEGAL_MODAL_BODY_FR =
-  "Éditeur du site :\n    Nom / Prénom : Valere Orlic\n    Statut : Entrepreneur individuel (EI)\n    Marque : Contrepoint acoustique (marque déposée)\n    Adresse : 54 route de Mur de Sologne, 41230 Veilleins, Loir-et-Cher, France\n    Téléphone : 06 62 59 14 98\n    Email : valereorlic@contrepointacoustique.com\n\nImmatriculation :\n    RM : 751 135 732 RM 41\n    SIREN : [à compléter]\n    SIRET : 75113573200012\n    Code APE/NAF : [à compléter]\n\nTVA :\n    TVA non applicable, art. 293 B du CGI\n    N° TVA intracommunautaire : non applicable en franchise de TVA [à confirmer]\n\nHébergeur :\n    Nom / Raison sociale : GitHub, Inc.\n    Adresse : 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA\n    Téléphone : non communiqué publiquement\n    Site web : https://github.com\n\nDirecteur de la publication :\n    Valere Orlic\n\nPropriété intellectuelle :\n    L'ensemble des contenus (textes, images, logo, marque) est protégé.\n    Toute reproduction non autorisée est interdite.\n\nMédiation de la consommation (si vente B2C) :\n    Nom du médiateur : [à compléter]\n    Lien : [à compléter]\n    Non applicable si activité exclusivement B2B.\n\nDonnées personnelles (RGPD) :\n    Responsable de traitement : Valere Orlic\n    Finalités : gestion des demandes de contact et relation commerciale\n    Base légale : intérêt légitime et/ou consentement selon le formulaire\n    Durée de conservation : [à compléter]\n    Droits (accès, rectification, suppression, opposition) :\n    demande par email à valereorlic@contrepointacoustique.com\n    Contact RGPD : valereorlic@contrepointacoustique.com\n    Réclamation CNIL : https://www.cnil.fr\n\nCookies / traceurs :\n    Politique cookies : aucun cookie ou traceur soumis au consentement n'est utilisé.\n    Gestion du consentement : aucun bandeau cookies.";
+  "Éditeur du site :\n    Nom / Prénom : Valere Orlic\n    Statut : Entrepreneur individuel (EI)\n    Marque : Contrepoint acoustique (marque déposée)\n    Adresse : 54 route de Mur de Sologne, 41230 Veilleins, Loir-et-Cher, France\n    Téléphone : 06 62 59 14 98\n    Email : valereorlic@contrepointacoustique.com\n\nImmatriculation :\n    RM : 751 135 732 RM 41\n    SIREN : 751135732\n    SIRET : 75113573200012\n    Code APE/NAF : 2640Z\n\nTVA :\n    TVA non applicable, art. 293 B du CGI\n    N° TVA intracommunautaire : non applicable en franchise de TVA [à confirmer]\n\nHébergeur :\n    Nom / Raison sociale : GitHub, Inc.\n    Adresse : 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA\n    Téléphone : +1 415 735 4488\n    Site web : https://github.com\n\nDirecteur de la publication :\n    Valere Orlic\n\nPropriété intellectuelle :\n    L'ensemble des contenus (textes, images, logo, marque) est protégé.\n    Toute reproduction non autorisée est interdite.\n\nMédiation de la consommation (si vente B2C) :\n    Nom du médiateur : [à compléter]\n    Lien : [à compléter]\n    Non applicable si activité exclusivement B2B.\n\nDonnées personnelles (RGPD) :\n    Responsable de traitement : Valere Orlic\n    Finalités : gestion des demandes de contact et relation commerciale\n    Base légale : intérêt légitime et/ou consentement selon le formulaire\n    Durée de conservation : les données communiquées par courriel sont conservées pendant le temps nécessaire au traitement de la demande. En l’absence de suite commerciale, elles sont supprimées au plus tard 3 ans après le dernier contact émanant de la personne. En cas de commande, les données nécessaires à la facturation sont conservées 10 ans conformément aux obligations légales.\n    Droits (accès, rectification, suppression, opposition) :\n    demande par email à valereorlic@contrepointacoustique.com\n    Contact RGPD : valereorlic@contrepointacoustique.com\n    Réclamation CNIL : https://www.cnil.fr\n\nCookies / traceurs :\n    Politique cookies : aucun cookie ou traceur soumis au consentement n'est utilisé.\n    Gestion du consentement : aucun bandeau cookies.";
 const LINE10_LEGAL_MODAL_OPEN_LABEL_FR = "Voir toutes les mentions légales";
 const LINE10_LEGAL_MODAL_BACK_LABEL_FR = "Retour";
 const LINE10_LEGAL_MODAL_CLOSE_LABEL_FR = "Fermer";
@@ -622,7 +619,6 @@ const MEDIA = {
       es: "Contrepoint acoustique.",
     },
     shape: "brand",
-    loading: "eager",
     debugVariants: [
       {
         src: "Ressource/images/title_and_logo.jpg",
@@ -639,7 +635,6 @@ const MEDIA = {
       es: "Pareja de altavoces.",
     },
     shape: "pill-left",
-    loading: "eager",
     debugVariants: [
       {
         src: "Ressource/images/enceinte_face.jpg",
@@ -783,7 +778,6 @@ const MEDIA = {
       es: "Vista completa del altavoz.",
     },
     shape: "circle",
-    loading: "lazy",
     debugVariants: [
       {
         src: "Ressource/images/enceinte_back_little_left.jpg",
@@ -857,7 +851,6 @@ const MEDIA = {
       es: "Detalle trasero izquierdo.",
     },
     shape: "circle",
-    loading: "lazy",
     debugVariants: [
       {
         src: "Ressource/images/enceinte_back_little_left.jpg",
@@ -921,7 +914,6 @@ const MEDIA = {
       es: "Detalle frontal izquierdo.",
     },
     shape: "pill-right",
-    loading: "lazy",
     debugVariants: [
       {
         src: "Ressource/images/enceinte_back_little_left.jpg",
@@ -965,7 +957,6 @@ const MEDIA = {
       es: "Detalle trasero izquierdo cercano.",
     },
     shape: "pill-left",
-    loading: "lazy",
     debugVariants: [
       {
         src: "Ressource/images/enceinte_vue_super_face_close_right.jpg",
@@ -1009,7 +1000,6 @@ const MEDIA = {
       es: "Detalle de esquina del altavoz (zoom).",
     },
     shape: "pill-left",
-    loading: "lazy",
     debugVariants: [
       {
         src: "Ressource/images/enceinte_back_little_left.jpg",
@@ -1063,7 +1053,6 @@ const MEDIA = {
       es: "Pareja de altavoces con amplificador.",
     },
     shape: "pill-left",
-    loading: "lazy",
     debugVariants: [
       {
         src: "Ressource/images/enceinte_back_little_left.jpg",
@@ -1117,7 +1106,6 @@ const MEDIA = {
       es: "Vista superior del altavoz.",
     },
     shape: "pill-right",
-    loading: "lazy",
     debugVariants: [
       {
         src: "Ressource/images/speaker.jpg",
@@ -1171,7 +1159,6 @@ const MEDIA = {
       es: "Camión de entrega de Contrepoint acoustique.",
     },
     shape: "brand",
-    loading: "lazy",
   },
 };
 
@@ -1300,7 +1287,6 @@ function buildMedia(rowId, lang, currentState, uiText) {
       height: media.height,
       alt: media.alt,
       shape: media.shape,
-      loading: media.loading,
     },
     ...(media.debugVariants || []),
   ];
@@ -1318,7 +1304,6 @@ function buildMedia(rowId, lang, currentState, uiText) {
       media.alt[lang] ||
       media.alt.fr,
     shape: activeVariant.shape || media.shape,
-    loading: activeVariant.loading || media.loading,
     debugToggle: currentState.debug && variants.length > 1 ? rowId : undefined,
     debugVariantCount: variants.length,
     isAlternate: variantIndex > 0,

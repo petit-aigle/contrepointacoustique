@@ -138,6 +138,7 @@ function createMediaFigure(currentState, row) {
   const figure = document.createElement("figure");
   figure.className = "site-row__figure";
   figure.classList.add(`site-row__figure--${media.shape}`);
+  figure.dataset.rowId = row.id;
 
   if (media.debugToggle) {
     figure.dataset.debugToggleImage = media.debugToggle;
@@ -154,7 +155,8 @@ function createMediaFigure(currentState, row) {
   image.width = media.width;
   image.height = media.height;
   image.alt = media.alt;
-  image.loading = media.loading;
+  image.dataset.rowImage = row.id;
+  image.dataset.rowId = row.id;
 
   if (currentState.debug) {
     figure.dataset.debugImageRow = row.id;
@@ -752,6 +754,14 @@ function createTextContent(currentState, rowId, content) {
   }
 }
 
+/**
+ * Render all ligne sections from the current content state.
+ *
+ * @param {HTMLElement[]} sectionElements
+ * @param {Array<{id: string, key: string, classNames: string[], media?: object, content: object, debugLineLabel?: string}>} rows
+ * @param {{debug: boolean, debugTypography: object}} currentState
+ * @returns {void}
+ */
 export function renderRows(sectionElements, rows, currentState) {
   const rowsById = new Map(rows.map((row) => [row.id, row]));
 

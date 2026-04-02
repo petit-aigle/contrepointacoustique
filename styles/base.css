@@ -24,10 +24,6 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   margin: 0;
   background: linear-gradient(
@@ -83,8 +79,8 @@ h2 {
 }
 
 .reveal {
-  opacity: 0;
-  transition: opacity 420ms ease;
+  opacity: 1;
+  transition: none;
 }
 
 .reveal.is-visible {
