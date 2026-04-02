@@ -141,51 +141,6 @@ export function getRowCenterTargets(rowSections) {
 }
 
 /**
- * Return the top-aligned targets for every ligne.
- *
- * @param {HTMLElement[]} rowSections
- * @param {number} [offsetY=0]
- * @returns {Array<{rowId: string, scrollY: number}>}
- */
-export function getRowTopTargets(rowSections, offsetY = 0) {
-  return rowSections
-    .map((rowSection) => ({
-      rowId: rowSection.id,
-      scrollY: getRowScrollYForTopAlign(rowSection, offsetY),
-    }))
-    .filter((target) => Number.isFinite(target.scrollY));
-}
-
-/**
- * Return the nearest top-aligned target for the current scroll position.
- *
- * @param {HTMLElement[]} rowSections
- * @param {number} scrollY
- * @param {number} [offsetY=0]
- * @returns {{rowId: string, scrollY: number}|null}
- */
-export function getNearestRowTopTarget(rowSections, scrollY, offsetY = 0) {
-  const rowTopTargets = getRowTopTargets(rowSections, offsetY);
-  if (!rowTopTargets.length) {
-    return null;
-  }
-
-  return rowTopTargets.reduce((nearestTarget, rowTopTarget) => {
-    if (!nearestTarget) {
-      return rowTopTarget;
-    }
-
-    const currentDistance = Math.abs(rowTopTarget.scrollY - scrollY);
-    const nearestDistance = Math.abs(nearestTarget.scrollY - scrollY);
-    if (currentDistance >= nearestDistance) {
-      return nearestTarget;
-    }
-
-    return rowTopTarget;
-  }, null);
-}
-
-/**
  * Return the full ordered half-step grid for the current lignes.
  *
  * @param {HTMLElement[]} rowSections
