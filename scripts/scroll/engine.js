@@ -322,7 +322,15 @@ export function createScrollStepController(options) {
     state.frameId = 0;
 
     const stepPositions = getNormalizedStepPositions();
-    if (!stepPositions.length || state.targetStepIndex === null) {
+    if (!stepPositions.length) {
+      state.mode = "idle";
+      return;
+    }
+
+    if (
+      state.animationCompletionMode === "grid" &&
+      state.targetStepIndex === null
+    ) {
       state.mode = "idle";
       return;
     }

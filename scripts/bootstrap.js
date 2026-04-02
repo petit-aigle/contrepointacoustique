@@ -25,7 +25,6 @@ import { createRowMediaLoader } from "./media/row-media-loader.js?v=20260402b";
 import { renderNavbar } from "./render/navbar.js?v=20260330aa";
 import { renderRows } from "./render/rows.js?v=20260402a";
 import {
-  getNearestRowTopTarget,
   getRowAtViewportCenter,
   getRowScrollYForTopAlign,
   getScrollStepPositions,
@@ -819,23 +818,20 @@ function runPhoneRowAssist() {
     return;
   }
 
-  const rowTopTarget = getNearestRowTopTarget(
-    refs.rowSections,
-    window.scrollY,
+  const currentRowSection = getRowAtViewportCenter(refs.rowSections);
+  if (!currentRowSection) {
+    return;
+  }
+
+  const targetScrollY = getRowScrollYForTopAlign(
+    currentRowSection,
     getPhoneRowAssistOffsetY()
   );
-  if (!rowTopTarget) {
+  if (Math.abs(targetScrollY - window.scrollY) < PHONE_ROW_ASSIST_EPSILON_PX) {
     return;
   }
 
-  if (Math.abs(rowTopTarget.scrollY - window.scrollY) < PHONE_ROW_ASSIST_EPSILON_PX) {
-    return;
-  }
-
-  scrollStepController.scrollToY(
-    rowTopTarget.scrollY,
-    PHONE_ROW_ASSIST_DURATION_MS
-  );
+  scrollStepController.scrollToY(targetScrollY, PHONE_ROW_ASSIST_DURATION_MS);
   ignorePhoneRowAssist(PHONE_ROW_ASSIST_DURATION_MS + PHONE_ROW_ASSIST_IDLE_MS);
 }
 
