@@ -102,6 +102,10 @@ function createTextElement(
   return createStaticTextElement(tagName, className, value);
 }
 
+function getEditorLabel(content, key) {
+  return content.editorLabels?.[key] || "";
+}
+
 function applyDebugImageAreaSize(figure, image, media, targetHeight) {
   if (!Number.isFinite(targetHeight) || targetHeight <= 0) {
     return;
@@ -185,7 +189,7 @@ function createIntroContent(currentState, rowId, content) {
         "h1",
         "site-row__intro-title",
         content.title,
-        "Titre de la ligne"
+        getEditorLabel(content, "rowTitle")
       )
     );
   }
@@ -193,7 +197,7 @@ function createIntroContent(currentState, rowId, content) {
   return wrapper;
 }
 
-function createContactBlock(currentState, rowId, contact) {
+function createContactBlock(currentState, rowId, contact, editorLabels = {}) {
   const wrapper = document.createElement("div");
   wrapper.className = "site-row__contact";
 
@@ -205,7 +209,7 @@ function createContactBlock(currentState, rowId, contact) {
       "p",
       "site-row__contact-lead",
       contact.lead,
-      "Texte de contact"
+      editorLabels.contactText
     )
   );
 
@@ -218,7 +222,7 @@ function createContactBlock(currentState, rowId, contact) {
         "address",
         "site-row__contact-address",
         contact.address.join("\n"),
-        "Adresse de contact"
+        editorLabels.contactAddress
       )
     );
   } else {
@@ -242,7 +246,7 @@ function createContactBlock(currentState, rowId, contact) {
         "p",
         "site-row__contact-email-value",
         contact.email,
-        "Email de contact"
+        editorLabels.contactEmail
       )
     );
   } else {
@@ -261,7 +265,14 @@ function createContactContent(currentState, rowId, content) {
   wrapper.className = "site-row__content-inner site-row__content-inner--contact";
 
   if (content.contact) {
-    wrapper.appendChild(createContactBlock(currentState, rowId, content.contact));
+    wrapper.appendChild(
+      createContactBlock(
+        currentState,
+        rowId,
+        content.contact,
+        content.editorLabels
+      )
+    );
   }
 
   return wrapper;
@@ -279,9 +290,37 @@ function createSpeakerContent(currentState, rowId, content) {
       "h2",
       "site-row__title",
       content.title,
-      "Titre de la ligne"
+      getEditorLabel(content, "rowTitle")
     )
   );
+
+  if (content.subtitle) {
+    wrapper.appendChild(
+      createTextElement(
+        currentState,
+        rowId,
+        "subtitle",
+        "p",
+        "site-row__subtitle",
+        content.subtitle,
+        getEditorLabel(content, "rowSubtitle")
+      )
+    );
+  }
+
+  if (content.quote) {
+    wrapper.appendChild(
+      createTextElement(
+        currentState,
+        rowId,
+        "quote",
+        "blockquote",
+        "site-row__quote",
+        content.quote,
+        getEditorLabel(content, "rowQuote")
+      )
+    );
+  }
 
   if (content.byline) {
     wrapper.appendChild(
@@ -292,13 +331,20 @@ function createSpeakerContent(currentState, rowId, content) {
         "p",
         "site-row__byline",
         content.byline,
-        "Signature de la ligne"
+        getEditorLabel(content, "rowByline")
       )
     );
   }
 
   if (content.contact) {
-    wrapper.appendChild(createContactBlock(currentState, rowId, content.contact));
+    wrapper.appendChild(
+      createContactBlock(
+        currentState,
+        rowId,
+        content.contact,
+        content.editorLabels
+      )
+    );
   }
 
   return wrapper;
@@ -317,7 +363,7 @@ function createParagraphsContent(currentState, rowId, content) {
         "h1",
         "site-row__section-title",
         content.title,
-        "Titre de section"
+        getEditorLabel(content, "sectionTitle")
       )
     );
   }
@@ -331,7 +377,7 @@ function createParagraphsContent(currentState, rowId, content) {
         "p",
         "site-row__body-paragraph site-row__line04-proverb",
         content.proverb,
-        "Proverbe de la ligne"
+        getEditorLabel(content, "rowProverb")
       )
     );
   }
@@ -345,7 +391,7 @@ function createParagraphsContent(currentState, rowId, content) {
         "p",
         "site-row__body-paragraph",
         paragraph,
-        `Texte ${index + 1} de la ligne`
+        `${getEditorLabel(content, "rowText")} ${index + 1}`
       )
     );
   });
@@ -375,21 +421,16 @@ function createSpecsContent(currentState, rowId, content) {
         "h1",
         "site-row__section-title",
         content.title,
-        "Titre de section"
+        getEditorLabel(content, "sectionTitle")
       )
     );
   }
 
   const tableHeaders = content.specs?.tableHeaders || {
-    label: "Caractéristique",
-    value: "Valeur",
+    label: "",
+    value: "",
   };
-  const tableRows =
-    content.specs?.tableRows ||
-    (content.specs?.rows || []).map((rowValue, index) => ({
-      label: `Spécification ${index + 1}`,
-      value: rowValue,
-    }));
+  const tableRows = content.specs?.tableRows || [];
 
   if (tableRows.length) {
     const table = document.createElement("table");
@@ -412,7 +453,7 @@ function createSpecsContent(currentState, rowId, content) {
         "span",
         "site-row__spec-head-label",
         tableHeaders.label,
-        "En-tête colonne caractéristique"
+        getEditorLabel(content, "specFeatureHeader")
       )
     );
     headValue.appendChild(
@@ -423,7 +464,7 @@ function createSpecsContent(currentState, rowId, content) {
         "span",
         "site-row__spec-head-label",
         tableHeaders.value,
-        "En-tête colonne valeur"
+        getEditorLabel(content, "specValueHeader")
       )
     );
 
@@ -446,7 +487,7 @@ function createSpecsContent(currentState, rowId, content) {
           "span",
           "site-row__spec-label",
           rowValue.label,
-          `Libellé spécification ${index + 1}`
+          `${getEditorLabel(content, "specLabel")} ${index + 1}`
         )
       );
 
@@ -458,7 +499,7 @@ function createSpecsContent(currentState, rowId, content) {
           "p",
           "site-row__spec-value",
           rowValue.value,
-          `Valeur spécification ${index + 1}`
+          `${getEditorLabel(content, "specValue")} ${index + 1}`
         )
       );
 
@@ -480,7 +521,7 @@ function createSpecsContent(currentState, rowId, content) {
         "p",
         "site-row__spec-production",
         content.specs.production,
-        "Production limitée"
+        getEditorLabel(content, "specProduction")
       )
     );
   }
@@ -494,7 +535,7 @@ function createSpecsContent(currentState, rowId, content) {
         "p",
         "site-row__spec-price",
         content.specs.price,
-        "Prix"
+        getEditorLabel(content, "specPrice")
       )
     );
   }
@@ -508,7 +549,7 @@ function createSpecsContent(currentState, rowId, content) {
         "p",
         "site-row__spec-tax-note",
         content.specs.taxNote,
-        "Note TVA"
+        getEditorLabel(content, "specTaxNote")
       )
     );
   }
@@ -522,7 +563,7 @@ function createSpecsContent(currentState, rowId, content) {
         "h2",
         "site-row__spec-subtitle",
         content.specs.sustainableTitle,
-        "Sous-titre durabilité"
+        getEditorLabel(content, "specSustainableTitle")
       )
     );
   }
@@ -536,7 +577,7 @@ function createSpecsContent(currentState, rowId, content) {
         "p",
         "site-row__body-paragraph",
         content.specs.sustainableBody,
-        "Texte durabilité"
+        getEditorLabel(content, "specSustainableBody")
       )
     );
   }
@@ -550,7 +591,7 @@ function createSpecsContent(currentState, rowId, content) {
         "h2",
         "site-row__spec-subtitle",
         content.specs.technicalTitle,
-        "Sous-titre technique"
+        getEditorLabel(content, "specTechnicalTitle")
       )
     );
   }
@@ -564,7 +605,7 @@ function createSpecsContent(currentState, rowId, content) {
         "p",
         "site-row__body-paragraph",
         content.specs.technicalBody,
-        "Texte technique"
+        getEditorLabel(content, "specTechnicalBody")
       )
     );
   }
@@ -578,7 +619,7 @@ function createSpecsContent(currentState, rowId, content) {
         "p",
         "site-row__spec-usage-note",
         content.specs.usageNote,
-        "Note d'usage"
+        getEditorLabel(content, "specUsageNote")
       )
     );
   }
@@ -608,7 +649,7 @@ function createLegalContent(currentState, rowId, content) {
       "h1",
       "site-row__section-title site-row__line10-left-title",
       content.legal?.leftTitle || "",
-      "Titre gauche"
+      getEditorLabel(content, "legalLeftTitle")
     );
     leftColumn.appendChild(leftTitle);
 
@@ -619,7 +660,7 @@ function createLegalContent(currentState, rowId, content) {
       "p",
       "site-row__body-paragraph site-row__line10-left-body",
       content.legal?.leftBody || "",
-      "Texte contact"
+      getEditorLabel(content, "legalContactBody")
     );
     leftColumn.appendChild(leftBody);
     wrapper.appendChild(leftColumn);
@@ -632,7 +673,7 @@ function createLegalContent(currentState, rowId, content) {
     "h1",
     "site-row__section-title site-row__line10-right-title",
     content.legal?.rightTitle || "",
-    "Titre droit"
+    getEditorLabel(content, "legalRightTitle")
   );
   rightColumn.appendChild(rightTitle);
 
@@ -643,14 +684,14 @@ function createLegalContent(currentState, rowId, content) {
     "p",
     "site-row__body-paragraph site-row__line10-right-body",
     content.legal?.rightBody || "",
-    "Texte mentions légales"
+    getEditorLabel(content, "legalSummary")
   );
   rightColumn.appendChild(rightBody);
 
   const openButton = document.createElement("button");
   openButton.type = "button";
   openButton.className = "site-row__legal-open";
-  openButton.textContent = content.legal?.modalOpenLabel || "Voir mentions légales";
+  openButton.textContent = content.legal?.modalOpenLabel || "";
   rightColumn.appendChild(openButton);
 
   const modal = document.createElement("div");
@@ -667,14 +708,14 @@ function createLegalContent(currentState, rowId, content) {
   modalHeader.className = "site-row__legal-modal-header";
   const modalTitle = document.createElement("h2");
   modalTitle.className = "site-row__legal-modal-title";
-  modalTitle.textContent = content.legal?.modalTitle || "Mentions légales";
+  modalTitle.textContent = content.legal?.modalTitle || "";
   modalHeader.appendChild(modalTitle);
 
   const modalCloseTop = document.createElement("button");
   modalCloseTop.type = "button";
   modalCloseTop.className = "site-row__legal-modal-close";
   modalCloseTop.textContent = "×";
-  modalCloseTop.setAttribute("aria-label", content.legal?.modalCloseLabel || "Fermer");
+  modalCloseTop.setAttribute("aria-label", content.legal?.modalCloseLabel || "");
   modalHeader.appendChild(modalCloseTop);
   modalDialog.appendChild(modalHeader);
 
@@ -685,7 +726,7 @@ function createLegalContent(currentState, rowId, content) {
     "p",
     "site-row__legal-modal-body",
     content.legal?.modalBody || "",
-    "Texte complet mentions légales"
+    getEditorLabel(content, "legalModalBody")
   );
   modalDialog.appendChild(modalBody);
 
@@ -695,7 +736,7 @@ function createLegalContent(currentState, rowId, content) {
   const closeButton = document.createElement("button");
   closeButton.type = "button";
   closeButton.className = "site-row__legal-modal-back";
-  closeButton.textContent = content.legal?.modalCloseLabel || "Fermer";
+  closeButton.textContent = content.legal?.modalBackLabel || "";
   modalActions.appendChild(closeButton);
 
   modalDialog.appendChild(modalActions);

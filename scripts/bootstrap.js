@@ -2,7 +2,7 @@ import {
   getCanonicalHashTarget,
   getHashForRowId,
   getSiteContent,
-} from "./data/site-content.js?v=20260402c";
+} from "./data/site-content.js?v=20260717a";
 import {
   adjustActiveDebugEditorFontSize,
   applyInlineCommand,
@@ -22,8 +22,8 @@ import {
 } from "./debug/persistence.js?v=20260330aa";
 import { clearActiveDebugEditorKey, setActiveDebugEditorKey, updateDebugEditorHTML } from "./debug/editor-state.js?v=20260330aa";
 import { createRowMediaLoader } from "./media/row-media-loader.js?v=20260402b";
-import { renderNavbar } from "./render/navbar.js?v=20260330aa";
-import { renderRows } from "./render/rows.js?v=20260402a";
+import { renderNavbar } from "./render/navbar.js?v=20260717a";
+import { renderRows } from "./render/rows.js?v=20260717a";
 import {
   getRowAtViewportCenter,
   getRowScrollYForTopAlign,
@@ -42,6 +42,7 @@ import {
 } from "./state.js?v=20260331aa";
 
 const refs = {
+  metaDescription: document.querySelector('meta[name="description"]'),
   navbar: document.querySelector("header.navbar"),
   navbarNav: document.getElementById("navbar-nav"),
   navbarMenuToggle: document.getElementById("navbar-menu-toggle"),
@@ -526,7 +527,10 @@ function openImageLightbox(sourceImage) {
   const closeButton = document.createElement("button");
   closeButton.className = "image-lightbox__close";
   closeButton.type = "button";
-  closeButton.setAttribute("aria-label", "Close image");
+  closeButton.setAttribute(
+    "aria-label",
+    getSiteContent(state).uiText.labels.closeImage
+  );
   closeButton.textContent = "×";
 
   closeButton.addEventListener("click", (event) => {
@@ -982,7 +986,10 @@ function renderAll(showFallback = false) {
   const siteContent = getSiteContent(state);
   const preferredRowId = preservedHashTargetId || getPreferredActiveRowId();
 
-  document.documentElement.lang = state.lang;
+  state.lang = siteContent.language;
+  document.documentElement.lang = siteContent.language;
+  document.title = siteContent.meta.title;
+  refs.metaDescription?.setAttribute("content", siteContent.meta.description);
 
   renderNavbar(refs, state, siteContent, showFallback);
   syncMobileNavbarMenuState();
@@ -1445,7 +1452,7 @@ function bindEvents() {
       imageTarget &&
       clickedRowId !== "line-09" &&
       clickedRowId !== "line-10" &&
-      !(state.debug && toggleTarget && event.ctrlKey)
+      !(state.debug && toggleTarget)
     ) {
       event.preventDefault();
       openImageLightbox(imageTarget);
@@ -1453,10 +1460,6 @@ function bindEvents() {
     }
 
     if (!toggleTarget || !state.debug) {
-      return;
-    }
-
-    if (!event.ctrlKey) {
       return;
     }
 
@@ -1472,7 +1475,7 @@ function bindEvents() {
 
   document.addEventListener("keydown", (event) => {
     const toggleTarget = event.target.closest?.("[data-debug-toggle-image]");
-    if (!toggleTarget || !state.debug || !event.ctrlKey) {
+    if (!toggleTarget || !state.debug) {
       return;
     }
 

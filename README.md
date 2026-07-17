@@ -1,56 +1,65 @@
 # ContrePoint
 
-Site statique pour la page `tabula rasa`, recentré sur une structure canonique `navbar + lignes`.
+Site statique de présentation de `tabula rasa`, structuré autour d’une `navbar` et de 11 `lignes`.
 
 ## Structure
-- `index.html`: squelette unique avec la `navbar` et les 7 `lignes`
-- `app.js`: point d'entrée ES module
-- `scripts/`: état, données, rendu, observers
-- `styles/`: base, navbar, lignes
-- `Ressource/images/`: assets visuels du site
-- `Ressource/fonts/`: fontes embarquées du site
+
+- `index.html` : squelette unique contenant la `navbar` et les 11 `lignes`
+- `app.js` : point d’entrée du module JavaScript
+- `scripts/` : état, données, rendu et observateurs
+- `scripts/data/site-content.js` : composition de la structure des lignes avec le pack de traduction actif
+- `scripts/data/translations/` : un fichier JSON autonome par langue (`fr`, `en`, `es`)
+- `styles/` : styles de base, de la navbar et des lignes
+- `Ressource/images/` : ressources visuelles du site
+- `Ressource/fonts/` : fontes embarquées du site
 
 ## Lancement local
-- serveur statique simple: `task run`
-- ou tout autre serveur HTTP pointé sur la racine du projet
+
+- serveur statique du projet : `task run`
+- autre possibilité : utiliser tout serveur HTTP pointé vers la racine du projet
 
 ## Vocabulaire canonique
-- `navbar`: barre de navigation
-- `ligne`: bloc `image + texte`
-- `line-01` à `line-07`: identifiants techniques stables utilisés dans le DOM, la doc et le code
+
+- `navbar` : barre de navigation
+- `ligne` : section visuelle composée d’un bloc de texte et, selon la ligne, d’une image
+- `line-01` à `line-11` : identifiants techniques stables utilisés dans le DOM, la documentation et le code
 
 ## URL
-- `lang=fr|en|es`
-- `debug=1` pour activer le mode debug (désactivé par défaut)
-- `mode=corrected|marketing|raw`
 
-Si `lang` est absent, la langue est détectée automatiquement depuis le navigateur (avec fallback sur `fr`).
-`raw` reste limité au français; toute autre langue retombe sur `corrected`.
+- `lang=fr|en|es` : langue du site
+- `debug=1` : activation du mode de débogage, désactivé par défaut
+- `mode=corrected|marketing|raw` : variante de texte disponible en mode de débogage
 
-En mode debug, l'image de `line-01` est cliquable pour comparer `title_and_logo.jpg` et `title_and_logo_left.jpg`.
-En mode debug, l'image de `line-02` est aussi cliquable et cycle entre `enceinte_left_plus_ampli_plus_enceinte_right.jpg`, `enceinte_vue.jpg` et `enceinte_left_back_plus_enceinte_right.jpg`.
-En mode debug, l'image de `line-03` cycle entre `enceinte_vue.jpg` et les vues de détail arrière / frontales utilisées pour la comparaison.
-En mode debug, l'image de `line-04` cycle aussi entre `enceinte_vue_back_left_close.jpg`, `enceinte_back_little_left.jpg`, `enceinte_vue_back_left.jpg`, `enceinte_vue_super_face_close_left.jpg`, `enceinte_vue_super_face_close_right.jpg` et `enceinte_vue_super_face_corner_close_left.jpg`.
-En mode debug, toutes les zones de texte deviennent aussi éditables via des blocs `contenteditable` transparents sans chrome visible; les modifications restent en mémoire pendant la session et survivent aux rerenders.
-En mode debug, une bulle d’aide suit la souris sur les lignes et affiche le numéro de ligne quand le pointeur s’arrête.
-En mode debug, les images peuvent aussi être redimensionnées en hauteur au clavier quand le pointeur est dessus, via l’option dédiée du panneau `DEBUG`.
-En mode debug, les modifications sont maintenant sauvegardées dans le navigateur via un cache local persistant et reviennent après reload.
-Un clic sur `DEBUG` ouvre un panneau unique avec:
-- une toolbar riche locale pour le champ actif
+Lorsque `lang` est absent, la langue est détectée automatiquement à partir des préférences du navigateur, avec le français comme langue de repli.
+Le mode `raw` reste limité au français ; dans toute autre langue, le site bascule vers le mode `corrected`.
+
+## Mode de débogage
+
+En mode de débogage, un clic sur l’image de `line-01` fait défiler ses deux variantes. La même action sur les images des lignes `line-02` à `line-09` fait défiler les variantes configurées pour chacune d’elles.
+
+Toutes les zones de texte deviennent éditables sous forme de blocs `contenteditable` transparents, sans habillage visible. Les modifications persistent entre les rendus successifs et sont restaurées après le rechargement de la page grâce au cache local du navigateur. Elles restent séparées selon `lang + mode`.
+
+Une bulle d’aide suit la souris sur les lignes et affiche leur numéro lorsque le pointeur s’arrête. Les images peuvent également être redimensionnées en hauteur au clavier lorsqu’elles sont survolées, au moyen de l’option dédiée du panneau `DEBUG`.
+
+Un clic sur `DEBUG` ouvre un panneau unique comprenant :
+
+- une barre d’outils de texte enrichi pour le champ actif
 - un manuel de raccourcis
-- les options typo pour les titres des lignes `line-02+`: `Special Font`, mode de casse (`Actuel`, `FULL MAJ`, `Première lettre`, `minuscules`) et application de la fonte spéciale au texte normal
-- une option `Redimension image au survol`
-- un bouton `Reset debug` qui remet les modifications debug à leur état d’origine
+- les options typographiques globales : police spéciale et casse pour les titres des lignes `line-02+`, ainsi qu’une police spéciale distincte pour le texte courant
+- une option `Redimensionnement de l’image au survol`
+- un bouton `Réinitialiser le débogage` qui restaure l’état initial des modifications effectuées en mode de débogage
 
-Raccourcis debug disponibles dans un champ texte actif:
-- `Ctrl+B`: gras sur la sélection
-- `Ctrl+I`: italique sur la sélection
-- `Ctrl+E`: cycle `justify -> left -> right -> center`
-- `Shift + +`: agrandit la taille du bloc actif
-- `Shift + -`: réduit la taille du bloc actif
+Raccourcis de débogage disponibles dans un champ de texte actif :
 
-Raccourcis debug disponibles sur une image survolée:
-- `Shift + +`: agrandit la hauteur de la zone image
-- `Shift + -`: réduit la hauteur de la zone image
+- `Ctrl+B` : met la sélection en gras
+- `Ctrl+I` : met la sélection en italique
+- `Ctrl+E` : fait défiler les alignements justifié → aligné à gauche → aligné à droite → centré
+- `Shift + +` : augmente la taille du bloc actif
+- `Shift + -` : réduit la taille du bloc actif
 
-Le cache debug n’est utilisé qu’en debug. Le bouton `Reset debug` vide ce cache et remet les variantes d’images, tailles d’images, contenus édités et options debug à leur état initial.
+Raccourcis disponibles lorsqu’une image est survolée :
+
+- `Shift + +` : augmente la hauteur de la zone de l’image
+- `Shift + -` : réduit la hauteur de la zone de l’image
+
+Le cache de débogage n’est utilisé qu’en mode de débogage. Le bouton `Réinitialiser le débogage` vide ce cache et rétablit les variantes d’images, les tailles d’images, les contenus édités et les options de débogage dans leur état initial.

@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contrepont Acousitque</title>
+    <title>Contrepoint acoustique — Tabula Rasa</title>
     <meta
       name="description"
-      content="Tabula Rasa la transparence sonore."
+      content="Tabula Rasa : la transparence sonore."
     >
     <link rel="icon" href="Ressource/images/favicon.ico?v=20260331a" sizes="any">
     <link
@@ -27,7 +27,7 @@
       href="Ressource/images/apple-touch-icon.png?v=20260331a"
     >
     <link rel="stylesheet" href="styles.css?v=20260402c">
-    <script type="module" src="app.js?v=20260404b"></script>
+    <script type="module" src="app.js?v=20260717a"></script>
   </head>
   <body id="top">
     <header class="navbar">
@@ -46,7 +46,7 @@
           <span class="navbar__menu-toggle-text" id="navbar-menu-toggle-text">Menu</span>
         </button>
 
-        <nav class="navbar__nav" id="navbar-nav" aria-label="Navbar"></nav>
+        <nav class="navbar__nav" id="navbar-nav" aria-label="Navigation principale"></nav>
 
         <div class="navbar__controls">
           <button
@@ -81,10 +81,10 @@
       </div>
 
       <div class="navbar__debug-panel" id="debug-panel" hidden>
-        <p class="navbar__debug-panel-title" id="debug-panel-title">Typo debug</p>
+        <p class="navbar__debug-panel-title" id="debug-panel-title">Typographie de débogage</p>
 
         <div class="navbar__debug-toolbar" id="debug-toolbar">
-          <p class="navbar__debug-toolbar-title" id="debug-toolbar-title">Éditeur riche</p>
+          <p class="navbar__debug-toolbar-title" id="debug-toolbar-title">Éditeur de texte enrichi</p>
 
           <div class="navbar__debug-toolbar-actions">
             <button
@@ -136,18 +136,18 @@
           <p class="navbar__debug-manual-title" id="debug-manual-title">Raccourcis</p>
 
           <ul class="navbar__debug-manual-list">
-            <li><kbd>Ctrl+B</kbd><span id="debug-manual-bold-text">gras sélectionné</span></li>
-            <li><kbd>Ctrl+I</kbd><span id="debug-manual-italic-text">italique sélectionné</span></li>
-            <li><kbd>Ctrl+E</kbd><span id="debug-manual-align-text">cycle justify → left → right → center</span></li>
-            <li><kbd>Shift + +</kbd><span id="debug-manual-font-up-text">agrandit la taille du bloc actif</span></li>
+            <li><kbd>Ctrl+B</kbd><span id="debug-manual-bold-text">met la sélection en gras</span></li>
+            <li><kbd>Ctrl+I</kbd><span id="debug-manual-italic-text">met la sélection en italique</span></li>
+            <li><kbd>Ctrl+E</kbd><span id="debug-manual-align-text">fait défiler les alignements : justifié → aligné à gauche → aligné à droite → centré</span></li>
+            <li><kbd>Shift + +</kbd><span id="debug-manual-font-up-text">augmente la taille du bloc actif</span></li>
             <li><kbd>Shift + -</kbd><span id="debug-manual-font-down-text">réduit la taille du bloc actif</span></li>
-            <li><kbd>Image + Shift</kbd><span id="debug-manual-image-text">sur image survolée: Shift + + / Shift + - change la hauteur</span></li>
+            <li><kbd>Shift + + / Shift + -</kbd><span id="debug-manual-image-text">modifie la hauteur de l’image survolée</span></li>
           </ul>
         </div>
 
         <label class="navbar__debug-option">
           <input id="debug-title-font-toggle" type="checkbox">
-          <span id="debug-title-font-label">Special Font</span>
+          <span id="debug-title-font-label">Police spéciale pour les titres</span>
         </label>
 
         <div class="navbar__debug-option navbar__debug-option--stack">
@@ -159,25 +159,25 @@
             Format des titres
           </label>
           <select id="debug-title-case-select" aria-labelledby="debug-title-case-label">
-            <option value="current">Actuel</option>
-            <option value="uppercase">FULL MAJ</option>
-            <option value="sentence">Première lettre</option>
-            <option value="lowercase">minuscules</option>
+            <option value="current">Casse actuelle</option>
+            <option value="uppercase">TOUT EN MAJUSCULES</option>
+            <option value="sentence">Majuscule initiale</option>
+            <option value="lowercase">tout en minuscules</option>
           </select>
         </div>
 
         <label class="navbar__debug-option">
           <input id="debug-body-font-toggle" type="checkbox">
-          <span id="debug-body-font-label">Texte normal en Special Font</span>
+          <span id="debug-body-font-label">Police spéciale pour le texte courant</span>
         </label>
 
         <label class="navbar__debug-option">
           <input id="debug-image-height-toggle" type="checkbox" checked>
-          <span id="debug-image-height-label">Resize image area on hover</span>
+          <span id="debug-image-height-label">Redimensionnement de l’image au survol</span>
         </label>
 
         <button class="navbar__debug-reset-button" id="debug-reset-button" type="button">
-          Reset debug
+          Réinitialiser le débogage
         </button>
       </div>
 

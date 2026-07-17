@@ -1,4 +1,4 @@
-import { state } from "../state.js?v=20260330aa";
+import { state } from "../state.js?v=20260331aa";
 import {
   adjustDebugEditorFontStep,
   cycleDebugEditorAlign,

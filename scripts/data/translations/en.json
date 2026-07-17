@@ -1,0 +1,235 @@
+{
+  "meta": {
+    "title": "Contrepoint acoustique — Tabula Rasa",
+    "description": "Tabula Rasa: sonic transparency."
+  },
+  "ui": {
+    "rowPrefix": "Line",
+    "navShortLabels": {
+      "line-01": "Intro",
+      "line-02": "tabula rasa",
+      "line-03": "Essence",
+      "line-04": "Minimalism",
+      "line-05": "Musicality",
+      "line-06": "Transparency",
+      "line-07": "Voice",
+      "line-08": "Finesse",
+      "line-09": "Specifications",
+      "line-10": "Contact",
+      "line-11": "Legal notice"
+    },
+    "labels": {
+      "language": "Language",
+      "mode": "Text mode",
+      "menuToggle": "Menu",
+      "mainNavigation": "Main navigation",
+      "debugHint": "Debug mode enabled.",
+      "rawFallback": "Raw mode is available in French only.",
+      "debugImageToggle": "Change the image for this line",
+      "debugPanelTitle": "Debug typography",
+      "debugToolbarTitle": "Rich text editor",
+      "debugManualTitle": "Shortcuts",
+      "debugNoActiveField": "No active field",
+      "debugActiveField": "Active field",
+      "debugTitleFont": "Special font for titles",
+      "debugTitleCase": "Title format",
+      "debugBodyFont": "Special font for body text",
+      "debugImageResize": "Resize the image area on hover",
+      "debugReset": "Reset debug settings",
+      "debugBold": "Bold",
+      "debugItalic": "Italic",
+      "debugAlign": "Alignment",
+      "debugFontIncrease": "A+",
+      "debugFontDecrease": "A-",
+      "debugManualBold": "makes the selected text bold",
+      "debugManualItalic": "italicizes the selected text",
+      "debugManualAlign": "cycles through justified → left → right → centered",
+      "debugManualFontIncrease": "increases the active block’s font size",
+      "debugManualFontDecrease": "decreases the active block’s font size",
+      "debugManualImageResize": "adjusts the height of the image under the pointer",
+      "closeImage": "Close image"
+    },
+    "debugTitleCaseModes": {
+      "current": "Current",
+      "uppercase": "UPPERCASE",
+      "sentence": "Sentence case",
+      "lowercase": "Lowercase"
+    },
+    "debugAlignModes": {
+      "justify": "Justified",
+      "left": "Left",
+      "right": "Right",
+      "center": "Centered"
+    },
+    "modes": {
+      "corrected": "Corrected",
+      "marketing": "Marketing",
+      "raw": "Raw"
+    },
+    "editorLabels": {
+      "rowTitle": "Row title",
+      "rowSubtitle": "Row subtitle",
+      "rowQuote": "Row quote",
+      "rowByline": "Row byline",
+      "contactText": "Contact text",
+      "contactAddress": "Contact address",
+      "contactEmail": "Contact email address",
+      "sectionTitle": "Section title",
+      "rowProverb": "Row proverb",
+      "rowText": "Row text",
+      "specFeatureHeader": "Feature column header",
+      "specValueHeader": "Value column header",
+      "specLabel": "Specification label",
+      "specValue": "Specification value",
+      "specProduction": "Limited production",
+      "specPrice": "Price",
+      "specTaxNote": "VAT note",
+      "specSustainableTitle": "Sustainability subtitle",
+      "specSustainableBody": "Sustainability text",
+      "specTechnicalTitle": "Technical subtitle",
+      "specTechnicalBody": "Technical text",
+      "specUsageNote": "Usage note",
+      "legalLeftTitle": "Contact section title",
+      "legalContactBody": "Contact text",
+      "legalRightTitle": "Legal notice title",
+      "legalSummary": "Legal notice summary",
+      "legalModalBody": "Full legal notice"
+    }
+  },
+  "rows": {
+    "line-01": {
+      "title": "“Industrializable art”"
+    },
+    "line-02": {
+      "byline": "By Contrepoint acoustique"
+    },
+    "line-03": {
+      "title": "Add nothing, subtract nothing",
+      "paragraphs": [
+        "The essence of our open-baffle loudspeakers lies in sonic integrity and in a formal purity dictated by function. This design favors clarity and depth over brute power, in pursuit of uncompromising fidelity."
+      ]
+    },
+    "line-04": {
+      "title": "“Honesty, utility, simplicity.”",
+      "proverb": "Shaker proverb",
+      "paragraphs": [
+        "Our approach draws on the ethos of minimal art, a reaction to the complexity of Abstract Expressionism. The minimalist movement seeks to focus on the essential by removing unnecessary details and distractions. This is the starting point for our approach: reproducing sound without artifacts."
+      ]
+    },
+    "line-05": {
+      "title": "Music set free",
+      "paragraphs": [
+        "A single driver reproduces bass, midrange, and treble. This point source delivers precise imaging and exceptionally consistent timbre.\n\nThe design also eliminates the crossover and its associated issues. The driver requires little power for home listening.\n\nThis technology delivers fast transients and microdynamics, resulting in outstanding energy and vitality."
+      ]
+    },
+    "line-06": {
+      "title": "Sonic transparency",
+      "paragraphs": [
+        "We solve problems by removing their causes and stripping away everything that clutters the object. One driver, no cabinet, no electronic components.\n\nInstead of an enclosure, the design uses an acrylic panel and a purpose-built driver. PMMA inherently has low resonance, and the open-baffle design also eliminates standing waves at their source."
+      ]
+    },
+    "line-07": {
+      "title": "The voice is sublime",
+      "paragraphs": [
+        "Tabula rasa offers a high degree of resolution without causing listening fatigue; on the contrary, the sound is smooth and nuanced.\n\nHonesty compels us to say that it favors the midrange over spectacular effects. Yet the midrange conveys 80% of the emotion, and in this respect Tabula rasa is second to none."
+      ]
+    },
+    "line-08": {
+      "title": "Choosing finesse",
+      "paragraphs": [
+        "An amplifier of the utmost refinement is essential; power matters little: 2 × 2 W or 3 W is enough.\nWe can recommend perfectly matched models."
+      ]
+    },
+    "line-09": {
+      "title": "Specifications",
+      "specs": {
+        "tableHeaders": {
+          "label": "Feature",
+          "value": "Value"
+        },
+        "tableRows": [
+          { "label": "Impedance", "value": "8 Ω" },
+          { "label": "Maximum power", "value": "50 W" },
+          { "label": "Break-in period", "value": "50 h" },
+          { "label": "Driver diameter", "value": "22.5 cm" },
+          { "label": "Number of speakers", "value": "2" },
+          { "label": "Speaker width", "value": "40 cm" },
+          { "label": "Speaker height", "value": "40 cm" },
+          { "label": "Speaker depth", "value": "20 cm" },
+          { "label": "Weight per speaker", "value": "5 kg" },
+          { "label": "Shipping weight", "value": "11 kg" }
+        ],
+        "production": "Production limited to 40 pairs per year",
+        "price": "€2,125 per pair",
+        "taxNote": "* VAT not applicable under Article 293 B of the French General Tax Code.",
+        "sustainableTitle": "Sustainable design",
+        "sustainableBody": "No planned obsolescence: durability is central to the design. Recycled and recyclable acrylic glass is paired with a paper speaker cone. The speaker is designed and carefully manufactured in France.",
+        "technicalTitle": "Technical excellence",
+        "technicalBody": "A 22.5 cm full-range driver provides a point source. Its impedance is 8 Ω and its break-in period is 50 hours. It works with tube amplifiers rated at just 2 or 3 W and handles up to 50 W.",
+        "usageNote": "This is not a PA system. Designed for home listening, it delivers a pure and intimate sound experience."
+      }
+    },
+    "line-10": {
+      "title": "Contact us",
+      "paragraphs": [
+        "Name: Contrepoint acoustique\n\nAddress:\n54 route de Mur de Sologne\n41230 Veilleins\nLoir-et-Cher\nFrance\n\nPhone: 06 62 59 14 98\n\nEmail: valereorlic@contrepointacoustique.com"
+      ]
+    },
+    "line-11": {
+      "legal": {
+        "rightTitle": "Legal notice",
+        "rightBody": "Publisher: Valere Orlic, sole proprietor (EI).\nBrand: Contrepoint acoustique.\nRegistration: RM 751 135 732 RM 41; SIRET 751 135 732 00012; SIREN 751 135 732; APE/NAF code 2640Z.\nVAT not applicable under Article 293 B of the French General Tax Code.\nHosting provider: GitHub, Inc. (+1 415 735 4488).\nConsumer mediation: [to be completed] for B2C sales.\nCookies: no cookies or trackers requiring consent; no cookie banner.\nFull details are available via the link below.",
+        "modalTitle": "Legal notice",
+        "modalBody": "Website publisher:\n    Full name: Valere Orlic\n    Legal status: sole proprietor (EI)\n    Brand: Contrepoint acoustique (registered trademark)\n    Address: 54 route de Mur de Sologne, 41230 Veilleins, Loir-et-Cher, France\n    Phone: 06 62 59 14 98\n    Email: valereorlic@contrepointacoustique.com\n\nRegistration:\n    RM: 751 135 732 RM 41\n    SIREN: 751 135 732\n    SIRET: 751 135 732 00012\n    APE/NAF code: 2640Z\n\nVAT:\n    VAT not applicable under Article 293 B of the French General Tax Code\n    Intra-Community VAT number: not applicable under the VAT exemption scheme [to be confirmed]\n\nHosting provider:\n    Company name: GitHub, Inc.\n    Address: 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA\n    Phone: +1 415 735 4488\n    Website: https://github.com\n\nPublication director:\n    Valere Orlic\n\nIntellectual property:\n    All content (text, images, logo, and brand) is protected.\n    Unauthorized reproduction is prohibited.\n\nConsumer mediation (for B2C sales):\n    Mediator’s name: [to be completed]\n    Link: [to be completed]\n    Not applicable if the business operates exclusively B2B.\n\nPersonal data (GDPR):\n    Data controller: Valere Orlic\n    Purposes: handling contact requests and managing the business relationship\n    Legal basis: legitimate interest and/or consent, depending on the form\n    Retention period: data submitted by email is kept only as long as necessary to process the request. If no business relationship follows, it is deleted no later than three years after the last contact initiated by the person. If an order is placed, information required for invoicing is retained for ten years in accordance with legal obligations.\n    Rights (access, rectification, erasure, and objection):\n    requests may be sent by email to valereorlic@contrepointacoustique.com\n    GDPR contact: valereorlic@contrepointacoustique.com\n    Complaints to the CNIL: https://www.cnil.fr\n\nCookies and trackers:\n    Cookie policy: no cookie or tracker requiring consent is used.\n    Consent management: no cookie banner is used.",
+        "modalOpenLabel": "View the full legal notice",
+        "modalBackLabel": "Back",
+        "modalCloseLabel": "Close"
+      }
+    }
+  },
+  "modes": {
+    "corrected": {
+      "line-02": {
+        "title": "tabula rasa",
+        "subtitle": "A minimalist loudspeaker focused on precision, speed, and the emotional power of the midrange.",
+        "quote": "“Add nothing, subtract nothing.”"
+      }
+    },
+    "marketing": {
+      "line-02": {
+        "title": "tabula rasa",
+        "subtitle": "A refined acoustic object built for clarity and musical immediacy.",
+        "quote": "“Honesty, utility, simplicity.”"
+      },
+      "line-03": {
+        "paragraphs": [
+          "Single-driver coherence, open architecture, and controlled resonance define the listening experience.",
+          "The midrange conveys emotion through stable imaging and fatigue-free listening.",
+          "This technical approach preserves natural dynamics and vivid expression."
+        ]
+      }
+    }
+  },
+  "mediaAlts": {
+    "brand": "Contrepoint acoustique.",
+    "speakerPair": "Pair of speakers.",
+    "speakerFront": "Front view of a speaker.",
+    "speakerPairAmplifier": "Pair of speakers with an amplifier.",
+    "speakerFull": "Full view of the speaker.",
+    "speakerRearLeftAndRight": "Rear view of the left speaker and front view of the right speaker.",
+    "speakerChair": "Speaker next to a chair.",
+    "speakerFrontLeft": "Front-left view of the speaker.",
+    "speakerRearLeftClose": "Close-up of the speaker’s rear-left side.",
+    "speakerRearLeftDetail": "Detail of the speaker’s rear-left side.",
+    "speakerRearLeft": "Rear-left view of the speaker.",
+    "speakerFrontLeftDetail": "Detail of the speaker’s front-left side.",
+    "speakerFrontRightDetail": "Detail of the speaker’s front-right side.",
+    "speakerCorner": "Detail of the speaker’s front corner.",
+    "speakerCornerZoom": "Close-up of the speaker’s front corner.",
+    "speakerRearAndFront": "Rear view of one speaker and front view of the other.",
+    "speakerTop": "Front view of the driver.",
+    "speakerPerspective": "Three-quarter view of the driver.",
+    "speakerBottom": "Rear view of the driver.",
+    "deliveryTruck": "Contrepoint acoustique delivery truck."
+  }
+}
