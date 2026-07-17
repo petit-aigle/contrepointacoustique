@@ -1,4 +1,4 @@
-import { state } from "../state.js?v=20260330aa";
+import { state } from "../state.js?v=20260331aa";
 
 const DEBUG_IMAGE_HEIGHT_STEP_PX = 24;
 const DEBUG_IMAGE_MIN_HEIGHT = 120;

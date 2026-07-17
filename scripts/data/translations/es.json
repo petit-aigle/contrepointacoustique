@@ -1,0 +1,235 @@
+{
+  "meta": {
+    "title": "Contrepoint acoustique — Tabula Rasa",
+    "description": "Tabula Rasa: transparencia sonora."
+  },
+  "ui": {
+    "rowPrefix": "Línea",
+    "navShortLabels": {
+      "line-01": "Introducción",
+      "line-02": "tabula rasa",
+      "line-03": "Esencia",
+      "line-04": "Minimalismo",
+      "line-05": "Musicalidad",
+      "line-06": "Transparencia",
+      "line-07": "La voz",
+      "line-08": "Sutileza",
+      "line-09": "Especificaciones",
+      "line-10": "Contacto",
+      "line-11": "Aviso legal"
+    },
+    "labels": {
+      "language": "Idioma",
+      "mode": "Modo de texto",
+      "menuToggle": "Menú",
+      "mainNavigation": "Navegación principal",
+      "debugHint": "Modo de depuración activado.",
+      "rawFallback": "El modo «Original» solo está disponible en francés.",
+      "debugImageToggle": "Cambiar la imagen de esta línea",
+      "debugPanelTitle": "Tipografía de depuración",
+      "debugToolbarTitle": "Editor de texto enriquecido",
+      "debugManualTitle": "Atajos",
+      "debugNoActiveField": "Ningún campo activo",
+      "debugActiveField": "Campo activo",
+      "debugTitleFont": "Fuente especial para los títulos",
+      "debugTitleCase": "Formato de los títulos",
+      "debugBodyFont": "Fuente especial para el texto normal",
+      "debugImageResize": "Redimensionar el área de la imagen al pasar el cursor",
+      "debugReset": "Restablecer ajustes de depuración",
+      "debugBold": "Negrita",
+      "debugItalic": "Cursiva",
+      "debugAlign": "Alineación",
+      "debugFontIncrease": "A+",
+      "debugFontDecrease": "A-",
+      "debugManualBold": "pone en negrita el texto seleccionado",
+      "debugManualItalic": "pone en cursiva el texto seleccionado",
+      "debugManualAlign": "alterna entre justificado, alineado a la izquierda, alineado a la derecha y centrado",
+      "debugManualFontIncrease": "aumenta el tamaño de letra del bloque activo",
+      "debugManualFontDecrease": "reduce el tamaño de letra del bloque activo",
+      "debugManualImageResize": "ajusta la altura de la imagen situada bajo el cursor",
+      "closeImage": "Cerrar imagen"
+    },
+    "debugTitleCaseModes": {
+      "current": "Sin cambios",
+      "uppercase": "MAYÚSCULAS",
+      "sentence": "Tipo oración",
+      "lowercase": "Minúsculas"
+    },
+    "debugAlignModes": {
+      "justify": "Justificado",
+      "left": "Izquierda",
+      "right": "Derecha",
+      "center": "Centrado"
+    },
+    "modes": {
+      "corrected": "Corregido",
+      "marketing": "Promocional",
+      "raw": "Original"
+    },
+    "editorLabels": {
+      "rowTitle": "Título de la línea",
+      "rowSubtitle": "Subtítulo de la línea",
+      "rowQuote": "Cita de la línea",
+      "rowByline": "Firma de la línea",
+      "contactText": "Texto de contacto",
+      "contactAddress": "Dirección de contacto",
+      "contactEmail": "Correo electrónico de contacto",
+      "sectionTitle": "Título de la sección",
+      "rowProverb": "Proverbio de la línea",
+      "rowText": "Texto de la línea",
+      "specFeatureHeader": "Encabezado de la columna «Característica»",
+      "specValueHeader": "Encabezado de la columna «Valor»",
+      "specLabel": "Etiqueta de la especificación",
+      "specValue": "Valor de la especificación",
+      "specProduction": "Producción limitada",
+      "specPrice": "Precio",
+      "specTaxNote": "Nota sobre el IVA",
+      "specSustainableTitle": "Subtítulo sobre sostenibilidad",
+      "specSustainableBody": "Texto sobre sostenibilidad",
+      "specTechnicalTitle": "Subtítulo técnico",
+      "specTechnicalBody": "Texto técnico",
+      "specUsageNote": "Nota de uso",
+      "legalLeftTitle": "Título de la sección de contacto",
+      "legalContactBody": "Texto de contacto",
+      "legalRightTitle": "Título del aviso legal",
+      "legalSummary": "Resumen del aviso legal",
+      "legalModalBody": "Texto completo del aviso legal"
+    }
+  },
+  "rows": {
+    "line-01": {
+      "title": "«El arte industrializable»"
+    },
+    "line-02": {
+      "byline": "Por Contrepoint acoustique"
+    },
+    "line-03": {
+      "title": "No añadir nada ni quitar nada",
+      "paragraphs": [
+        "La esencia de nuestros altavoces de bafle abierto reside en la integridad sonora y en una pureza formal dictada por la función. Este diseño privilegia la claridad y el relieve frente a la potencia bruta, al servicio de una fidelidad rigurosa."
+      ]
+    },
+    "line-04": {
+      "title": "«Honestidad, utilidad, sencillez»",
+      "proverb": "Proverbio de los shakers",
+      "paragraphs": [
+        "Nuestro enfoque se inspira en la ética del arte minimalista, una reacción a la complejidad del expresionismo abstracto. El movimiento minimalista busca centrarse en lo esencial, eliminando detalles y distracciones innecesarios. Este es el punto de partida de nuestro enfoque: reproducir el sonido sin artefactos."
+      ]
+    },
+    "line-05": {
+      "title": "La música se libera",
+      "paragraphs": [
+        "Un único transductor reproduce los graves, los medios y los agudos. Esta fuente puntual ofrece una imagen precisa y una homogeneidad tímbrica excepcional.\n\nEl diseño también prescinde del filtro de cruce y de los problemas asociados. El transductor requiere poca potencia para la escucha doméstica.\n\nEsta tecnología ofrece una respuesta transitoria rápida y una microdinámica que se traducen en una vivacidad y una vitalidad excepcionales."
+      ]
+    },
+    "line-06": {
+      "title": "La transparencia del sonido",
+      "paragraphs": [
+        "Resolvemos los problemas eliminando sus causas y liberando el objeto de todo lo que lo sobrecarga. Un solo transductor, sin recinto ni componentes electrónicos.\n\nEn lugar de una caja, el diseño utiliza un panel acrílico y un transductor específico. El PMMA es intrínsecamente poco resonante y el bafle abierto también permite eliminar de raíz las ondas estacionarias."
+      ]
+    },
+    "line-07": {
+      "title": "La voz es sublime",
+      "paragraphs": [
+        "Tabula rasa ofrece un alto nivel de resolución sin fatiga auditiva; por el contrario, la escucha es suave y matizada.\n\nLa honestidad nos obliga a señalar que privilegia la gama media frente a los efectos espectaculares. Pero sabemos que la gama media transmite el 80 % de la emoción y, en este aspecto, Tabula rasa no tiene rival."
+      ]
+    },
+    "line-08": {
+      "title": "La elección de la sutileza",
+      "paragraphs": [
+        "Es esencial un amplificador de la máxima sutileza; la potencia importa poco: bastan 2 × 2 W o 3 W.\nPodemos recomendarle modelos perfectamente adaptados."
+      ]
+    },
+    "line-09": {
+      "title": "Especificaciones",
+      "specs": {
+        "tableHeaders": {
+          "label": "Característica",
+          "value": "Valor"
+        },
+        "tableRows": [
+          { "label": "Impedancia", "value": "8 Ω" },
+          { "label": "Potencia máxima", "value": "50 W" },
+          { "label": "Rodaje", "value": "50 h" },
+          { "label": "Diámetro del transductor", "value": "22,5 cm" },
+          { "label": "Número de altavoces", "value": "2" },
+          { "label": "Anchura del altavoz", "value": "40 cm" },
+          { "label": "Altura del altavoz", "value": "40 cm" },
+          { "label": "Profundidad del altavoz", "value": "20 cm" },
+          { "label": "Peso por altavoz", "value": "5 kg" },
+          { "label": "Peso del envío", "value": "11 kg" }
+        ],
+        "production": "Producción limitada a 40 pares al año",
+        "price": "2125 € por pareja",
+        "taxNote": "* IVA no aplicable conforme al artículo 293 B del Código General de Impuestos francés.",
+        "sustainableTitle": "Diseño sostenible",
+        "sustainableBody": "Sin obsolescencia programada: la durabilidad es una prioridad fundamental. El vidrio acrílico reciclado y reciclable se combina con una membrana de papel. El producto se diseña y fabrica en Francia con esmero y precisión.",
+        "technicalTitle": "Excelencia técnica",
+        "technicalBody": "Un transductor de banda ancha de 22,5 cm actúa como fuente puntual. Su impedancia es de 8 Ω y el periodo de rodaje es de 50 horas. Funciona con amplificadores de válvulas de tan solo 2 o 3 W y admite hasta 50 W.",
+        "usageNote": "No es un sistema de sonorización. Está pensado para la escucha doméstica y ofrece una experiencia sonora pura e íntima."
+      }
+    },
+    "line-10": {
+      "title": "Contacto",
+      "paragraphs": [
+        "Nombre: Contrepoint acoustique\n\nDirección:\n54 route de Mur de Sologne\n41230 Veilleins\nLoir-et-Cher\nFrancia\n\nTeléfono: 06 62 59 14 98\n\nCorreo electrónico: valereorlic@contrepointacoustique.com"
+      ]
+    },
+    "line-11": {
+      "legal": {
+        "rightTitle": "Aviso legal",
+        "rightBody": "Editor del sitio: Valere Orlic, empresario individual (EI).\nMarca: Contrepoint acoustique.\nRegistro: RM 751 135 732 RM 41; SIRET 751 135 732 00012; SIREN 751 135 732; código APE/NAF 2640Z.\nIVA no aplicable conforme al artículo 293 B del Código General de Impuestos francés.\nProveedor de alojamiento: GitHub, Inc. (+1 415 735 4488).\nMediación de consumo: [por completar] en caso de ventas B2C.\nCookies: no se utilizan cookies ni rastreadores sujetos a consentimiento; no se muestra ningún aviso de cookies.\nLa información completa está disponible en el enlace siguiente.",
+        "modalTitle": "Aviso legal",
+        "modalBody": "Editor del sitio web:\n    Nombre y apellidos: Valere Orlic\n    Situación jurídica: empresario individual (EI)\n    Marca: Contrepoint acoustique (marca registrada)\n    Dirección: 54 route de Mur de Sologne, 41230 Veilleins, Loir-et-Cher, Francia\n    Teléfono: 06 62 59 14 98\n    Correo electrónico: valereorlic@contrepointacoustique.com\n\nRegistro:\n    RM: 751 135 732 RM 41\n    SIREN: 751 135 732\n    SIRET: 751 135 732 00012\n    Código APE/NAF: 2640Z\n\nIVA:\n    IVA no aplicable conforme al artículo 293 B del Código General de Impuestos francés\n    Número de IVA intracomunitario: no aplicable en régimen de franquicia de IVA [por confirmar]\n\nProveedor de alojamiento:\n    Nombre o razón social: GitHub, Inc.\n    Dirección: 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, EE. UU.\n    Teléfono: +1 415 735 4488\n    Sitio web: https://github.com\n\nDirector de la publicación:\n    Valere Orlic\n\nPropiedad intelectual:\n    Todo el contenido (textos, imágenes, logotipo y marca) está protegido.\n    Queda prohibida toda reproducción no autorizada.\n\nMediación de consumo (en caso de ventas B2C):\n    Nombre del mediador: [por completar]\n    Enlace: [por completar]\n    No aplicable si la actividad se dirige exclusivamente a empresas (B2B).\n\nDatos personales (RGPD):\n    Responsable del tratamiento: Valere Orlic\n    Finalidades: gestión de las solicitudes de contacto y de la relación comercial\n    Base jurídica: interés legítimo o consentimiento, según el formulario\n    Plazo de conservación: los datos comunicados por correo electrónico se conservan durante el tiempo necesario para tramitar la solicitud. Si no se establece una relación comercial, se eliminan, como máximo, tres años después del último contacto iniciado por la persona interesada. En caso de pedido, los datos necesarios para la facturación se conservan durante diez años de conformidad con las obligaciones legales.\n    Derechos (acceso, rectificación, supresión y oposición):\n    las solicitudes deben enviarse por correo electrónico a valereorlic@contrepointacoustique.com\n    Contacto RGPD: valereorlic@contrepointacoustique.com\n    Reclamación ante la CNIL: https://www.cnil.fr\n\nCookies y rastreadores:\n    Política de cookies: no se utiliza ninguna cookie ni ningún rastreador sujeto a consentimiento.\n    Gestión del consentimiento: no se muestra ningún aviso de cookies.",
+        "modalOpenLabel": "Ver el aviso legal completo",
+        "modalBackLabel": "Volver",
+        "modalCloseLabel": "Cerrar"
+      }
+    }
+  },
+  "modes": {
+    "corrected": {
+      "line-02": {
+        "title": "tabula rasa",
+        "subtitle": "Un altavoz minimalista centrado en la precisión, la velocidad y la emoción que transmite la gama media.",
+        "quote": "«No añadir nada ni quitar nada»."
+      }
+    },
+    "marketing": {
+      "line-02": {
+        "title": "tabula rasa",
+        "subtitle": "Un objeto acústico sobrio y expresivo, pensado para escuchar música de forma directa.",
+        "quote": "«Honestidad, utilidad, sencillez»."
+      },
+      "line-03": {
+        "paragraphs": [
+          "La coherencia de un único transductor, la arquitectura abierta y el control de las resonancias definen la experiencia de escucha.",
+          "La gama media transmite la emoción con una escena estable y sin fatiga auditiva.",
+          "Este enfoque técnico preserva el dinamismo natural y una expresión llena de vida."
+        ]
+      }
+    }
+  },
+  "mediaAlts": {
+    "brand": "Contrepoint acoustique.",
+    "speakerPair": "Pareja de altavoces.",
+    "speakerFront": "Vista frontal de un altavoz.",
+    "speakerPairAmplifier": "Pareja de altavoces con un amplificador.",
+    "speakerFull": "Vista completa del altavoz.",
+    "speakerRearLeftAndRight": "Vista posterior del altavoz izquierdo y vista frontal del derecho.",
+    "speakerChair": "Altavoz junto a una silla.",
+    "speakerFrontLeft": "Vista frontal izquierda del altavoz.",
+    "speakerRearLeftClose": "Primer plano de la parte posterior izquierda del altavoz.",
+    "speakerRearLeftDetail": "Detalle de la parte posterior izquierda del altavoz.",
+    "speakerRearLeft": "Vista posterior izquierda del altavoz.",
+    "speakerFrontLeftDetail": "Detalle de la parte frontal izquierda del altavoz.",
+    "speakerFrontRightDetail": "Detalle de la parte frontal derecha del altavoz.",
+    "speakerCorner": "Detalle de una esquina frontal del altavoz.",
+    "speakerCornerZoom": "Primer plano de una esquina frontal del altavoz.",
+    "speakerRearAndFront": "Vista posterior de un altavoz y vista frontal del otro.",
+    "speakerTop": "Vista frontal del transductor.",
+    "speakerPerspective": "Vista de tres cuartos del transductor.",
+    "speakerBottom": "Vista posterior del transductor.",
+    "deliveryTruck": "Camión de reparto de Contrepoint acoustique."
+  }
+}

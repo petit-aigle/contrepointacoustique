@@ -1,4 +1,4 @@
-import { getDebugTextKey, state } from "../state.js?v=20260330aa";
+import { getDebugTextKey, state } from "../state.js?v=20260331aa";
 import { sanitizeRichHTML, textToRichHTML } from "./editor-html.js?v=20260330aa";
 
 const ALIGNMENT_CYCLE = ["justify", "left", "right", "center"];

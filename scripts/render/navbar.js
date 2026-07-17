@@ -7,8 +7,22 @@ function createNavLink(item) {
   return link;
 }
 
+/**
+ * Render the localized navbar and debug controls.
+ *
+ * @param {Record<string, HTMLElement>} refs - Navbar DOM references.
+ * @param {object} state - Current application and debug state.
+ * @param {object} siteContent - Localized navbar and interface content.
+ * @param {boolean} showFallback - Whether to display the mode fallback message.
+ * @returns {void}
+ * @sideEffects Updates the navbar DOM.
+ */
 export function renderNavbar(refs, state, siteContent, showFallback = false) {
   refs.navbarNav.innerHTML = "";
+  refs.navbarNav.setAttribute(
+    "aria-label",
+    siteContent.uiText.labels.mainNavigation
+  );
   siteContent.navbarItems.forEach((item) => {
     refs.navbarNav.appendChild(createNavLink(item));
   });
@@ -16,10 +30,10 @@ export function renderNavbar(refs, state, siteContent, showFallback = false) {
   refs.languageLabel.textContent = siteContent.uiText.labels.language;
   refs.modeLabel.textContent = siteContent.uiText.labels.mode;
   refs.navbarMenuToggleText.textContent =
-    siteContent.uiText.labels.menuToggle || "Menu";
+    siteContent.uiText.labels.menuToggle || "";
   refs.navbarMenuToggle.setAttribute(
     "aria-label",
-    siteContent.uiText.labels.menuToggle || "Menu"
+    siteContent.uiText.labels.menuToggle || ""
   );
   refs.languageSelect.value = state.lang;
   refs.modeSelect.value = state.mode;
