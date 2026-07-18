@@ -1,8 +1,9 @@
 import {
   getCanonicalHashTarget,
   getHashForRowId,
+  getNavbarTargetForRowId,
   getSiteContent,
-} from "./data/site-content.js?v=20260718h";
+} from "./data/site-content.js?v=20260718i";
 import {
   adjustActiveDebugEditorFontSize,
   applyInlineCommand,
@@ -762,10 +763,14 @@ function runActiveEditorAction(siteContent, action) {
 }
 
 function setActiveNavLink(targetId) {
+  const navbarTargetId = getNavbarTargetForRowId(targetId);
   document
     .querySelectorAll(".navbar__link[data-nav-target]")
     .forEach((link) => {
-      link.classList.toggle("is-active", link.dataset.navTarget === targetId);
+      link.classList.toggle(
+        "is-active",
+        link.dataset.navTarget === navbarTargetId
+      );
     });
 }
 
