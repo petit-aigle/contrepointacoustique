@@ -32,7 +32,7 @@ import {
   getRowSectionById,
   getStickyNavbarOffset,
   restoreRowViewportAnchor,
-} from "./scroll/geometry.js?v=20260718g";
+} from "./scroll/geometry.js?v=20260718h";
 import { createNativeScrollController } from "./scroll/engine.js?v=20260718g";
 import { createScrollHashSync } from "./scroll/hash-sync.js?v=20260718g";
 import {
