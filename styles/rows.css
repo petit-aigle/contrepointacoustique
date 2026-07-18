@@ -199,7 +199,7 @@ body.is-legal-modal-open {
 }
 
 .site-row--line-01 .site-row__figure--brand {
-  margin-top: 1.7rem;
+  margin-top: 0.14rem;
 }
 
 .site-row__figure--debug-toggle {
@@ -936,6 +936,11 @@ body.is-legal-modal-open {
   .site-row--line-08 .site-row__content {
     border-radius: 0;
     padding-top: 1rem;
+  }
+
+  .site-row--line-08 .site-row__content-inner {
+    max-width: 560px;
+    padding-inline-start: 0;
   }
 
   .site-row--line-09 .site-row__media {

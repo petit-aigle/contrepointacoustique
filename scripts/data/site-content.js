@@ -62,6 +62,17 @@ export const CANONICAL_ROW_ORDER = [
   "line-11",
 ];
 
+const NAVBAR_ROW_IDS = ["line-02", "line-09", "line-10", "line-11"];
+const TABULA_NAVBAR_ROW_IDS = new Set([
+  "line-02",
+  "line-03",
+  "line-04",
+  "line-05",
+  "line-06",
+  "line-07",
+  "line-08",
+]);
+
 const ROW_HASH_BY_ID = {
   "line-01": "intro",
   "line-02": "tabula",
@@ -635,6 +646,21 @@ export function getHashForRowId(rowId) {
 }
 
 /**
+ * Return the navbar target representing one ligne.
+ *
+ * @param {string} rowId - Canonical ligne identifier.
+ * @returns {string|null} Visible navbar target, or null when none applies.
+ * @sideEffects None.
+ */
+export function getNavbarTargetForRowId(rowId) {
+  if (TABULA_NAVBAR_ROW_IDS.has(rowId)) {
+    return "line-02";
+  }
+
+  return NAVBAR_ROW_IDS.includes(rowId) ? rowId : null;
+}
+
+/**
  * Compose the localized navbar and lignes for the current application state.
  *
  * @param {{lang: string, mode: string, debug: boolean, debugImageVariants: Record<string, number>}} currentState - Active language, text mode, and debug state.
@@ -659,13 +685,16 @@ export function getSiteContent(currentState) {
   }));
 
   /** @type {NavbarItem[]} */
-  const navbarItems = rows.map((row, index) => ({
-    id: `navbar-${row.id}`,
-    href: `#${getHashForRowId(row.id)}`,
-    label:
-      uiText.navShortLabels?.[row.id] || `${uiText.rowPrefix} ${index + 1}`,
-    navTarget: row.navTarget,
-  }));
+  const navbarItems = rows
+    .filter((row) => NAVBAR_ROW_IDS.includes(row.id))
+    .map((row) => ({
+      id: `navbar-${row.id}`,
+      href: `#${getHashForRowId(row.id)}`,
+      label:
+        uiText.navShortLabels?.[row.id] ||
+        `${uiText.rowPrefix} ${CANONICAL_ROW_ORDER.indexOf(row.id) + 1}`,
+      navTarget: row.navTarget,
+    }));
 
   return {
     language,
