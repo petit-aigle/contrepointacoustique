@@ -1,9 +1,9 @@
-import { state } from "../state.js?v=20260331aa";
+import { state } from "../state.js?v=20260718g";
 import {
   adjustDebugEditorFontStep,
   cycleDebugEditorAlign,
   getDebugEditorRecord,
-} from "./editor-state.js?v=20260330aa";
+} from "./editor-state.js?v=20260718g";
 import { sanitizeRichHTML, textToRichHTML } from "./editor-html.js?v=20260330aa";
 
 let savedSelectionRange = null;

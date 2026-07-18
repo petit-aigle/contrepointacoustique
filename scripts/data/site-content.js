@@ -1,4 +1,4 @@
-import { TRANSLATIONS } from "./translations/index.js?v=20260717a";
+import { TRANSLATIONS } from "./translations/index.js?v=20260718g";
 
 /**
  * @typedef {Object} NavbarItem
@@ -101,7 +101,7 @@ const MEDIA_ALT_KEY_BY_SOURCE = {
     "speakerFrontRightDetail",
   "Ressource/images/enceinte_vue_super_face_corner_close_left.jpg":
     "speakerCorner",
-  "Ressource/images/enceinte_vue_super_face_corner_close_left_zoom.jpg":
+  "Ressource/images/enceinte_vue_super_face_corner_close_left_zoom_2.jpg":
     "speakerCornerZoom",
   "Ressource/images/speaker-top.jpg": "speakerTop",
   "Ressource/images/speaker.jpg": "speakerPerspective",
@@ -112,8 +112,8 @@ const MEDIA_ALT_KEY_BY_SOURCE = {
 const MEDIA = {
   "line-01": {
     src: "Ressource/images/title_and_logo_left.jpg",
-    width: 2947,
-    height: 2934,
+    width: 3000,
+    height: 647,
     shape: "brand",
     debugVariants: [
       {
@@ -122,8 +122,8 @@ const MEDIA = {
     ],
   },
   "line-02": {
-    src: "Ressource/images/enceinte_double.jpg",
-    width: 6720,
+    src: "Ressource/images/enceinte_vue_super_face_close_right.jpg",
+    width: 3584,
     height: 4480,
     shape: "pill-left",
     debugVariants: [
@@ -188,7 +188,7 @@ const MEDIA = {
         height: 4480,
       },
       {
-        src: "Ressource/images/enceinte_vue_super_face_corner_close_left_zoom.jpg",
+        src: "Ressource/images/enceinte_vue_super_face_corner_close_left_zoom_2.jpg",
         width: 2865,
         height: 2653,
       },
@@ -196,8 +196,8 @@ const MEDIA = {
   },
   "line-03": {
     src: "Ressource/images/enceinte_vue.jpg",
-    width: 5792,
-    height: 8688,
+    width: 6720,
+    height: 4480,
     shape: "circle",
     debugVariants: [
       {
@@ -314,7 +314,7 @@ const MEDIA = {
     ],
   },
   "line-07": {
-    src: "Ressource/images/enceinte_vue_super_face_corner_close_left_zoom.jpg",
+    src: "Ressource/images/enceinte_vue_super_face_corner_close_left_zoom_2.jpg",
     width: 2865,
     height: 2653,
     shape: "pill-left",
@@ -401,8 +401,8 @@ const MEDIA = {
   },
   "line-10": {
     src: "Ressource/images/camion.png",
-    width: 1600,
-    height: 1200,
+    width: 1536,
+    height: 1024,
     shape: "brand",
   },
 };
@@ -643,7 +643,7 @@ export function getHashForRowId(rowId) {
  */
 export function getSiteContent(currentState) {
   const requestedLanguage = currentState.lang;
-  const language = TRANSLATIONS[requestedLanguage] ? requestedLanguage : "fr";
+  const language = TRANSLATIONS[requestedLanguage] ? requestedLanguage : "en";
   const translation = TRANSLATIONS[language];
   const uiText = translation.ui;
 

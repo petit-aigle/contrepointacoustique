@@ -2,7 +2,7 @@
   position: sticky;
   top: 0;
   z-index: 30;
-  background: transparent;
+  background: #000000;
   backdrop-filter: none;
   --navbar-gray: #9d9d9d;
   --navbar-white: #ababab;
@@ -275,7 +275,7 @@
   font-size: 0.8rem;
 }
 
-@media (max-width: 980px) {
+@media (max-width: 1365px) {
   .navbar.is-menu-open {
     background: #000000;
   }
@@ -290,6 +290,8 @@
   .navbar__menu-toggle {
     display: inline-flex;
     position: relative;
+    grid-column: 1;
+    grid-row: 1;
     width: 2.4rem;
     height: 2.4rem;
     min-width: 2.4rem;
@@ -357,6 +359,8 @@
   }
 
   .navbar__controls {
+    grid-column: 2;
+    grid-row: 1;
     justify-content: flex-end;
     width: auto;
     justify-self: end;
@@ -367,6 +371,7 @@
     display: none;
     width: 100%;
     grid-column: 1 / -1;
+    grid-row: 2;
     flex-direction: column;
     flex-wrap: nowrap;
     gap: 0;
@@ -396,5 +401,24 @@
 
   .navbar.is-menu-open .navbar__nav {
     display: flex;
+    min-height: 0;
+    align-self: stretch;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .navbar.is-menu-open .navbar__inner {
+    max-height: 100vh;
+    max-height: 100dvh;
+    grid-template-rows: auto minmax(0, 1fr);
+    overflow: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar__menu-toggle-line,
+  .navbar__menu-toggle-icon::before,
+  .navbar__menu-toggle-icon::after {
+    transition: none;
   }
 }
