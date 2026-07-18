@@ -826,7 +826,7 @@ body.is-legal-modal-open {
 }
 
 .site-row__spec-price {
-  margin: 0 0 1rem;
+  margin: 0 0 0.35rem;
   font-weight: 600;
   --debug-base-font-size: 2rem;
   font-size: var(--debug-base-font-size);
@@ -834,7 +834,7 @@ body.is-legal-modal-open {
 }
 
 .site-row__spec-tax-note {
-  margin: 0 0 0.35rem;
+  margin: 0 0 1rem;
   --debug-base-font-size: 0.86rem;
   font-size: var(--debug-base-font-size);
   font-style: italic;
