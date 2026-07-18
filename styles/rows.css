@@ -4,11 +4,13 @@
   align-items: stretch;
   gap: 0;
   min-height: clamp(24rem, 38vw, 36rem);
-  scroll-margin-top: 6.2rem;
+  scroll-margin-top: calc(var(--navbar-height, 4rem) + 0.5rem);
 }
 
 body.is-legal-modal-open {
   overflow: hidden;
+  padding-inline-end: var(--scroll-lock-compensation, 0);
+  background: #000000;
 }
 
 .site-row--light {
@@ -19,7 +21,7 @@ body.is-legal-modal-open {
 .site-row--line-01 {
   grid-template-columns: 1fr 1fr;
   padding: 0;
-  min-height: clamp(22.5rem, 14.5vw, 13.4rem);
+  min-height: clamp(13.4rem, 14.5vw, 22.5rem);
   align-items: center;
 }
 
@@ -30,7 +32,7 @@ body.is-legal-modal-open {
 .site-row--line-02 .site-row__figure--pill-left {
   width: 100%;
   height: auto;
-  aspect-ratio: 6720 / 4510;
+  aspect-ratio: 3584 / 4480;
 }
 
 .site-row--line-02 .site-row__figure--pill-left img {
@@ -100,17 +102,20 @@ body.is-legal-modal-open {
 .site-row--line-07 {
   grid-template-columns: 2fr 1fr;
   min-height: 100vh;
+  min-height: 100svh;
 }
 
 .site-row--line-08 {
   grid-template-columns: 2fr 1fr;
   min-height: 100vh;
+  min-height: 100svh;
   background: #000000;
 }
 
 .site-row--line-09 {
   grid-template-columns: 2fr 1fr;
   min-height: 100vh;
+  min-height: 100svh;
   background: var(--bg-page);
   color: var(--text-light);
 }
@@ -118,12 +123,14 @@ body.is-legal-modal-open {
 .site-row--line-10 {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   min-height: 100vh;
+  min-height: 100svh;
   background: #000000;
 }
 
 .site-row--line-11 {
   grid-template-columns: 1fr;
   min-height: 100vh;
+  min-height: 100svh;
   background: #000000;
 }
 
@@ -163,13 +170,16 @@ body.is-legal-modal-open {
   border: 0;
   background: transparent;
   padding: 0;
-  transition: width 160ms ease, height 160ms ease;
 }
 
 .site-row__figure img {
   width: 100%;
   height: auto;
   cursor: zoom-in;
+}
+
+.site-row__figure[data-debug-image-row],
+.site-row__figure[data-debug-image-row] img {
   transition: width 160ms ease, height 160ms ease;
 }
 
@@ -186,6 +196,10 @@ body.is-legal-modal-open {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+
+.site-row--line-01 .site-row__figure--brand {
+  margin-top: 0.14rem;
 }
 
 .site-row__figure--debug-toggle {
@@ -507,6 +521,16 @@ body.is-legal-modal-open {
   font-size: var(--debug-base-font-size);
 }
 
+.site-row__contact-email,
+.site-row__contact-email a,
+.site-row__contact-email-value,
+.site-row__line10-left-body,
+.site-row__line10-right-body,
+.site-row__legal-modal-body {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
 .site-row--line-10 .site-row__content {
   padding: 0;
   order: 1;
@@ -637,6 +661,7 @@ body.is-legal-modal-open {
   align-items: center;
   justify-content: center;
   padding: 1.2rem;
+  overscroll-behavior: contain;
 }
 
 .site-row__legal-modal[hidden] {
@@ -646,7 +671,9 @@ body.is-legal-modal-open {
 .site-row__legal-modal-dialog {
   width: min(56rem, 100%);
   max-height: min(90vh, 52rem);
+  max-height: min(90dvh, 52rem);
   overflow: auto;
+  overscroll-behavior: contain;
   background: #0e0e0e;
   border: 1px solid rgba(255, 255, 255, 0.24);
   color: #ffffff;
@@ -688,6 +715,19 @@ body.is-legal-modal-open {
   color: #ffffff;
   white-space: pre-wrap;
   text-align: left;
+}
+
+.site-row__legal-modal-body a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-row__figure[data-debug-image-row],
+  .site-row__figure[data-debug-image-row] img {
+    transition: none;
+  }
 }
 
 .site-row__legal-modal-actions {
@@ -786,19 +826,19 @@ body.is-legal-modal-open {
 }
 
 .site-row__spec-price {
-  margin: 0;
+  margin: 0 0 1rem;
   font-weight: 600;
   --debug-base-font-size: 2rem;
   font-size: var(--debug-base-font-size);
-  display: inline;
+  display: block;
 }
 
 .site-row__spec-tax-note {
-  margin: 0 0 1rem 0.4rem;
+  margin: 0 0 0.35rem;
   --debug-base-font-size: 0.86rem;
   font-size: var(--debug-base-font-size);
   font-style: italic;
-  display: inline;
+  display: block;
 }
 
 .site-row__spec-subtitle {
@@ -875,6 +915,11 @@ body.is-legal-modal-open {
     min-height: clamp(24rem, 72vw, 36rem);
   }
 
+  .site-row--line-11 {
+    min-height: calc(100vh - var(--navbar-height, 4rem));
+    min-height: calc(100svh - var(--navbar-height, 4rem));
+  }
+
   .site-row--line-01 {
     min-height: auto;
   }
@@ -890,6 +935,7 @@ body.is-legal-modal-open {
 
   .site-row--line-08 .site-row__content {
     border-radius: 0;
+    padding-top: 1rem;
   }
 
   .site-row--line-09 .site-row__media {

@@ -1,214 +1,207 @@
-function getElementAbsoluteRect(element) {
-  const rect = element.getBoundingClientRect();
-  const top = window.scrollY + rect.top;
+const MIN_FOCUS_OFFSET_PX = 24;
+const MAX_FOCUS_OFFSET_PX = 72;
+const FOCUS_OFFSET_VIEWPORT_RATIO = 0.08;
+const DEFAULT_FOCUS_HYSTERESIS_PX = 28;
 
-  return {
-    top,
-    bottom: top + rect.height,
-    center: top + rect.height / 2,
-  };
+function getElementAbsoluteTop(element) {
+  return window.scrollY + element.getBoundingClientRect().top;
 }
 
-function getRowFallbackTarget(rowSection) {
-  return rowSection.querySelector("[data-row-text]") || rowSection;
-}
+function getDistanceToRect(clientY, rect) {
+  if (clientY < rect.top) {
+    return rect.top - clientY;
+  }
 
-function getRowTopFallbackTarget(rowSection) {
-  return rowSection.querySelector("[data-row-media]") || rowSection;
+  if (clientY > rect.bottom) {
+    return clientY - rect.bottom;
+  }
+
+  return 0;
 }
 
 /**
- * Return the section element that matches the row id.
+ * Return the section element that matches the ligne id.
  *
- * @param {HTMLElement[]} rowSections
- * @param {string} rowId
- * @returns {HTMLElement|null}
+ * @param {HTMLElement[]} rowSections - Ordered ligne section elements.
+ * @param {string} rowId - Canonical ligne id.
+ * @returns {HTMLElement|null} Matching section, when present.
+ * @sideEffects None.
  */
 export function getRowSectionById(rowSections, rowId) {
   return rowSections.find((section) => section.id === rowId) || null;
 }
 
 /**
- * Return the absolute Y coordinate at the center of the viewport.
+ * Return the current bottom edge of the sticky navbar.
  *
- * @returns {number}
+ * @param {HTMLElement|null} navbar - Sticky navbar element.
+ * @returns {number} Viewport offset in pixels.
+ * @sideEffects Reads the current layout.
  */
-export function getViewportCenterY() {
-  return window.scrollY + window.innerHeight / 2;
-}
-
-/**
- * Resolve the preferred center target for a ligne.
- *
- * @param {HTMLElement|null} rowSection
- * @returns {HTMLElement|null}
- */
-export function getRowAnchorTarget(rowSection) {
-  if (!rowSection) {
-    return null;
+export function getStickyNavbarOffset(navbar) {
+  if (!navbar) {
+    return 0;
   }
 
-  return (
-    rowSection.querySelector("[data-row-media] .site-row__figure") ||
-    getRowFallbackTarget(rowSection)
-  );
+  return Math.max(0, navbar.getBoundingClientRect().bottom);
 }
 
 /**
- * Resolve the preferred top-aligned target for a ligne.
+ * Resolve the section used to align a ligne after explicit navigation.
  *
- * @param {HTMLElement|null} rowSection
- * @returns {HTMLElement|null}
+ * @param {HTMLElement|null} rowSection - Ligne section element.
+ * @returns {HTMLElement|null} Ligne section element.
+ * @sideEffects None.
  */
-export function getRowTopAnchorTarget(rowSection) {
-  if (!rowSection) {
-    return null;
-  }
-
-  return (
-    rowSection.querySelector("[data-row-media] .site-row__figure") ||
-    getRowTopFallbackTarget(rowSection)
-  );
+export function getRowNavigationTarget(rowSection) {
+  return rowSection || null;
 }
 
 /**
- * Return the absolute center Y of an element.
+ * Return the scroll position that places a ligne below the sticky navbar.
  *
- * @param {HTMLElement|null} element
- * @returns {number|null}
+ * @param {HTMLElement|null} rowSection - Ligne section element.
+ * @param {number} navbarOffset - Current sticky navbar bottom offset.
+ * @returns {number} Absolute document scroll position.
+ * @sideEffects Reads the current layout.
  */
-export function getElementCenterY(element) {
-  if (!element) {
-    return null;
-  }
-
-  return getElementAbsoluteRect(element).center;
-}
-
-/**
- * Return the scrollY needed to center a ligne target in the viewport.
- *
- * @param {HTMLElement|null} rowSection
- * @returns {number}
- */
-export function getRowScrollYForAnchor(rowSection) {
-  const anchorCenterY = getElementCenterY(getRowAnchorTarget(rowSection));
-  if (!Number.isFinite(anchorCenterY)) {
+export function getRowNavigationScrollY(rowSection, navbarOffset = 0) {
+  const target = getRowNavigationTarget(rowSection);
+  if (!target) {
     return window.scrollY;
   }
 
-  return anchorCenterY - window.innerHeight / 2;
+  const maxScrollY = Math.max(
+    0,
+    document.documentElement.scrollHeight - window.innerHeight
+  );
+  const targetY = getElementAbsoluteTop(target) - Math.max(0, navbarOffset);
+  return Math.min(maxScrollY, Math.max(0, targetY));
 }
 
 /**
- * Return the scrollY needed to align a ligne target with the viewport top.
+ * Return the ligne selected by a stable focus point in the visible viewport.
  *
- * @param {HTMLElement|null} rowSection
- * @param {number} [offsetY=0]
- * @returns {number}
+ * @param {HTMLElement[]} rowSections - Ordered ligne section elements.
+ * @param {{
+ *   navbarOffset?: number,
+ *   currentRowId?: string|null,
+ *   hysteresisPx?: number
+ * }} [options] - Focus position and stability settings.
+ * @returns {HTMLElement|null} Focused ligne section.
+ * @sideEffects Reads the current layout.
  */
-export function getRowScrollYForTopAlign(rowSection, offsetY = 0) {
-  const targetElement = getRowTopAnchorTarget(rowSection);
-  if (!targetElement) {
-    return window.scrollY;
+export function getRowAtViewportFocus(rowSections, options = {}) {
+  if (!rowSections.length) {
+    return null;
   }
 
-  return getElementAbsoluteRect(targetElement).top - offsetY;
-}
+  const navbarOffset = Math.max(0, options.navbarOffset || 0);
+  const availableHeight = Math.max(0, window.innerHeight - navbarOffset);
+  const focusOffset = Math.min(
+    MAX_FOCUS_OFFSET_PX,
+    Math.max(MIN_FOCUS_OFFSET_PX, availableHeight * FOCUS_OFFSET_VIEWPORT_RATIO)
+  );
+  const focusClientY = navbarOffset + focusOffset;
+  const hysteresisPx = Number.isFinite(options.hysteresisPx)
+    ? Math.max(0, options.hysteresisPx)
+    : DEFAULT_FOCUS_HYSTERESIS_PX;
+  const currentRow = getRowSectionById(
+    rowSections,
+    options.currentRowId || ""
+  );
+  const maxScrollY = Math.max(
+    0,
+    document.documentElement.scrollHeight - window.innerHeight
+  );
 
-/**
- * Return the complete center targets for every ligne.
- *
- * @param {HTMLElement[]} rowSections
- * @returns {Array<{rowId: string, scrollY: number, centerY: number}>}
- */
-export function getRowCenterTargets(rowSections) {
-  return rowSections
-    .map((rowSection) => {
-      const targetElement = getRowAnchorTarget(rowSection);
-      const centerY = getElementCenterY(targetElement);
-      if (!Number.isFinite(centerY)) {
-        return null;
-      }
+  if (window.scrollY <= 1) {
+    return rowSections[0];
+  }
 
-      return {
-        rowId: rowSection.id,
-        scrollY: centerY - window.innerHeight / 2,
-        centerY,
-      };
-    })
-    .filter(Boolean);
-}
+  if (window.scrollY >= maxScrollY - 1) {
+    return rowSections[rowSections.length - 1];
+  }
 
-/**
- * Return the full ordered half-step grid for the current lignes.
- *
- * @param {HTMLElement[]} rowSections
- * @returns {Array<{
- *   type: "row-center" | "midpoint",
- *   scrollY: number,
- *   beforeRowId: string,
- *   afterRowId: string,
- *   rowId?: string
- * }>}
- */
-export function getScrollStepPositions(rowSections) {
-  const rowCenters = getRowCenterTargets(rowSections);
-  const stepPositions = [];
-
-  rowCenters.forEach((rowCenter, index) => {
-    stepPositions.push({
-      type: "row-center",
-      rowId: rowCenter.rowId,
-      beforeRowId: rowCenter.rowId,
-      afterRowId: rowCenter.rowId,
-      scrollY: rowCenter.scrollY,
-    });
-
-    const nextRowCenter = rowCenters[index + 1];
-    if (!nextRowCenter) {
-      return;
+  if (currentRow) {
+    const currentRect = currentRow.getBoundingClientRect();
+    if (
+      focusClientY >= currentRect.top - hysteresisPx &&
+      focusClientY <= currentRect.bottom + hysteresisPx
+    ) {
+      return currentRow;
     }
+  }
 
-    stepPositions.push({
-      type: "midpoint",
-      beforeRowId: rowCenter.rowId,
-      afterRowId: nextRowCenter.rowId,
-      scrollY: (rowCenter.scrollY + nextRowCenter.scrollY) / 2,
-    });
-  });
-
-  return stepPositions;
-}
-
-/**
- * Resolve the ligne located at the center of the viewport.
- *
- * @param {HTMLElement[]} rowSections
- * @returns {HTMLElement|null}
- */
-export function getRowAtViewportCenter(rowSections) {
-  const viewportCenterY = getViewportCenterY();
-  let containingRow = null;
-  let nearestRow = null;
+  let nearestRow = rowSections[0];
   let nearestDistance = Number.POSITIVE_INFINITY;
 
   rowSections.forEach((rowSection) => {
-    const absoluteRect = getElementAbsoluteRect(rowSection);
-
-    if (
-      viewportCenterY >= absoluteRect.top &&
-      viewportCenterY <= absoluteRect.bottom
-    ) {
-      containingRow = rowSection;
+    const distance = getDistanceToRect(
+      focusClientY,
+      rowSection.getBoundingClientRect()
+    );
+    if (distance >= nearestDistance) {
+      return;
     }
 
-    const distanceToCenter = Math.abs(absoluteRect.center - viewportCenterY);
-    if (distanceToCenter < nearestDistance) {
-      nearestDistance = distanceToCenter;
-      nearestRow = rowSection;
-    }
+    nearestDistance = distance;
+    nearestRow = rowSection;
   });
 
-  return containingRow || nearestRow;
+  return nearestRow;
+}
+
+/**
+ * Capture a ligne top edge so layout refreshes can preserve viewport position.
+ *
+ * @param {HTMLElement|null} rowSection - Ligne section element.
+ * @param {number} [viewportOffset=0] - Stable content viewport top edge.
+ * @returns {{rowId: string, contentTop: number}|null} Viewport anchor snapshot.
+ * @sideEffects Reads the current layout.
+ */
+export function captureRowViewportAnchor(rowSection, viewportOffset = 0) {
+  if (!rowSection?.id) {
+    return null;
+  }
+
+  return {
+    rowId: rowSection.id,
+    contentTop:
+      rowSection.getBoundingClientRect().top - Math.max(0, viewportOffset),
+  };
+}
+
+/**
+ * Restore a previously captured ligne top edge after a layout refresh.
+ *
+ * @param {HTMLElement[]} rowSections - Ordered ligne section elements.
+ * @param {{rowId: string, contentTop: number}|null} anchor - Saved viewport anchor.
+ * @param {number} [viewportOffset=0] - Current content viewport top edge.
+ * @returns {boolean} Whether the document scroll position changed.
+ * @sideEffects May update the native document scroll position.
+ */
+export function restoreRowViewportAnchor(
+  rowSections,
+  anchor,
+  viewportOffset = 0
+) {
+  if (!anchor || !Number.isFinite(anchor.contentTop)) {
+    return false;
+  }
+
+  const rowSection = getRowSectionById(rowSections, anchor.rowId);
+  if (!rowSection) {
+    return false;
+  }
+
+  const currentContentTop =
+    rowSection.getBoundingClientRect().top - Math.max(0, viewportOffset);
+  const deltaY = currentContentTop - anchor.contentTop;
+  if (Math.abs(deltaY) < 1) {
+    return false;
+  }
+
+  window.scrollBy({ top: deltaY, behavior: "auto" });
+  return true;
 }

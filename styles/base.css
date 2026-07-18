@@ -7,6 +7,7 @@
 }
 
 :root {
+  --navbar-height: 4rem;
   --bg-page: #000000;
   --surface-light: #ffffff;
   --text-dark: #111111;
@@ -16,6 +17,10 @@
   --accent-warm: #e7d2ac;
   --font-body: "Avenir Next", "Segoe UI", sans-serif;
   --font-display: "Blippo Black", "Avenir Next", "Segoe UI", sans-serif;
+}
+
+html {
+  scroll-padding-top: calc(var(--navbar-height, 4rem) + 0.5rem);
 }
 
 *,
@@ -39,6 +44,7 @@ body {
 
 body.is-lightbox-open {
   overflow: hidden;
+  padding-inline-end: var(--scroll-lock-compensation, 0);
 }
 
 img {
@@ -164,4 +170,10 @@ h2 {
 
 .image-lightbox__close:hover {
   background: rgba(255, 255, 255, 0.24);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image-lightbox__image {
+    transition: none;
+  }
 }

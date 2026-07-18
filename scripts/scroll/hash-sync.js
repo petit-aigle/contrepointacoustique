@@ -1,5 +1,5 @@
 /**
- * Create the hash and navbar sync controller for centered lignes.
+ * Create the hash and navbar sync controller for visible lignes.
  *
  * @param {{
  *   getHashForRowId: (rowId: string) => string,
@@ -12,14 +12,18 @@ export function createScrollHashSync(options) {
   let lastSyncedRowId = null;
 
   function sync(rowId) {
-    if (!rowId || rowId === lastSyncedRowId) {
+    if (!rowId) {
+      return;
+    }
+
+    setActiveNavLink(rowId);
+
+    const targetHash = `#${getHashForRowId(rowId)}`;
+    if (rowId === lastSyncedRowId && window.location.hash === targetHash) {
       return;
     }
 
     lastSyncedRowId = rowId;
-    setActiveNavLink(rowId);
-
-    const targetHash = `#${getHashForRowId(rowId)}`;
     if (window.location.hash === targetHash) {
       return;
     }

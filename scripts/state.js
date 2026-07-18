@@ -1,6 +1,6 @@
 export const SUPPORTED_LANGUAGES = ["fr", "en", "es"];
 export const SUPPORTED_MODES = ["corrected", "marketing", "raw"];
-const DEFAULT_LANGUAGE = "fr";
+const DEFAULT_LANGUAGE = "en";
 
 const DEFAULT_DEBUG_STATE = {
   debugImageVariants: {

@@ -1,6 +1,11 @@
-import { ensureDebugEditorRecord } from "../debug/editor-state.js?v=20260330aa";
-import { getDebugImageAreaHeight } from "../debug/image-state.js?v=20260330aa";
-import { syncDebugEditorStyles } from "../debug/editor-toolbar.js?v=20260330aa";
+import { ensureDebugEditorRecord } from "../debug/editor-state.js?v=20260718g";
+import { getDebugImageAreaHeight } from "../debug/image-state.js?v=20260718g";
+import { syncDebugEditorStyles } from "../debug/editor-toolbar.js?v=20260718g";
+import {
+  lockDocumentScroll,
+  unlockDocumentScroll,
+} from "../scroll/scroll-lock.js?v=20260718g";
+import { renderSafeMarkdownLinks } from "./safe-markdown-links.js?v=20260718g";
 
 function getTitleCaseClass(currentState, rowId) {
   if (!currentState.debug || rowId === "line-01") {
@@ -100,6 +105,28 @@ function createTextElement(
   }
 
   return createStaticTextElement(tagName, className, value);
+}
+
+function createLegalModalBody(currentState, rowId, content) {
+  const value = content.legal?.modalBody || "";
+
+  if (currentState.debug) {
+    return createDebugEditorElement(
+      currentState,
+      rowId,
+      "legal.modalBody",
+      "site-row__legal-modal-body",
+      value,
+      getEditorLabel(content, "legalModalBody")
+    );
+  }
+
+  const modalBody = createStaticTextElement(
+    "p",
+    "site-row__legal-modal-body",
+    ""
+  );
+  return renderSafeMarkdownLinks(modalBody, value);
 }
 
 function getEditorLabel(content, key) {
@@ -526,20 +553,6 @@ function createSpecsContent(currentState, rowId, content) {
     );
   }
 
-  if (content.specs?.price) {
-    specsLeftColumn.appendChild(
-      createTextElement(
-        currentState,
-        rowId,
-        "specs.price",
-        "p",
-        "site-row__spec-price",
-        content.specs.price,
-        getEditorLabel(content, "specPrice")
-      )
-    );
-  }
-
   if (content.specs?.taxNote) {
     specsLeftColumn.appendChild(
       createTextElement(
@@ -550,6 +563,20 @@ function createSpecsContent(currentState, rowId, content) {
         "site-row__spec-tax-note",
         content.specs.taxNote,
         getEditorLabel(content, "specTaxNote")
+      )
+    );
+  }
+
+  if (content.specs?.price) {
+    specsLeftColumn.appendChild(
+      createTextElement(
+        currentState,
+        rowId,
+        "specs.price",
+        "p",
+        "site-row__spec-price",
+        content.specs.price,
+        getEditorLabel(content, "specPrice")
       )
     );
   }
@@ -719,15 +746,7 @@ function createLegalContent(currentState, rowId, content) {
   modalHeader.appendChild(modalCloseTop);
   modalDialog.appendChild(modalHeader);
 
-  const modalBody = createTextElement(
-    currentState,
-    rowId,
-    "legal.modalBody",
-    "p",
-    "site-row__legal-modal-body",
-    content.legal?.modalBody || "",
-    getEditorLabel(content, "legalModalBody")
-  );
+  const modalBody = createLegalModalBody(currentState, rowId, content);
   modalDialog.appendChild(modalBody);
 
   const modalActions = document.createElement("div");
@@ -746,14 +765,14 @@ function createLegalContent(currentState, rowId, content) {
   const closeModal = () => {
     modal.hidden = true;
     modal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("is-legal-modal-open");
+    unlockDocumentScroll("legal-modal");
     document.removeEventListener("keydown", onKeyDown);
   };
 
   const openModal = () => {
     modal.hidden = false;
     modal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("is-legal-modal-open");
+    lockDocumentScroll("legal-modal", "is-legal-modal-open");
     document.addEventListener("keydown", onKeyDown);
   };
 

@@ -1,7 +1,7 @@
 const TRANSLATION_URLS = {
-  fr: new URL("./fr.json?v=20260717a", import.meta.url),
-  en: new URL("./en.json?v=20260717a", import.meta.url),
-  es: new URL("./es.json?v=20260717a", import.meta.url),
+  fr: new URL("./fr.json?v=20260718g", import.meta.url),
+  en: new URL("./en.json?v=20260718g", import.meta.url),
+  es: new URL("./es.json?v=20260718g", import.meta.url),
 };
 
 async function loadTranslation(language, url) {
@@ -24,14 +24,14 @@ async function loadOptionalTranslation(language, url) {
   }
 }
 
-const frenchTranslation = await loadTranslation("fr", TRANSLATION_URLS.fr);
+const englishTranslation = await loadTranslation("en", TRANSLATION_URLS.en);
 const optionalTranslationEntries = await Promise.all(
   Object.entries(TRANSLATION_URLS)
-    .filter(([language]) => language !== "fr")
+    .filter(([language]) => language !== "en")
     .map(([language, url]) => loadOptionalTranslation(language, url))
 );
 const translationEntries = [
-  ["fr", frenchTranslation],
+  ["en", englishTranslation],
   ...optionalTranslationEntries.filter(Boolean),
 ];
 
