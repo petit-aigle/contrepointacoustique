@@ -58,7 +58,9 @@ export function getRowNavigationTarget(rowSection) {
 }
 
 /**
- * Return the scroll position that places a ligne below the sticky navbar.
+ * Return the explicit navigation position for a ligne.
+ * Tabula Rasa centers its text in the available viewport; other lignes align
+ * below the sticky navbar.
  *
  * @param {HTMLElement|null} rowSection - Ligne section element.
  * @param {number} navbarOffset - Current sticky navbar bottom offset.
@@ -71,11 +73,23 @@ export function getRowNavigationScrollY(rowSection, navbarOffset = 0) {
     return window.scrollY;
   }
 
+  const safeNavbarOffset = Math.max(0, navbarOffset);
   const maxScrollY = Math.max(
     0,
     document.documentElement.scrollHeight - window.innerHeight
   );
-  const targetY = getElementAbsoluteTop(target) - Math.max(0, navbarOffset);
+  if (rowSection.id === "line-02") {
+    const textContainer = rowSection.querySelector("[data-row-text]");
+    if (textContainer) {
+      const textRect = textContainer.getBoundingClientRect();
+      const availableHeight = Math.max(0, window.innerHeight - safeNavbarOffset);
+      const textCenterY = getElementAbsoluteTop(textContainer) + textRect.height / 2;
+      const targetY = textCenterY - safeNavbarOffset - availableHeight / 2;
+      return Math.min(maxScrollY, Math.max(0, targetY));
+    }
+  }
+
+  const targetY = getElementAbsoluteTop(target) - safeNavbarOffset;
   return Math.min(maxScrollY, Math.max(0, targetY));
 }
 
