@@ -23,7 +23,7 @@ import {
 import { clearActiveDebugEditorKey, setActiveDebugEditorKey, updateDebugEditorHTML } from "./debug/editor-state.js?v=20260718g";
 import { createRowMediaLoader } from "./media/row-media-loader.js?v=20260402b";
 import { renderNavbar } from "./render/navbar.js?v=20260717a";
-import { renderRows } from "./render/rows.js?v=20260718g";
+import { renderRows } from "./render/rows.js?v=20260718h";
 import {
   captureRowViewportAnchor,
   getRowAtViewportFocus,

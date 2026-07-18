@@ -553,20 +553,6 @@ function createSpecsContent(currentState, rowId, content) {
     );
   }
 
-  if (content.specs?.taxNote) {
-    specsLeftColumn.appendChild(
-      createTextElement(
-        currentState,
-        rowId,
-        "specs.taxNote",
-        "p",
-        "site-row__spec-tax-note",
-        content.specs.taxNote,
-        getEditorLabel(content, "specTaxNote")
-      )
-    );
-  }
-
   if (content.specs?.price) {
     specsLeftColumn.appendChild(
       createTextElement(
@@ -577,6 +563,20 @@ function createSpecsContent(currentState, rowId, content) {
         "site-row__spec-price",
         content.specs.price,
         getEditorLabel(content, "specPrice")
+      )
+    );
+  }
+
+  if (content.specs?.taxNote) {
+    specsLeftColumn.appendChild(
+      createTextElement(
+        currentState,
+        rowId,
+        "specs.taxNote",
+        "p",
+        "site-row__spec-tax-note",
+        content.specs.taxNote,
+        getEditorLabel(content, "specTaxNote")
       )
     );
   }
