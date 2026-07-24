@@ -106,38 +106,38 @@
     "line-03": {
       "title": "Add nothing, subtract nothing",
       "paragraphs": [
-        "The essence of our open-baffle loudspeakers lies in sonic integrity and in a formal purity dictated by function. This design favors clarity and depth over brute power, in pursuit of uncompromising fidelity."
+        "The essence of our open-baffle loudspeakers invites faith in sonic integrity and formal purity, where function shapes form. A design that favors clarity and depth over brute power, a minimalist vision in pursuit of rigorous fidelity."
       ]
     },
     "line-04": {
       "title": "“Honesty, utility, simplicity.”",
       "proverb": "Shaker proverb",
       "paragraphs": [
-        "Our approach draws on the ethos of minimal art, a reaction to the complexity of Abstract Expressionism. The minimalist movement seeks to focus on the essential by removing unnecessary details and distractions. This is the starting point for our approach: reproducing sound without artifacts."
+        "Our approach draws on the ethos of minimal art. A reaction to the complexity of Abstract Expressionism. The goal of the minimalist movement is to focus on the essential, removing unnecessary details or distractions. This is the starting point of our approach: reproducing a sound work without artifacts."
       ]
     },
     "line-05": {
       "title": "Music set free",
       "paragraphs": [
-        "A single driver reproduces bass, midrange, and treble. This point source delivers precise imaging and exceptionally consistent timbre.\n\nThe design also eliminates the crossover and its associated issues. The high-efficiency driver requires little power for home listening.\n\nThis technology delivers fast transients and microdynamics, resulting in outstanding energy and vitality."
+        "A single driver reproduces bass, midrange, and treble. It is therefore a point source, resulting in exemplary image precision and timbral consistency.\n\nLikewise, the absence of a frequency-splitting crossover avoids the problems associated with this type of filter. The driver used is high-efficiency and requires little power for home listening.\n\nThis technology promotes fast transients and microdynamics, resulting in unparalleled liveliness and vitality."
       ]
     },
     "line-06": {
       "title": "Sonic transparency",
       "paragraphs": [
-        "We solve problems by removing their causes and stripping away everything that clutters the object. One driver, no cabinet, no electronic components.\n\nInstead of an enclosure, the design uses an acrylic panel and a purpose-built driver. PMMA inherently has low resonance, and the open-baffle design also eliminates standing waves at their source."
+        "We solve problems by removing their causes, stripping the object of the dross that clutters it. One driver, no cabinet, no electronic components.\n\nNo enclosure, but an acrylic panel thanks to a purpose-built driver. PMMA is inherently low-resonance, and the open-baffle design also makes it possible to radically free the sound from standing waves."
       ]
     },
     "line-07": {
       "title": "The voice is sublime",
       "paragraphs": [
-        "Tabula rasa offers a high degree of resolution without causing listening fatigue; on the contrary, the sound is smooth and nuanced.\n\nHonesty compels us to say that it favors the midrange over spectacular effects. Yet the midrange conveys 80% of the emotion, and in this respect Tabula rasa is second to none."
+        "Tabula rasa offers a high degree of resolution but without listening fatigue; on the contrary, the sound is smooth and nuanced.\n\nHonesty compels us to say that it favors the midrange over spectacular effect. But we know that the midrange delivers 80% of the emotion, and in this respect it fears no rival."
       ]
     },
     "line-08": {
       "title": "Choosing finesse",
       "paragraphs": [
-        "An amplifier of the utmost refinement is essential; power matters little: 2 × 2 W or 3 W is enough.\nWe can recommend perfectly matched models."
+        "An amplifier of the utmost refinement is essential; power matters little: 2 × 2 W or 3 W is enough.\nWe can point you toward perfectly suitable models."
       ]
     },
     "line-09": {
@@ -149,30 +149,30 @@
         },
         "tableRows": [
           { "label": "Impedance", "value": "8 Ω" },
-          { "label": "Maximum power", "value": "50 W" },
+          { "label": "Max power", "value": "50 W" },
           { "label": "Break-in period", "value": "50 h" },
           { "label": "Driver diameter", "value": "22.5 cm" },
           { "label": "Number of speakers", "value": "2" },
           { "label": "Speaker width", "value": "40 cm" },
           { "label": "Speaker height", "value": "40 cm" },
           { "label": "Speaker depth", "value": "20 cm" },
-          { "label": "Weight per speaker", "value": "5 kg" },
+          { "label": "Speaker weight", "value": "5 kg per unit" },
           { "label": "Shipping weight", "value": "11 kg" }
         ],
         "production": "Production limited to 40 pairs per year",
-        "price": "€2,125 per pair",
-        "taxNote": "* VAT not applicable under Article 293 B of the French General Tax Code.",
+        "price": "€2,125 (per pair)",
+        "taxNote": "* VAT not applicable, Article 293 B of the French General Tax Code",
         "sustainableTitle": "Sustainable design",
-        "sustainableBody": "No planned obsolescence: durability is central to the design. Recycled and recyclable acrylic glass is paired with a paper speaker cone. The speaker is designed and carefully manufactured in France.",
+        "sustainableBody": "No planned obsolescence, with durability at the heart of our concerns. Recycled and recyclable acrylic glass, combined with a paper speaker cone. Designed and manufactured in France with care and precision.",
         "technicalTitle": "Technical excellence",
-        "technicalBody": "A 22.5 cm full-range driver provides a point source. Its impedance is 8 Ω and its break-in period is 50 hours. It works with tube or solid-state amplifiers. Just 2 or 3 W is sufficient, and it handles up to 50 W.",
-        "usageNote": "This is not a PA system. Designed for home listening, it delivers a pure and intimate sound experience."
+        "technicalBody": "A 22.5 cm full-range driver is a point source. Its impedance is 8 Ω and its break-in period is 50 hours. It works with tube amplifiers delivering only 2 or 3 W and accepts up to 50 W with tube or solid-state amplification.",
+        "usageNote": "This is not a sound system. Listening is intended for home use, offering a pure and intimate sound experience."
       }
     },
     "line-10": {
       "title": "Contact us",
       "paragraphs": [
-        "Name: Contrepoint acoustique\n\nAddress:\n54 route de Mur de Sologne\n41230 Veilleins\nLoir-et-Cher\nFrance\n\nPhone: 06 62 59 14 98\n\nEmail: valereorlic@contrepointacoustique.com"
+        "Name: Contrepoint acoustique\n\nAddress:\n54 route de Mur de Sologne\n41230 Veilleins\nLoir-et-Cher\nFrance\n\nPhone: 06 62 59 14 98\n\nMail: valereorlic@contrepointacoustique.com"
       ]
     },
     "line-11": {
@@ -200,13 +200,6 @@
         "title": "tabula rasa",
         "subtitle": "A refined acoustic object built for clarity and musical immediacy.",
         "quote": "“Honesty, utility, simplicity.”"
-      },
-      "line-03": {
-        "paragraphs": [
-          "Single-driver coherence, open architecture, and controlled resonance define the listening experience.",
-          "The midrange conveys emotion through stable imaging and fatigue-free listening.",
-          "This technical approach preserves natural dynamics and vivid expression."
-        ]
       }
     }
   },
