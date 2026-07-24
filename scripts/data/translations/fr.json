@@ -14,7 +14,7 @@
       "line-06": "Transparence",
       "line-07": "La voix",
       "line-08": "Finesse",
-      "line-09": "Spécifications",
+      "line-09": "Specs",
       "line-10": "Contact",
       "line-11": "Mentions"
     },
@@ -23,43 +23,43 @@
       "mode": "Mode texte",
       "menuToggle": "Menu",
       "mainNavigation": "Navigation principale",
-      "debugHint": "Mode débogage actif.",
-      "rawFallback": "Le mode « Brut » est disponible uniquement en français.",
-      "debugImageToggle": "Changer l’image de cette ligne",
-      "debugPanelTitle": "Typographie de débogage",
-      "debugToolbarTitle": "Éditeur de texte enrichi",
+      "debugHint": "Mode debug actif.",
+      "rawFallback": "Le mode Brut est disponible en français uniquement.",
+      "debugImageToggle": "Basculer l’image de cette ligne",
+      "debugPanelTitle": "Typo debug",
+      "debugToolbarTitle": "Éditeur riche",
       "debugManualTitle": "Raccourcis",
       "debugNoActiveField": "Aucun champ actif",
       "debugActiveField": "Champ actif",
-      "debugTitleFont": "Police spéciale pour les titres",
+      "debugTitleFont": "Special Font",
       "debugTitleCase": "Format des titres",
-      "debugBodyFont": "Police spéciale pour le texte courant",
-      "debugImageResize": "Redimensionnement de l’image au survol",
-      "debugReset": "Réinitialiser le débogage",
+      "debugBodyFont": "Texte normal en Special Font",
+      "debugImageResize": "Redimension image au survol",
+      "debugReset": "Reset debug",
       "debugBold": "Gras",
       "debugItalic": "Italique",
       "debugAlign": "Alignement",
       "debugFontIncrease": "A+",
       "debugFontDecrease": "A-",
-      "debugManualBold": "met la sélection en gras",
-      "debugManualItalic": "met la sélection en italique",
-      "debugManualAlign": "fait défiler les alignements : justifié → aligné à gauche → aligné à droite → centré",
-      "debugManualFontIncrease": "augmente la taille du bloc actif",
+      "debugManualBold": "gras sélectionné",
+      "debugManualItalic": "italique sélectionné",
+      "debugManualAlign": "cycle justify → left → right → center",
+      "debugManualFontIncrease": "agrandit la taille du bloc actif",
       "debugManualFontDecrease": "réduit la taille du bloc actif",
-      "debugManualImageResize": "modifie la hauteur de l’image survolée",
+      "debugManualImageResize": "sur image survolée : Shift + + / Shift + - change la hauteur",
       "closeImage": "Fermer l’image"
     },
     "debugTitleCaseModes": {
-      "current": "Casse actuelle",
-      "uppercase": "TOUT EN MAJUSCULES",
-      "sentence": "Majuscule initiale",
+      "current": "Actuel",
+      "uppercase": "FULL MAJ",
+      "sentence": "Première lettre",
       "lowercase": "tout en minuscules"
     },
     "debugAlignModes": {
-      "justify": "Justifié",
-      "left": "À gauche",
-      "right": "À droite",
-      "center": "Centré"
+      "justify": "Justify",
+      "left": "Left",
+      "right": "Right",
+      "center": "Center"
     },
     "modes": {
       "corrected": "Corrigé",
@@ -101,43 +101,43 @@
       "title": "« L’art industrialisable »"
     },
     "line-02": {
-      "byline": "Par Contrepoint acoustique"
+      "byline": "Par contrepoint acoustique"
     },
     "line-03": {
       "title": "Ne rien ajouter, ne rien retrancher",
       "paragraphs": [
-        "L’essence de nos baffles repose sur une intégrité sonore et sur une pureté formelle dictée par la fonction. Cette conception privilégie la clarté et le relief plutôt que la puissance brute, au service d’une fidélité rigoureuse."
+        "L’essence de nos baffles invite à la foi en une intégrité sonore et une pureté formelle où la fonction fait la forme. Une conception qui privilégie la clarté et le relief à la puissance brute, une vision minimaliste au profit d’une fidélité rigoureuse."
       ]
     },
     "line-04": {
-      "title": "« Honesty, utility, simplicity. »",
-      "proverb": "Proverbe shaker",
+      "title": "« Honesty, utility, simplicity »",
+      "proverb": "Proverbe Shaker",
       "paragraphs": [
-        "Notre approche s’inspire de l’éthique de l’art minimal, mouvement né en réaction à la complexité de l’expressionnisme abstrait. L’objectif du mouvement minimaliste est de se concentrer sur l’essentiel en supprimant les détails et les distractions inutiles. C’est le point de départ de notre démarche : reproduire une œuvre sonore sans artefacts."
+        "Notre approche s’inspire de l’éthique de l’art minimal. Une réaction à la complexité de l’expressionnisme abstrait. L’objectif du mouvement minimaliste est de se concentrer sur l’essentiel, en supprimant les détails ou distractions inutiles. C’est le point de départ de notre démarche, reproduire une œuvre sonore sans artefacts."
       ]
     },
     "line-05": {
       "title": "La musique est libérée",
       "paragraphs": [
-        "Un haut-parleur unique reproduit les graves, les médiums et les aigus. Il constitue donc une source ponctuelle, d’où une précision de l’image et une homogénéité des timbres exemplaires.\n\nDe même, l’absence de filtre répartiteur de fréquences évite les problèmes associés à ce type de filtre. Le haut-parleur à haut rendement demande peu de puissance pour une écoute domestique.\n\nCette technologie favorise la rapidité des transitoires et la microdynamique, ce qui se traduit par une vivacité et une vitalité hors pair."
+        "Un haut-parleur unique reproduit les graves, les médiums et les aigus. Il constitue donc une source ponctuelle, d’où une précision de l’image et une homogénéité des timbres exemplaires.\n\nDe même, l’absence de filtre répartiteur de fréquences évite les problèmes associés à ce type de filtre. Le haut-parleur utilisé est à haut rendement et demande peu de puissance pour une écoute domestique.\n\nCette technologie favorise la rapidité des transitoires et la microdynamique, ce qui se traduit par une vivacité et une vitalité hors pair."
       ]
     },
     "line-06": {
       "title": "La transparence du son",
       "paragraphs": [
-        "Nous résolvons les problèmes en supprimant leurs causes et en débarrassant l’objet des scories qui l’encombrent. L’ensemble ne comporte qu’un seul haut-parleur, aucun coffret et aucun composant électronique.\n\nGrâce à un haut-parleur spécifique, le boîtier laisse place à un panneau en verre acrylique. Le PMMA est intrinsèquement peu résonnant et le choix du baffle plan permet également de s’affranchir radicalement des ondes stationnaires."
+        "Nous résolvons les problèmes en supprimant leurs causes, en débarrassant l’objet des scories qui l’encombrent. Un seul haut-parleur, pas de coffret, pas de composants électroniques.\n\nPas de boîtier mais un panneau en verre acrylique grâce à un haut-parleur spécifique. Le PMMA est intrinsèquement peu résonnant et le choix du baffle plan permet également de s’affranchir radicalement des ondes stationnaires."
       ]
     },
     "line-07": {
       "title": "La voix est sublime",
       "paragraphs": [
-        "Tabula rasa offre un haut degré de résolution sans provoquer de fatigue auditive ; l’écoute est, au contraire, douce et nuancée.\n\nL’honnêteté oblige à préciser que ces enceintes privilégient le médium plutôt que les effets spectaculaires. Nous savons cependant que le médium transmet 80 % de l’émotion et que, sur ce point, elles ne craignent personne."
+        "Tabula rasa offre un haut degré de résolution mais sans fatigue auditive, l’écoute est au contraire douce et nuancée.\n\nL’honnêteté oblige à indiquer qu’elles privilégient le médium à l’effet spectaculaire. Mais nous savons que le médium offre 80 % de l’émotion, et sur ce point elles ne craignent personne."
       ]
     },
     "line-08": {
       "title": "Le choix de la finesse",
       "paragraphs": [
-        "Un amplificateur de la plus grande finesse s’impose. La puissance importe peu : 2 × 2 W ou 3 W suffisent.\nNous pouvons vous orienter vers des modèles parfaitement adaptés."
+        "Un amplificateur de la plus grande finesse s’impose, la puissance important peu, 2 × 2 W ou 3 W suffisent.\nNous pouvons vous orienter vers des modèles parfaitement adaptés."
       ]
     },
     "line-09": {
@@ -148,39 +148,39 @@
           "value": "Valeur"
         },
         "tableRows": [
-          { "label": "Impédance", "value": "8 Ω" },
-          { "label": "Puissance maximale", "value": "50 W" },
+          { "label": "Impédance", "value": "8 ohms" },
+          { "label": "Puissance max", "value": "50 W" },
           { "label": "Rodage", "value": "50 h" },
-          { "label": "Diamètre du haut-parleur", "value": "22,5 cm" },
+          { "label": "Diamètre haut-parleur", "value": "22,5 cm" },
           { "label": "Nombre d’enceintes", "value": "2" },
-          { "label": "Largeur de l’enceinte", "value": "40 cm" },
-          { "label": "Hauteur de l’enceinte", "value": "40 cm" },
-          { "label": "Profondeur de l’enceinte", "value": "20 cm" },
-          { "label": "Poids de l’enceinte", "value": "5 kg" },
+          { "label": "Largeur enceinte", "value": "40 cm" },
+          { "label": "Hauteur enceinte", "value": "40 cm" },
+          { "label": "Profondeur enceinte", "value": "20 cm" },
+          { "label": "Poids enceinte", "value": "5 kg / pièce" },
           { "label": "Poids du colis", "value": "11 kg" }
         ],
         "production": "Production limitée à 40 paires par an",
-        "price": "2 125 € la paire",
-        "taxNote": "* TVA non applicable, art. 293 B du CGI.",
+        "price": "2 125 € (la paire)",
+        "taxNote": "* TVA non applicable, art. 293 B du CGI",
         "sustainableTitle": "Conception durable",
-        "sustainableBody": "Nous luttons contre l’obsolescence programmée et plaçons la durabilité au cœur de nos préoccupations. L’enceinte associe du verre acrylique recyclé et recyclable à une membrane de haut-parleur en papier. Elle est conçue et fabriquée en France avec soin et minutie.",
+        "sustainableBody": "Pas d’obsolescence programmée, avec la durabilité au cœur des préoccupations. Verre acrylique recyclé et recyclable, associé à une membrane de haut-parleur en papier. Conçu et fabriqué en France avec soin et minutie.",
         "technicalTitle": "Excellence technique",
-        "technicalBody": "Un haut-parleur large bande de 22,5 cm constitue une source ponctuelle. Son impédance est de 8 Ω et sa durée de rodage est de 50 heures. Il fonctionne avec des amplificateurs à tubes ou à transistors. Une puissance de 2 ou 3 W suffit, et il accepte jusqu’à 50 W.",
-        "usageNote": "Il ne s’agit pas d’un système de sonorisation. Cette enceinte est destinée à un usage domestique et offre une expérience sonore pure et intime."
+        "technicalBody": "Un haut-parleur large bande de 22,5 cm constitue une source ponctuelle. Son impédance est de 8 Ω et sa durée de rodage est de 50 heures. Il fonctionne avec des amplificateurs à tubes délivrant seulement 2 ou 3 W et accepte jusqu’à 50 W à tubes ou à transistors.",
+        "usageNote": "Il ne s’agit pas d’un sound system. L’écoute est destinée à un usage domestique, offrant une expérience sonore pure et intime."
       }
     },
     "line-10": {
       "title": "Contactez-nous",
       "paragraphs": [
-        "Nom : Contrepoint acoustique\n\nAdresse :\n54 route de Mur de Sologne\n41230 Veilleins\nLoir-et-Cher\nFrance\n\nTéléphone : 06 62 59 14 98\n\nAdresse e-mail : valereorlic@contrepointacoustique.com"
+        "Nom : Contrepoint acoustique\n\nAdresse :\n54 route de Mur de Sologne\n41230 Veilleins\nLoir-et-Cher\nFrance\n\nTéléphone : 06 62 59 14 98\n\nMail : valereorlic@contrepointacoustique.com"
       ]
     },
     "line-11": {
       "legal": {
         "rightTitle": "Mentions légales",
-        "rightBody": "Éditeur : Valere Orlic, entrepreneur individuel (EI).\nMarque : Contrepoint acoustique.\nImmatriculation : RM 751 135 732 RM 41, SIRET 751 135 732 00012, SIREN 751 135 732, code APE/NAF 2640Z.\nTVA non applicable (art. 293 B du CGI).\nHébergeur : GitHub, Inc. (+1 415 735 4488).\nMédiation de la consommation : [à compléter] en cas de vente aux particuliers (B2C).\nCookies : aucun cookie ni traceur soumis au consentement ; aucun bandeau de consentement.\nLe détail complet est disponible via le lien ci-dessous.",
+        "rightBody": "Éditeur : Valere Orlic, entrepreneur individuel (EI).\nMarque : Contrepoint acoustique.\nImmatriculation : RM 751 135 732 RM 41, SIRET 751 135 732 00012, SIREN 751 135 732, Code APE/NAF 2640Z.\nTVA non applicable (art. 293 B du CGI).\nHébergeur : GitHub, Inc. (+1 415 735 4488).\nMédiation de la consommation : [à compléter] si vente B2C.\nCookies : aucun cookie/traceur soumis au consentement, aucun bandeau cookies.\nLe détail complet est disponible via le lien ci-dessous.",
         "modalTitle": "Mentions légales",
-        "modalBody": "Éditeur du site :\n    Nom et prénom : Valere Orlic\n    Statut : entrepreneur individuel (EI)\n    Marque : Contrepoint acoustique (marque déposée)\n    Adresse : 54 route de Mur de Sologne, 41230 Veilleins, Loir-et-Cher, France\n    Téléphone : 06 62 59 14 98\n    Adresse e-mail : valereorlic@contrepointacoustique.com\n\nImmatriculation :\n    RM : 751 135 732 RM 41\n    SIREN : 751 135 732\n    SIRET : 751 135 732 00012\n    Code APE/NAF : 2640Z\n\nTVA :\n    TVA non applicable (art. 293 B du CGI)\n    Numéro de TVA intracommunautaire : non applicable en franchise de TVA [à confirmer]\n\nHébergeur :\n    Nom ou raison sociale : GitHub, Inc.\n    Adresse : 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA\n    Téléphone : +1 415 735 4488\n    Site web : [https://github.com](https://github.com)\n\nDirecteur de la publication :\n    Valere Orlic\n\nPropriété intellectuelle :\n    L’ensemble des contenus (textes, images, logo, marque) est protégé.\n    Toute reproduction non autorisée est interdite.\n\nMédiation de la consommation (en cas de vente aux particuliers) :\n    Nom du médiateur : [à compléter]\n    Lien : [à compléter]\n    Non applicable si l’activité est exclusivement B2B.\n\nDonnées personnelles (RGPD) :\n    Responsable du traitement : Valere Orlic\n    Finalités : gestion des demandes de contact et de la relation commerciale\n    Base légale : l’intérêt légitime et/ou le consentement, selon le formulaire\n    Durée de conservation : les données communiquées par courriel sont conservées pendant le temps nécessaire au traitement de la demande. En l’absence de suite commerciale, elles sont supprimées au plus tard 3 ans après le dernier contact émanant de la personne. En cas de commande, les données nécessaires à la facturation sont conservées 10 ans conformément aux obligations légales.\n    Exercice des droits (accès, rectification, suppression, opposition) :\n    demande à adresser par e-mail à valereorlic@contrepointacoustique.com\n    Contact RGPD : valereorlic@contrepointacoustique.com\n    Réclamation auprès de la CNIL : [https://www.cnil.fr](https://www.cnil.fr)\n\nCookies et traceurs :\n    Politique relative aux cookies : aucun cookie ni traceur soumis au consentement n’est utilisé.\n    Gestion du consentement : aucun bandeau de consentement.",
+        "modalBody": "Éditeur du site :\n    Nom / Prénom : Valere Orlic\n    Statut : Entrepreneur individuel (EI)\n    Marque : Contrepoint acoustique (marque déposée)\n    Adresse : 54 route de Mur de Sologne, 41230 Veilleins, Loir-et-Cher, France\n    Téléphone : 06 62 59 14 98\n    Email : valereorlic@contrepointacoustique.com\n\nImmatriculation :\n    RM : 751 135 732 RM 41\n    SIREN : 751 135 732\n    SIRET : 751 135 732 00012\n    Code APE/NAF : 2640Z\n\nTVA :\n    TVA non applicable, art. 293 B du CGI\n    N° TVA intracommunautaire : non applicable en franchise de TVA [à confirmer]\n\nHébergeur :\n    Nom / Raison sociale : GitHub, Inc.\n    Adresse : 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA\n    Téléphone : +1 415 735 4488\n    Site web : https://github.com\n\nDirecteur de la publication :\n    Valere Orlic\n\nPropriété intellectuelle :\n    L’ensemble des contenus (textes, images, logo, marque) est protégé.\n    Toute reproduction non autorisée est interdite.\n\nMédiation de la consommation (si vente B2C) :\n    Nom du médiateur : [à compléter]\n    Lien : [à compléter]\n    Non applicable si activité exclusivement B2B.\n\nDonnées personnelles (RGPD) :\n    Responsable de traitement : Valere Orlic\n    Finalités : gestion des demandes de contact et relation commerciale\n    Base légale : intérêt légitime et/ou consentement selon le formulaire\n    Durée de conservation : les données communiquées par courriel sont conservées pendant le temps nécessaire au traitement de la demande. En l’absence de suite commerciale, elles sont supprimées au plus tard 3 ans après le dernier contact émanant de la personne. En cas de commande, les données nécessaires à la facturation sont conservées 10 ans conformément aux obligations légales.\n    Droits (accès, rectification, suppression, opposition) :\n    demande par email à valereorlic@contrepointacoustique.com\n    Contact RGPD : valereorlic@contrepointacoustique.com\n    Réclamation CNIL : https://www.cnil.fr\n\nCookies / traceurs :\n    Politique cookies : aucun cookie ou traceur soumis au consentement n’est utilisé.\n    Gestion du consentement : aucun bandeau cookies.",
         "modalOpenLabel": "Voir toutes les mentions légales",
         "modalBackLabel": "Retour",
         "modalCloseLabel": "Fermer"
@@ -200,13 +200,6 @@
         "title": "tabula rasa",
         "subtitle": "Un objet acoustique qui privilégie l’émotion et la lisibilité à la démonstration de puissance.",
         "quote": "« Honesty, utility, simplicity. »"
-      },
-      "line-03": {
-        "paragraphs": [
-          "La cohérence d’un haut-parleur unique, l’architecture ouverte et la maîtrise des résonances définissent l’expérience d’écoute.",
-          "Le médium transmet l’émotion avec une image stable et une écoute sans fatigue.",
-          "Cette approche technique préserve la dynamique naturelle et une expression vivante."
-        ]
       }
     },
     "raw": {
@@ -221,22 +214,22 @@
     "brand": "Contrepoint acoustique.",
     "speakerPair": "Paire d’enceintes.",
     "speakerFront": "Vue frontale d’une enceinte.",
-    "speakerPairAmplifier": "Paire d’enceintes avec un amplificateur.",
+    "speakerPairAmplifier": "Paire d’enceintes avec amplificateur.",
     "speakerFull": "Vue complète de l’enceinte.",
-    "speakerRearLeftAndRight": "Vue arrière de l’enceinte gauche et vue frontale de l’enceinte droite.",
+    "speakerRearLeftAndRight": "Vue arrière gauche et enceinte droite.",
     "speakerChair": "Enceinte à côté d’une chaise.",
     "speakerFrontLeft": "Vue frontale gauche de l’enceinte.",
-    "speakerRearLeftClose": "Gros plan sur l’arrière gauche de l’enceinte.",
+    "speakerRearLeftClose": "Détail arrière gauche rapproché.",
     "speakerRearLeftDetail": "Détail arrière gauche de l’enceinte.",
     "speakerRearLeft": "Vue arrière gauche de l’enceinte.",
     "speakerFrontLeftDetail": "Détail frontal gauche de l’enceinte.",
     "speakerFrontRightDetail": "Détail frontal droit de l’enceinte.",
-    "speakerCorner": "Détail de l’angle avant de l’enceinte.",
-    "speakerCornerZoom": "Gros plan sur l’angle avant de l’enceinte.",
-    "speakerRearAndFront": "Vue arrière d’une enceinte et vue frontale de l’autre.",
-    "speakerTop": "Vue de face du haut-parleur.",
-    "speakerPerspective": "Vue de trois quarts du haut-parleur.",
-    "speakerBottom": "Vue arrière du haut-parleur.",
-    "deliveryTruck": "Camion de livraison de Contrepoint acoustique."
+    "speakerCorner": "Détail d’angle du haut-parleur.",
+    "speakerCornerZoom": "Détail d’angle du haut-parleur (zoom).",
+    "speakerRearAndFront": "Vue arrière et face de l’enceinte.",
+    "speakerTop": "Speaker vue haute.",
+    "speakerPerspective": "Image speaker.",
+    "speakerBottom": "Speaker vue basse.",
+    "deliveryTruck": "Camion de livraison Contrepoint acoustique."
   }
 }
