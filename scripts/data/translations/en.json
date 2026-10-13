@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Contrepoint acoustique — Tabula Rasa",
-    "description": "Tabula Rasa: sonic transparency."
+    "title": "Contrepoint acoustique — Tabula Rasa loudspeakers",
+    "description": "Discover Tabula Rasa full-range loudspeakers by Contrepoint acoustique, designed and made in France for pure, precise and natural sound."
   },
   "ui": {
     "rowPrefix": "Line",
@@ -20,80 +20,19 @@
     },
     "labels": {
       "language": "Language",
-      "mode": "Text mode",
       "menuToggle": "Menu",
       "mainNavigation": "Main navigation",
-      "debugHint": "Debug mode enabled.",
-      "rawFallback": "Raw mode is available in French only.",
-      "debugImageToggle": "Change the image for this line",
-      "debugPanelTitle": "Debug typography",
-      "debugToolbarTitle": "Rich text editor",
-      "debugManualTitle": "Shortcuts",
-      "debugNoActiveField": "No active field",
-      "debugActiveField": "Active field",
-      "debugTitleFont": "Special font for titles",
-      "debugTitleCase": "Title format",
-      "debugBodyFont": "Special font for body text",
-      "debugImageResize": "Resize the image area on hover",
-      "debugReset": "Reset debug settings",
-      "debugBold": "Bold",
-      "debugItalic": "Italic",
-      "debugAlign": "Alignment",
-      "debugFontIncrease": "A+",
-      "debugFontDecrease": "A-",
-      "debugManualBold": "makes the selected text bold",
-      "debugManualItalic": "italicizes the selected text",
-      "debugManualAlign": "cycles through justified → left → right → centered",
-      "debugManualFontIncrease": "increases the active block’s font size",
-      "debugManualFontDecrease": "decreases the active block’s font size",
-      "debugManualImageResize": "adjusts the height of the image under the pointer",
-      "closeImage": "Close image"
+      "closeImage": "Close image",
+      "skipToContent": "Skip to content",
+      "openImage": "Enlarge image",
+      "zoomIn": "Zoom in",
+      "zoomOut": "Zoom out",
+      "resetZoom": "Reset zoom"
     },
-    "debugTitleCaseModes": {
-      "current": "Current",
-      "uppercase": "UPPERCASE",
-      "sentence": "Sentence case",
-      "lowercase": "Lowercase"
-    },
-    "debugAlignModes": {
-      "justify": "Justified",
-      "left": "Left",
-      "right": "Right",
-      "center": "Centered"
-    },
-    "modes": {
-      "corrected": "Corrected",
-      "marketing": "Marketing",
-      "raw": "Raw"
-    },
-    "editorLabels": {
-      "rowTitle": "Row title",
-      "rowSubtitle": "Row subtitle",
-      "rowQuote": "Row quote",
-      "rowByline": "Row byline",
-      "contactText": "Contact text",
-      "contactAddress": "Contact address",
-      "contactEmail": "Contact email address",
-      "sectionTitle": "Section title",
-      "rowProverb": "Row proverb",
-      "rowText": "Row text",
-      "specFeatureHeader": "Feature column header",
-      "specValueHeader": "Value column header",
-      "specLabel": "Specification label",
-      "specValue": "Specification value",
-      "specProduction": "Limited production",
-      "specPrice": "Price",
-      "specTaxNote": "VAT note",
-      "specSustainableTitle": "Sustainability subtitle",
-      "specSustainableBody": "Sustainability text",
-      "specTechnicalTitle": "Technical subtitle",
-      "specTechnicalBody": "Technical text",
-      "specUsageNote": "Usage note",
-      "legalLeftTitle": "Contact section title",
-      "legalContactBody": "Contact text",
-      "legalRightTitle": "Legal notice title",
-      "legalSummary": "Legal notice summary",
-      "legalModalBody": "Full legal notice"
+    "languageNames": {
+      "fr": "Français",
+      "en": "English",
+      "es": "Español"
     }
   },
   "rows": {
@@ -101,7 +40,10 @@
       "title": "“Industrializable art”"
     },
     "line-02": {
-      "byline": "By Contrepoint acoustique"
+      "byline": "By Contrepoint acoustique",
+      "title": "tabula rasa",
+      "subtitle": "A minimalist loudspeaker focused on precision, speed, and the emotional power of the midrange.",
+      "quote": "“Add nothing, subtract nothing.”"
     },
     "line-03": {
       "title": "Add nothing, subtract nothing",
@@ -148,16 +90,46 @@
           "value": "Value"
         },
         "tableRows": [
-          { "label": "Impedance", "value": "8 Ω" },
-          { "label": "Max power", "value": "50 W" },
-          { "label": "Break-in period", "value": "50 h" },
-          { "label": "Driver diameter", "value": "22.5 cm" },
-          { "label": "Number of speakers", "value": "2" },
-          { "label": "Speaker width", "value": "40 cm" },
-          { "label": "Speaker height", "value": "40 cm" },
-          { "label": "Speaker depth", "value": "20 cm" },
-          { "label": "Speaker weight", "value": "5 kg per unit" },
-          { "label": "Shipping weight", "value": "11 kg" }
+          {
+            "label": "Impedance",
+            "value": "8 Ω"
+          },
+          {
+            "label": "Max power",
+            "value": "50 W"
+          },
+          {
+            "label": "Break-in period",
+            "value": "50 h"
+          },
+          {
+            "label": "Driver diameter",
+            "value": "22.5 cm"
+          },
+          {
+            "label": "Number of speakers",
+            "value": "2"
+          },
+          {
+            "label": "Speaker width",
+            "value": "40 cm"
+          },
+          {
+            "label": "Speaker height",
+            "value": "40 cm"
+          },
+          {
+            "label": "Speaker depth",
+            "value": "20 cm"
+          },
+          {
+            "label": "Speaker weight",
+            "value": "5 kg per unit"
+          },
+          {
+            "label": "Shipping weight",
+            "value": "11 kg"
+          }
         ],
         "production": "Production limited to 40 pairs per year",
         "price": "€2,125 (per pair)",
@@ -187,42 +159,16 @@
       }
     }
   },
-  "modes": {
-    "corrected": {
-      "line-02": {
-        "title": "tabula rasa",
-        "subtitle": "A minimalist loudspeaker focused on precision, speed, and the emotional power of the midrange.",
-        "quote": "“Add nothing, subtract nothing.”"
-      }
-    },
-    "marketing": {
-      "line-02": {
-        "title": "tabula rasa",
-        "subtitle": "A refined acoustic object built for clarity and musical immediacy.",
-        "quote": "“Honesty, utility, simplicity.”"
-      }
-    }
-  },
   "mediaAlts": {
     "brand": "Contrepoint acoustique.",
-    "speakerPair": "Pair of speakers.",
-    "speakerFront": "Front view of a speaker.",
     "speakerPairAmplifier": "Pair of speakers with an amplifier.",
     "speakerFull": "Full view of the speaker.",
-    "speakerRearLeftAndRight": "Rear view of the left speaker and front view of the right speaker.",
-    "speakerChair": "Speaker next to a chair.",
-    "speakerFrontLeft": "Front-left view of the speaker.",
     "speakerRearLeftClose": "Close-up of the speaker’s rear-left side.",
     "speakerRearLeftDetail": "Detail of the speaker’s rear-left side.",
-    "speakerRearLeft": "Rear-left view of the speaker.",
     "speakerFrontLeftDetail": "Detail of the speaker’s front-left side.",
     "speakerFrontRightDetail": "Detail of the speaker’s front-right side.",
-    "speakerCorner": "Detail of the speaker’s front corner.",
     "speakerCornerZoom": "Close-up of the speaker’s front corner.",
-    "speakerRearAndFront": "Rear view of one speaker and front view of the other.",
     "speakerTop": "Front view of the driver.",
-    "speakerPerspective": "Three-quarter view of the driver.",
-    "speakerBottom": "Rear view of the driver.",
     "deliveryTruck": "Contrepoint acoustique delivery truck."
   }
 }

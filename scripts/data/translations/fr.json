@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Contrepoint acoustique — Tabula Rasa",
-    "description": "Tabula Rasa : la transparence sonore."
+    "title": "Contrepoint acoustique — Enceintes Tabula Rasa",
+    "description": "Découvrez Tabula Rasa, les enceintes large bande de Contrepoint acoustique, conçues et fabriquées en France pour une écoute pure, précise et naturelle."
   },
   "ui": {
     "rowPrefix": "Ligne",
@@ -20,80 +20,19 @@
     },
     "labels": {
       "language": "Langue",
-      "mode": "Mode texte",
       "menuToggle": "Menu",
       "mainNavigation": "Navigation principale",
-      "debugHint": "Mode debug actif.",
-      "rawFallback": "Le mode Brut est disponible en français uniquement.",
-      "debugImageToggle": "Basculer l’image de cette ligne",
-      "debugPanelTitle": "Typo debug",
-      "debugToolbarTitle": "Éditeur riche",
-      "debugManualTitle": "Raccourcis",
-      "debugNoActiveField": "Aucun champ actif",
-      "debugActiveField": "Champ actif",
-      "debugTitleFont": "Special Font",
-      "debugTitleCase": "Format des titres",
-      "debugBodyFont": "Texte normal en Special Font",
-      "debugImageResize": "Redimension image au survol",
-      "debugReset": "Reset debug",
-      "debugBold": "Gras",
-      "debugItalic": "Italique",
-      "debugAlign": "Alignement",
-      "debugFontIncrease": "A+",
-      "debugFontDecrease": "A-",
-      "debugManualBold": "gras sélectionné",
-      "debugManualItalic": "italique sélectionné",
-      "debugManualAlign": "cycle justify → left → right → center",
-      "debugManualFontIncrease": "agrandit la taille du bloc actif",
-      "debugManualFontDecrease": "réduit la taille du bloc actif",
-      "debugManualImageResize": "sur image survolée : Shift + + / Shift + - change la hauteur",
-      "closeImage": "Fermer l’image"
+      "closeImage": "Fermer l’image",
+      "skipToContent": "Aller au contenu",
+      "openImage": "Agrandir l’image",
+      "zoomIn": "Agrandir",
+      "zoomOut": "Réduire",
+      "resetZoom": "Taille initiale"
     },
-    "debugTitleCaseModes": {
-      "current": "Actuel",
-      "uppercase": "FULL MAJ",
-      "sentence": "Première lettre",
-      "lowercase": "tout en minuscules"
-    },
-    "debugAlignModes": {
-      "justify": "Justify",
-      "left": "Left",
-      "right": "Right",
-      "center": "Center"
-    },
-    "modes": {
-      "corrected": "Corrigé",
-      "marketing": "Marketing",
-      "raw": "Brut"
-    },
-    "editorLabels": {
-      "rowTitle": "Titre de la ligne",
-      "rowSubtitle": "Sous-titre de la ligne",
-      "rowQuote": "Citation de la ligne",
-      "rowByline": "Signature de la ligne",
-      "contactText": "Texte de contact",
-      "contactAddress": "Adresse de contact",
-      "contactEmail": "Adresse e-mail de contact",
-      "sectionTitle": "Titre de section",
-      "rowProverb": "Proverbe de la ligne",
-      "rowText": "Texte de la ligne",
-      "specFeatureHeader": "En-tête de la colonne « Caractéristique »",
-      "specValueHeader": "En-tête de la colonne « Valeur »",
-      "specLabel": "Libellé de la spécification",
-      "specValue": "Valeur de la spécification",
-      "specProduction": "Production limitée",
-      "specPrice": "Prix",
-      "specTaxNote": "Note relative à la TVA",
-      "specSustainableTitle": "Sous-titre sur la durabilité",
-      "specSustainableBody": "Texte sur la durabilité",
-      "specTechnicalTitle": "Sous-titre technique",
-      "specTechnicalBody": "Texte technique",
-      "specUsageNote": "Note d’usage",
-      "legalLeftTitle": "Titre de la partie contact",
-      "legalContactBody": "Texte de contact",
-      "legalRightTitle": "Titre des mentions légales",
-      "legalSummary": "Résumé des mentions légales",
-      "legalModalBody": "Texte complet des mentions légales"
+    "languageNames": {
+      "fr": "Français",
+      "en": "English",
+      "es": "Español"
     }
   },
   "rows": {
@@ -101,7 +40,10 @@
       "title": "« L’art industrialisable »"
     },
     "line-02": {
-      "byline": "Par contrepoint acoustique"
+      "byline": "Par contrepoint acoustique",
+      "title": "tabula rasa",
+      "subtitle": "Une enceinte minimaliste centrée sur la clarté, la vitesse et la présence du médium.",
+      "quote": "« Ne rien ajouter, ne rien retrancher. »"
     },
     "line-03": {
       "title": "Ne rien ajouter, ne rien retrancher",
@@ -148,16 +90,46 @@
           "value": "Valeur"
         },
         "tableRows": [
-          { "label": "Impédance", "value": "8 ohms" },
-          { "label": "Puissance max", "value": "50 W" },
-          { "label": "Rodage", "value": "50 h" },
-          { "label": "Diamètre haut-parleur", "value": "22,5 cm" },
-          { "label": "Nombre d’enceintes", "value": "2" },
-          { "label": "Largeur enceinte", "value": "40 cm" },
-          { "label": "Hauteur enceinte", "value": "40 cm" },
-          { "label": "Profondeur enceinte", "value": "20 cm" },
-          { "label": "Poids enceinte", "value": "5 kg / pièce" },
-          { "label": "Poids du colis", "value": "11 kg" }
+          {
+            "label": "Impédance",
+            "value": "8 ohms"
+          },
+          {
+            "label": "Puissance max",
+            "value": "50 W"
+          },
+          {
+            "label": "Rodage",
+            "value": "50 h"
+          },
+          {
+            "label": "Diamètre haut-parleur",
+            "value": "22,5 cm"
+          },
+          {
+            "label": "Nombre d’enceintes",
+            "value": "2"
+          },
+          {
+            "label": "Largeur enceinte",
+            "value": "40 cm"
+          },
+          {
+            "label": "Hauteur enceinte",
+            "value": "40 cm"
+          },
+          {
+            "label": "Profondeur enceinte",
+            "value": "20 cm"
+          },
+          {
+            "label": "Poids enceinte",
+            "value": "5 kg / pièce"
+          },
+          {
+            "label": "Poids du colis",
+            "value": "11 kg"
+          }
         ],
         "production": "Production limitée à 40 paires par an",
         "price": "2 125 € (la paire)",
@@ -187,49 +159,16 @@
       }
     }
   },
-  "modes": {
-    "corrected": {
-      "line-02": {
-        "title": "tabula rasa",
-        "subtitle": "Une enceinte minimaliste centrée sur la clarté, la vitesse et la présence du médium.",
-        "quote": "« Ne rien ajouter, ne rien retrancher. »"
-      }
-    },
-    "marketing": {
-      "line-02": {
-        "title": "tabula rasa",
-        "subtitle": "Un objet acoustique qui privilégie l’émotion et la lisibilité à la démonstration de puissance.",
-        "quote": "« Honesty, utility, simplicity. »"
-      }
-    },
-    "raw": {
-      "line-02": {
-        "title": "tabula rasa",
-        "subtitle": "Une vision minimaliste au profit d’une fidélité rigoureuse.",
-        "quote": "« L’art industrialisable »"
-      }
-    }
-  },
   "mediaAlts": {
     "brand": "Contrepoint acoustique.",
-    "speakerPair": "Paire d’enceintes.",
-    "speakerFront": "Vue frontale d’une enceinte.",
     "speakerPairAmplifier": "Paire d’enceintes avec amplificateur.",
     "speakerFull": "Vue complète de l’enceinte.",
-    "speakerRearLeftAndRight": "Vue arrière gauche et enceinte droite.",
-    "speakerChair": "Enceinte à côté d’une chaise.",
-    "speakerFrontLeft": "Vue frontale gauche de l’enceinte.",
     "speakerRearLeftClose": "Détail arrière gauche rapproché.",
     "speakerRearLeftDetail": "Détail arrière gauche de l’enceinte.",
-    "speakerRearLeft": "Vue arrière gauche de l’enceinte.",
     "speakerFrontLeftDetail": "Détail frontal gauche de l’enceinte.",
     "speakerFrontRightDetail": "Détail frontal droit de l’enceinte.",
-    "speakerCorner": "Détail d’angle du haut-parleur.",
     "speakerCornerZoom": "Détail d’angle du haut-parleur (zoom).",
-    "speakerRearAndFront": "Vue arrière et face de l’enceinte.",
     "speakerTop": "Speaker vue haute.",
-    "speakerPerspective": "Image speaker.",
-    "speakerBottom": "Speaker vue basse.",
     "deliveryTruck": "Camion de livraison Contrepoint acoustique."
   }
 }

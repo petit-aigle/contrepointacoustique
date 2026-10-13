@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Contrepoint acoustique — Tabula Rasa",
-    "description": "Tabula Rasa: transparencia sonora."
+    "title": "Contrepoint acoustique — Altavoces Tabula Rasa",
+    "description": "Descubre Tabula Rasa, los altavoces de banda ancha de Contrepoint acoustique, diseñados y fabricados en Francia para un sonido puro, preciso y natural."
   },
   "ui": {
     "rowPrefix": "Línea",
@@ -20,80 +20,19 @@
     },
     "labels": {
       "language": "Idioma",
-      "mode": "Modo de texto",
       "menuToggle": "Menú",
       "mainNavigation": "Navegación principal",
-      "debugHint": "Modo de depuración activado.",
-      "rawFallback": "El modo «Original» solo está disponible en francés.",
-      "debugImageToggle": "Cambiar la imagen de esta línea",
-      "debugPanelTitle": "Tipografía de depuración",
-      "debugToolbarTitle": "Editor de texto enriquecido",
-      "debugManualTitle": "Atajos",
-      "debugNoActiveField": "Ningún campo activo",
-      "debugActiveField": "Campo activo",
-      "debugTitleFont": "Fuente especial para los títulos",
-      "debugTitleCase": "Formato de los títulos",
-      "debugBodyFont": "Fuente especial para el texto normal",
-      "debugImageResize": "Redimensionar el área de la imagen al pasar el cursor",
-      "debugReset": "Restablecer ajustes de depuración",
-      "debugBold": "Negrita",
-      "debugItalic": "Cursiva",
-      "debugAlign": "Alineación",
-      "debugFontIncrease": "A+",
-      "debugFontDecrease": "A-",
-      "debugManualBold": "pone en negrita el texto seleccionado",
-      "debugManualItalic": "pone en cursiva el texto seleccionado",
-      "debugManualAlign": "alterna entre justificado, alineado a la izquierda, alineado a la derecha y centrado",
-      "debugManualFontIncrease": "aumenta el tamaño de letra del bloque activo",
-      "debugManualFontDecrease": "reduce el tamaño de letra del bloque activo",
-      "debugManualImageResize": "ajusta la altura de la imagen situada bajo el cursor",
-      "closeImage": "Cerrar imagen"
+      "closeImage": "Cerrar imagen",
+      "skipToContent": "Saltar al contenido",
+      "openImage": "Ampliar imagen",
+      "zoomIn": "Ampliar",
+      "zoomOut": "Reducir",
+      "resetZoom": "Tamaño original"
     },
-    "debugTitleCaseModes": {
-      "current": "Sin cambios",
-      "uppercase": "MAYÚSCULAS",
-      "sentence": "Tipo oración",
-      "lowercase": "Minúsculas"
-    },
-    "debugAlignModes": {
-      "justify": "Justificado",
-      "left": "Izquierda",
-      "right": "Derecha",
-      "center": "Centrado"
-    },
-    "modes": {
-      "corrected": "Corregido",
-      "marketing": "Promocional",
-      "raw": "Original"
-    },
-    "editorLabels": {
-      "rowTitle": "Título de la línea",
-      "rowSubtitle": "Subtítulo de la línea",
-      "rowQuote": "Cita de la línea",
-      "rowByline": "Firma de la línea",
-      "contactText": "Texto de contacto",
-      "contactAddress": "Dirección de contacto",
-      "contactEmail": "Correo electrónico de contacto",
-      "sectionTitle": "Título de la sección",
-      "rowProverb": "Proverbio de la línea",
-      "rowText": "Texto de la línea",
-      "specFeatureHeader": "Encabezado de la columna «Característica»",
-      "specValueHeader": "Encabezado de la columna «Valor»",
-      "specLabel": "Etiqueta de la especificación",
-      "specValue": "Valor de la especificación",
-      "specProduction": "Producción limitada",
-      "specPrice": "Precio",
-      "specTaxNote": "Nota sobre el IVA",
-      "specSustainableTitle": "Subtítulo sobre sostenibilidad",
-      "specSustainableBody": "Texto sobre sostenibilidad",
-      "specTechnicalTitle": "Subtítulo técnico",
-      "specTechnicalBody": "Texto técnico",
-      "specUsageNote": "Nota de uso",
-      "legalLeftTitle": "Título de la sección de contacto",
-      "legalContactBody": "Texto de contacto",
-      "legalRightTitle": "Título del aviso legal",
-      "legalSummary": "Resumen del aviso legal",
-      "legalModalBody": "Texto completo del aviso legal"
+    "languageNames": {
+      "fr": "Français",
+      "en": "English",
+      "es": "Español"
     }
   },
   "rows": {
@@ -101,7 +40,10 @@
       "title": "«El arte industrializable»"
     },
     "line-02": {
-      "byline": "Por Contrepoint acoustique"
+      "byline": "Por Contrepoint acoustique",
+      "title": "tabula rasa",
+      "subtitle": "Un altavoz minimalista centrado en la precisión, la velocidad y la emoción que transmite la gama media.",
+      "quote": "«No añadir nada ni quitar nada»."
     },
     "line-03": {
       "title": "No añadir nada ni quitar nada",
@@ -148,16 +90,46 @@
           "value": "Valor"
         },
         "tableRows": [
-          { "label": "Impedancia", "value": "8 Ω" },
-          { "label": "Potencia máx.", "value": "50 W" },
-          { "label": "Rodaje", "value": "50 h" },
-          { "label": "Diámetro del transductor", "value": "22,5 cm" },
-          { "label": "Número de altavoces", "value": "2" },
-          { "label": "Anchura del altavoz", "value": "40 cm" },
-          { "label": "Altura del altavoz", "value": "40 cm" },
-          { "label": "Profundidad del altavoz", "value": "20 cm" },
-          { "label": "Peso del altavoz", "value": "5 kg por unidad" },
-          { "label": "Peso del envío", "value": "11 kg" }
+          {
+            "label": "Impedancia",
+            "value": "8 Ω"
+          },
+          {
+            "label": "Potencia máx.",
+            "value": "50 W"
+          },
+          {
+            "label": "Rodaje",
+            "value": "50 h"
+          },
+          {
+            "label": "Diámetro del transductor",
+            "value": "22,5 cm"
+          },
+          {
+            "label": "Número de altavoces",
+            "value": "2"
+          },
+          {
+            "label": "Anchura del altavoz",
+            "value": "40 cm"
+          },
+          {
+            "label": "Altura del altavoz",
+            "value": "40 cm"
+          },
+          {
+            "label": "Profundidad del altavoz",
+            "value": "20 cm"
+          },
+          {
+            "label": "Peso del altavoz",
+            "value": "5 kg por unidad"
+          },
+          {
+            "label": "Peso del envío",
+            "value": "11 kg"
+          }
         ],
         "production": "Producción limitada a 40 pares al año",
         "price": "2125 € (la pareja)",
@@ -187,42 +159,16 @@
       }
     }
   },
-  "modes": {
-    "corrected": {
-      "line-02": {
-        "title": "tabula rasa",
-        "subtitle": "Un altavoz minimalista centrado en la precisión, la velocidad y la emoción que transmite la gama media.",
-        "quote": "«No añadir nada ni quitar nada»."
-      }
-    },
-    "marketing": {
-      "line-02": {
-        "title": "tabula rasa",
-        "subtitle": "Un objeto acústico sobrio y expresivo, pensado para escuchar música de forma directa.",
-        "quote": "«Honestidad, utilidad, sencillez»."
-      }
-    }
-  },
   "mediaAlts": {
     "brand": "Contrepoint acoustique.",
-    "speakerPair": "Pareja de altavoces.",
-    "speakerFront": "Vista frontal de un altavoz.",
     "speakerPairAmplifier": "Pareja de altavoces con un amplificador.",
     "speakerFull": "Vista completa del altavoz.",
-    "speakerRearLeftAndRight": "Vista posterior del altavoz izquierdo y vista frontal del derecho.",
-    "speakerChair": "Altavoz junto a una silla.",
-    "speakerFrontLeft": "Vista frontal izquierda del altavoz.",
     "speakerRearLeftClose": "Primer plano de la parte posterior izquierda del altavoz.",
     "speakerRearLeftDetail": "Detalle de la parte posterior izquierda del altavoz.",
-    "speakerRearLeft": "Vista posterior izquierda del altavoz.",
     "speakerFrontLeftDetail": "Detalle de la parte frontal izquierda del altavoz.",
     "speakerFrontRightDetail": "Detalle de la parte frontal derecha del altavoz.",
-    "speakerCorner": "Detalle de una esquina frontal del altavoz.",
     "speakerCornerZoom": "Primer plano de una esquina frontal del altavoz.",
-    "speakerRearAndFront": "Vista posterior de un altavoz y vista frontal del otro.",
     "speakerTop": "Vista frontal del transductor.",
-    "speakerPerspective": "Vista de tres cuartos del transductor.",
-    "speakerBottom": "Vista posterior del transductor.",
     "deliveryTruck": "Camión de reparto de Contrepoint acoustique."
   }
 }
