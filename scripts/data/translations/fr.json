@@ -13,7 +13,7 @@
       "line-05": "Musicalité",
       "line-06": "Transparence",
       "line-07": "La voix",
-      "line-08": "Qualité",
+      "line-08": "Finesse",
       "line-09": "Specs",
       "line-10": "Contact",
       "line-11": "Mentions"
@@ -37,7 +37,7 @@
   },
   "rows": {
     "line-01": {
-      "title": "ne rien ajouter, ne rien retrancher"
+      "title": "ne rien ajouter , ne rien retrancher"
     },
     "line-02": {
       "byline": "par contrepoint acoustique",
@@ -51,7 +51,7 @@
       ]
     },
     "line-04": {
-      "title": "« L’art n’a pas à fonctionner, mais le design oui. »",
+      "title": "l'art n'à pas à fonctionner , mais le design oui",
       "proverb": "Donald Judd",
       "paragraphs": [
         "Notre approche s’inspire de l’éthique de l’art minimal. L’objectif est de se concentrer sur l’essentiel, en supprimant les détails ou distractions inutiles. C’est le point de départ de notre démarche, reproduire une œuvre sonore sans artefacts."
@@ -60,7 +60,7 @@
     "line-05": {
       "title": "La musique est libérée",
       "paragraphs": [
-        "Un haut-parleur unique reproduit les graves, les médiums et les aigus. Il constitue donc une source ponctuelle, d’où une précision de l’image et une homogénéité des timbres exemplaires.\n\nPas de filtre.\n« Le bon composant, ça n’existe pas. Tous les composants sont mauvais. La seule bonne chose, c’est rien. »\nRichard Dunn, fondateur de NVA Audio.\n\nLe haut-parleur utilisé est à haut rendement et demande peu de puissance pour une écoute domestique.\n\nCette technologie favorise la rapidité des transitoires et la microdynamique, ce qui se traduit par une vivacité et une vitalité hors pair."
+        "Un haut-parleur unique reproduit les graves, les médiums et les aigus. Il constitue donc une source ponctuelle, d’où une précision de l’image et une homogénéité des timbres exemplaires.\n\npas de fitre\nle bon composant ça n'existe pas . tout les composants sont mauvais . la seul bonne chose , c'est rien\nRichard Dunn fondateur de nva audio .\n\nLe haut-parleur utilisé est à haut rendement et demande peu de puissance pour une écoute domestique.\n\nCette technologie favorise la rapidité des transitoires et la microdynamique, ce qui se traduit par une vivacité et une vitalité hors pair."
       ]
     },
     "line-06": {
@@ -72,7 +72,7 @@
     "line-07": {
       "title": "La voix est sublime",
       "paragraphs": [
-        "Tabula rasa offre un haut degré de résolution mais sans fatigue auditive, l’écoute est au contraire douce et nuancée.\n\nElles privilégient la finesse de restitution à l’effet spectaculaire."
+        "Tabula rasa offre un haut degré de résolution mais sans fatigue auditive, l’écoute est au contraire douce et nuancée.\n\nelles privilégient la finesse de restitution à l'effet spectaculaire"
       ]
     },
     "line-08": {
@@ -131,7 +131,7 @@
           }
         ],
         "production": "4 à 5 semaines de délai de fabrication",
-        "price": "3 500 € la paire",
+        "price": "3500 euro la paire",
         "taxNote": "* TVA non applicable, art. 293 B du CGI",
         "sustainableTitle": "Conception durable",
         "sustainableBody": "Pas d’obsolescence programmée, avec la durabilité au cœur des préoccupations. Verre acrylique recyclé et recyclable, associé à une membrane de haut-parleur en papier. Conçu et fabriqué en France avec soin et minutie.",

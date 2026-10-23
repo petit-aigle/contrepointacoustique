@@ -13,7 +13,7 @@
       "line-05": "Musicality",
       "line-06": "Transparency",
       "line-07": "Voice",
-      "line-08": "Quality",
+      "line-08": "Finesse",
       "line-09": "Specifications",
       "line-10": "Contact",
       "line-11": "Legal notice"
@@ -37,30 +37,31 @@
   },
   "rows": {
     "line-01": {
-      "title": "Add nothing, subtract nothing"
+      "title": "“Industrializable art”"
     },
     "line-02": {
-      "byline": "by Contrepoint acoustique",
-      "title": "tabula rasa"
+      "byline": "By Contrepoint acoustique",
+      "title": "tabula rasa",
+      "subtitle": "A minimalist loudspeaker focused on precision, speed, and the emotional power of the midrange.",
+      "quote": "“Add nothing, subtract nothing.”"
     },
     "line-03": {
-      "title": "“Honesty, utility, simplicity.”",
-      "proverb": "Shaker proverb",
+      "title": "Add nothing, subtract nothing",
       "paragraphs": [
-        "The essence of our open-baffle loudspeakers invites faith in sonic integrity and formal purity, where function shapes form. A design that favors clarity and depth over brute power."
+        "The essence of our open-baffle loudspeakers invites faith in sonic integrity and formal purity, where function shapes form. A design that favors clarity and depth over brute power, a minimalist vision in pursuit of rigorous fidelity."
       ]
     },
     "line-04": {
-      "title": "“Art doesn’t have to function, but design does.”",
-      "proverb": "Donald Judd",
+      "title": "“Honesty, utility, simplicity.”",
+      "proverb": "Shaker proverb",
       "paragraphs": [
-        "Our approach draws on the ethos of minimal art. The goal is to focus on the essential, removing unnecessary details or distractions. This is the starting point of our approach: reproducing a sound work without artifacts."
+        "Our approach draws on the ethos of minimal art. A reaction to the complexity of Abstract Expressionism. The goal of the minimalist movement is to focus on the essential, removing unnecessary details or distractions. This is the starting point of our approach: reproducing a sound work without artifacts."
       ]
     },
     "line-05": {
       "title": "Music set free",
       "paragraphs": [
-        "A single driver reproduces bass, midrange, and treble. It is therefore a point source, resulting in exemplary image precision and timbral consistency.\n\nNo crossover.\n“There is no such thing as a good component. All components are bad. The only good thing is nothing.”\nRichard Dunn, founder of NVA Audio.\n\nThe driver used is high-efficiency and requires little power for home listening.\n\nThis technology promotes fast transients and microdynamics, resulting in unparalleled liveliness and vitality."
+        "A single driver reproduces bass, midrange, and treble. It is therefore a point source, resulting in exemplary image precision and timbral consistency.\n\nLikewise, the absence of a frequency-splitting crossover avoids the problems associated with this type of filter. The driver used is high-efficiency and requires little power for home listening.\n\nThis technology promotes fast transients and microdynamics, resulting in unparalleled liveliness and vitality."
       ]
     },
     "line-06": {
@@ -72,13 +73,13 @@
     "line-07": {
       "title": "The voice is sublime",
       "paragraphs": [
-        "Tabula rasa offers a high degree of resolution but without listening fatigue; on the contrary, the sound is smooth and nuanced.\n\nThey favor delicacy of reproduction over spectacular effect."
+        "Tabula rasa offers a high degree of resolution but without listening fatigue; on the contrary, the sound is smooth and nuanced.\n\nHonesty compels us to say that it favors the midrange over spectacular effect. But we know that the midrange delivers 80% of the emotion, and in this respect it fears no rival."
       ]
     },
     "line-08": {
-      "title": "Choosing quality",
+      "title": "Choosing finesse",
       "paragraphs": [
-        "An amplifier of the highest quality is essential; power matters little: a few watts are enough.\nWe can point you toward perfectly suitable models."
+        "An amplifier of the utmost refinement is essential; power matters little: 2 × 2 W or 3 W is enough.\nWe can point you toward perfectly suitable models."
       ]
     },
     "line-09": {
@@ -130,8 +131,8 @@
             "value": "11 kg"
           }
         ],
-        "production": "Manufacturing lead time: 4 to 5 weeks",
-        "price": "€3,500 per pair",
+        "production": "Production limited to 40 pairs per year",
+        "price": "€2,125 (per pair)",
         "taxNote": "* VAT not applicable, Article 293 B of the French General Tax Code",
         "sustainableTitle": "Sustainable design",
         "sustainableBody": "No planned obsolescence, with durability at the heart of our concerns. Recycled and recyclable acrylic glass, combined with a paper speaker cone. Designed and manufactured in France with care and precision.",
