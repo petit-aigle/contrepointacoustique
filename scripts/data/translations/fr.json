@@ -13,7 +13,7 @@
       "line-05": "Musicalité",
       "line-06": "Transparence",
       "line-07": "La voix",
-      "line-08": "Finesse",
+      "line-08": "Qualité",
       "line-09": "Specs",
       "line-10": "Contact",
       "line-11": "Mentions"
@@ -37,31 +37,30 @@
   },
   "rows": {
     "line-01": {
-      "title": "« L’art industrialisable »"
+      "title": "ne rien ajouter, ne rien retrancher"
     },
     "line-02": {
-      "byline": "Par contrepoint acoustique",
-      "title": "tabula rasa",
-      "subtitle": "Une enceinte minimaliste centrée sur la clarté, la vitesse et la présence du médium.",
-      "quote": "« Ne rien ajouter, ne rien retrancher. »"
+      "byline": "par contrepoint acoustique",
+      "title": "tabula rasa"
     },
     "line-03": {
-      "title": "Ne rien ajouter, ne rien retrancher",
-      "paragraphs": [
-        "L’essence de nos baffles invite à la foi en une intégrité sonore et une pureté formelle où la fonction fait la forme. Une conception qui privilégie la clarté et le relief à la puissance brute, une vision minimaliste au profit d’une fidélité rigoureuse."
-      ]
-    },
-    "line-04": {
       "title": "« Honesty, utility, simplicity »",
       "proverb": "Proverbe Shaker",
       "paragraphs": [
-        "Notre approche s’inspire de l’éthique de l’art minimal. Une réaction à la complexité de l’expressionnisme abstrait. L’objectif du mouvement minimaliste est de se concentrer sur l’essentiel, en supprimant les détails ou distractions inutiles. C’est le point de départ de notre démarche, reproduire une œuvre sonore sans artefacts."
+        "L’essence de nos baffles invite à la foi en une intégrité sonore et une pureté formelle où la fonction fait la forme. Une conception qui privilégie la clarté et le relief à la puissance brute."
+      ]
+    },
+    "line-04": {
+      "title": "« L’art n’a pas à fonctionner, mais le design oui. »",
+      "proverb": "Donald Judd",
+      "paragraphs": [
+        "Notre approche s’inspire de l’éthique de l’art minimal. L’objectif est de se concentrer sur l’essentiel, en supprimant les détails ou distractions inutiles. C’est le point de départ de notre démarche, reproduire une œuvre sonore sans artefacts."
       ]
     },
     "line-05": {
       "title": "La musique est libérée",
       "paragraphs": [
-        "Un haut-parleur unique reproduit les graves, les médiums et les aigus. Il constitue donc une source ponctuelle, d’où une précision de l’image et une homogénéité des timbres exemplaires.\n\nDe même, l’absence de filtre répartiteur de fréquences évite les problèmes associés à ce type de filtre. Le haut-parleur utilisé est à haut rendement et demande peu de puissance pour une écoute domestique.\n\nCette technologie favorise la rapidité des transitoires et la microdynamique, ce qui se traduit par une vivacité et une vitalité hors pair."
+        "Un haut-parleur unique reproduit les graves, les médiums et les aigus. Il constitue donc une source ponctuelle, d’où une précision de l’image et une homogénéité des timbres exemplaires.\n\nPas de filtre.\n« Le bon composant, ça n’existe pas. Tous les composants sont mauvais. La seule bonne chose, c’est rien. »\nRichard Dunn, fondateur de NVA Audio.\n\nLe haut-parleur utilisé est à haut rendement et demande peu de puissance pour une écoute domestique.\n\nCette technologie favorise la rapidité des transitoires et la microdynamique, ce qui se traduit par une vivacité et une vitalité hors pair."
       ]
     },
     "line-06": {
@@ -73,13 +72,13 @@
     "line-07": {
       "title": "La voix est sublime",
       "paragraphs": [
-        "Tabula rasa offre un haut degré de résolution mais sans fatigue auditive, l’écoute est au contraire douce et nuancée.\n\nL’honnêteté oblige à indiquer qu’elles privilégient le médium à l’effet spectaculaire. Mais nous savons que le médium offre 80 % de l’émotion, et sur ce point elles ne craignent personne."
+        "Tabula rasa offre un haut degré de résolution mais sans fatigue auditive, l’écoute est au contraire douce et nuancée.\n\nElles privilégient la finesse de restitution à l’effet spectaculaire."
       ]
     },
     "line-08": {
-      "title": "Le choix de la finesse",
+      "title": "Le choix de la qualité",
       "paragraphs": [
-        "Un amplificateur de la plus grande finesse s’impose, la puissance important peu, 2 × 2 W ou 3 W suffisent.\nNous pouvons vous orienter vers des modèles parfaitement adaptés."
+        "Un amplificateur de la plus grande qualité s’impose, la puissance important peu, quelques watts suffisent.\nNous pouvons vous orienter vers des modèles parfaitement adaptés."
       ]
     },
     "line-09": {
@@ -131,8 +130,8 @@
             "value": "11 kg"
           }
         ],
-        "production": "Production limitée à 40 paires par an",
-        "price": "2 125 € (la paire)",
+        "production": "4 à 5 semaines de délai de fabrication",
+        "price": "3 500 € la paire",
         "taxNote": "* TVA non applicable, art. 293 B du CGI",
         "sustainableTitle": "Conception durable",
         "sustainableBody": "Pas d’obsolescence programmée, avec la durabilité au cœur des préoccupations. Verre acrylique recyclé et recyclable, associé à une membrane de haut-parleur en papier. Conçu et fabriqué en France avec soin et minutie.",

@@ -13,7 +13,7 @@
       "line-05": "Musicalidad",
       "line-06": "Transparencia",
       "line-07": "La voz",
-      "line-08": "Sutileza",
+      "line-08": "Calidad",
       "line-09": "Especificaciones",
       "line-10": "Contacto",
       "line-11": "Aviso legal"
@@ -37,31 +37,30 @@
   },
   "rows": {
     "line-01": {
-      "title": "«El arte industrializable»"
+      "title": "No añadir nada ni quitar nada"
     },
     "line-02": {
-      "byline": "Por Contrepoint acoustique",
-      "title": "tabula rasa",
-      "subtitle": "Un altavoz minimalista centrado en la precisión, la velocidad y la emoción que transmite la gama media.",
-      "quote": "«No añadir nada ni quitar nada»."
+      "byline": "por Contrepoint acoustique",
+      "title": "tabula rasa"
     },
     "line-03": {
-      "title": "No añadir nada ni quitar nada",
-      "paragraphs": [
-        "La esencia de nuestros bafles invita a creer en una integridad sonora y una pureza formal donde la función hace la forma. Una concepción que privilegia la claridad y el relieve frente a la potencia bruta, una visión minimalista al servicio de una fidelidad rigurosa."
-      ]
-    },
-    "line-04": {
       "title": "«Honestidad, utilidad, sencillez»",
       "proverb": "Proverbio de los shakers",
       "paragraphs": [
-        "Nuestro enfoque se inspira en la ética del arte minimalista. Una reacción a la complejidad del expresionismo abstracto. El objetivo del movimiento minimalista es centrarse en lo esencial, eliminando los detalles o distracciones innecesarios. Este es el punto de partida de nuestro enfoque: reproducir una obra sonora sin artefactos."
+        "La esencia de nuestros bafles invita a creer en una integridad sonora y una pureza formal donde la función hace la forma. Una concepción que privilegia la claridad y el relieve frente a la potencia bruta."
+      ]
+    },
+    "line-04": {
+      "title": "«El arte no tiene que funcionar, pero el diseño sí»",
+      "proverb": "Donald Judd",
+      "paragraphs": [
+        "Nuestro enfoque se inspira en la ética del arte minimalista. El objetivo es centrarse en lo esencial, eliminando los detalles o distracciones innecesarios. Este es el punto de partida de nuestro enfoque: reproducir una obra sonora sin artefactos."
       ]
     },
     "line-05": {
       "title": "La música se libera",
       "paragraphs": [
-        "Un único altavoz reproduce los graves, los medios y los agudos. Por tanto, constituye una fuente puntual, de donde procede una precisión de imagen y una homogeneidad tímbrica ejemplares.\n\nAsimismo, la ausencia de un filtro divisor de frecuencias evita los problemas asociados a este tipo de filtro. El altavoz utilizado es de alto rendimiento y requiere poca potencia para una escucha doméstica.\n\nEsta tecnología favorece la rapidez de los transitorios y la microdinámica, lo que se traduce en una vivacidad y una vitalidad excepcionales."
+        "Un único altavoz reproduce los graves, los medios y los agudos. Por tanto, constituye una fuente puntual, de donde procede una precisión de imagen y una homogeneidad tímbrica ejemplares.\n\nSin filtro.\n«No existe el buen componente. Todos los componentes son malos. Lo único bueno es nada».\nRichard Dunn, fundador de NVA Audio.\n\nEl altavoz utilizado es de alto rendimiento y requiere poca potencia para una escucha doméstica.\n\nEsta tecnología favorece la rapidez de los transitorios y la microdinámica, lo que se traduce en una vivacidad y una vitalidad excepcionales."
       ]
     },
     "line-06": {
@@ -73,13 +72,13 @@
     "line-07": {
       "title": "La voz es sublime",
       "paragraphs": [
-        "Tabula rasa ofrece un alto nivel de resolución, pero sin fatiga auditiva; por el contrario, la escucha es suave y matizada.\n\nLa honestidad obliga a indicar que privilegian la gama media frente al efecto espectacular. Pero sabemos que la gama media ofrece el 80 % de la emoción y, en este aspecto, no temen a nadie."
+        "Tabula rasa ofrece un alto nivel de resolución, pero sin fatiga auditiva; por el contrario, la escucha es suave y matizada.\n\nPrivilegian la delicadeza de la reproducción frente al efecto espectacular."
       ]
     },
     "line-08": {
-      "title": "La elección de la sutileza",
+      "title": "La elección de la calidad",
       "paragraphs": [
-        "Es esencial un amplificador de la máxima sutileza; la potencia importa poco: bastan 2 × 2 W o 3 W.\nPodemos orientarle hacia modelos perfectamente adaptados."
+        "Es esencial un amplificador de la máxima calidad; la potencia importa poco: bastan unos pocos vatios.\nPodemos orientarle hacia modelos perfectamente adaptados."
       ]
     },
     "line-09": {
@@ -131,8 +130,8 @@
             "value": "11 kg"
           }
         ],
-        "production": "Producción limitada a 40 pares al año",
-        "price": "2125 € (la pareja)",
+        "production": "Plazo de fabricación: de 4 a 5 semanas",
+        "price": "3500 € la pareja",
         "taxNote": "* IVA no aplicable, art. 293 B del Código General de Impuestos francés",
         "sustainableTitle": "Diseño sostenible",
         "sustainableBody": "Sin obsolescencia programada, con la durabilidad en el centro de nuestras preocupaciones. Vidrio acrílico reciclado y reciclable, asociado a una membrana de altavoz de papel. Diseñado y fabricado en Francia con esmero y precisión.",

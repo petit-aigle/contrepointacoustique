@@ -358,6 +358,7 @@
   margin: 0 0 0.9rem;
   color: var(--text-dark);
   font-family: var(--font-display);
+  font-weight: 900;
   line-height: 1.2;
   letter-spacing: 0.03em;
   font-size: clamp(1.08rem, 2vw, 1.52rem);
@@ -376,6 +377,8 @@
 .site-row__byline {
   margin: 0;
   color: var(--text-dark-soft);
+  font-family: var(--font-display);
+  font-weight: 900;
   font-size: 0.96rem;
   line-height: 1.4;
 }
